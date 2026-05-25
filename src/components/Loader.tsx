@@ -93,7 +93,7 @@ export default function Loader({ onComplete }: Props) {
       {visible && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
-          style={{ backgroundColor: '#1D4851' }}
+          style={{ backgroundColor: '#224851' }}
           initial={{ y: 0 }}
           exit={{
             y: '-100%',

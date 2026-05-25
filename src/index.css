@@ -22,13 +22,21 @@ h5 {
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes marquee-reverse {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .marquee-track {
@@ -42,4 +50,7 @@ h5 {
 .marquee-track:hover,
 .marquee-track-reverse:hover {
   animation-play-state: paused;
+}
+.maxwidth {
+  max-width: 1800px;
 }

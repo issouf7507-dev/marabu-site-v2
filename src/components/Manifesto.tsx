@@ -63,7 +63,7 @@ export default function Manifesto() {
 
         <motion.a
           href="#contact"
-          className="mt-12 border border-white/40 text-white/80 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-white hover:text-black transition-all duration-300"
+          className="mt-12 border border-[#224851] text-white/80 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#224851]  transition-all duration-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
