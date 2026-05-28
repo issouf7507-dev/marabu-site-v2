@@ -14,6 +14,7 @@ import BlogPreview from "./components/BlogPreview";
 import Testimonials from "./components/Testimonials";
 
 import Footer from "./components/Footer";
+import CaurisTransition from "./components/CaurisTransition";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,9 +38,12 @@ export default function App() {
             <main>
               <Hero />
               <LogoMarquee />
+              <CaurisTransition />
               <Intro />
+              <CaurisTransition />
               <Services />
               <CaseStudies />
+              <CaurisTransition />
               <Manifesto />
               <BlogPreview />
               <Testimonials />
