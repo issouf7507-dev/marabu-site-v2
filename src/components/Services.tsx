@@ -1,9 +1,30 @@
 import { motion } from "framer-motion";
 import FlowArt, { FlowSection } from "./ui/story-scroll";
 import { FadeIn } from "./ui/fade-in";
-import img1 from "../assets/imgs/marabu_conseil_accueil.jpg";
-import img2 from "../assets/imgs/marabu_services_accueil.png";
 import coris2 from "../assets/coris2.png";
+import conseil1 from "../assets/imgs/conseils/conseil-1.jpg";
+import conseil2 from "../assets/imgs/conseils/conseil-2.jpg";
+import conseil3 from "../assets/imgs/conseils/conseil-3.jpg";
+import conseil4 from "../assets/imgs/conseils/conseil-4.jpg";
+import conseil6 from "../assets/imgs/conseils/conseil-6.jpg";
+import conseil7 from "../assets/imgs/conseils/conseil-7.jpg";
+import conseil8 from "../assets/imgs/conseils/conseil-8.jpg";
+import conseil9 from "../assets/imgs/conseils/conseil-9.jpg";
+import conseil10 from "../assets/imgs/conseils/conseil-10.jpg";
+import services1 from "../assets/imgs/services/services-1.jpg";
+import services2 from "../assets/imgs/services/services-2.jpg";
+import services5 from "../assets/imgs/services/services-5.jpg";
+import services6 from "../assets/imgs/services/services-6.jpg";
+import services7 from "../assets/imgs/services/services-7.jpg";
+import services8 from "../assets/imgs/services/services-8.jpg";
+import inter1 from "../assets/imgs/intermediation/intermediation-1.jpg";
+import inter2 from "../assets/imgs/intermediation/intermediation-2.jpg";
+import inter4 from "../assets/imgs/intermediation/intermediation-4.jpg";
+import inter5 from "../assets/imgs/intermediation/intermediation-5.jpg";
+import inter6 from "../assets/imgs/intermediation/intermediation-6.jpg";
+import inter7 from "../assets/imgs/intermediation/intermediation-7.jpg";
+import inter8 from "../assets/imgs/intermediation/intermediation-8.jpg";
+import inter9 from "../assets/imgs/intermediation/intermediation-9.jpg";
 
 const ITEM_H = 300;
 const GAP = 14;
@@ -38,7 +59,7 @@ function VerticalReel({
       <motion.div
         style={{ display: "flex", flexDirection: "column", gap: GAP }}
         animate={{ y: [0, -loopH] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         {looped.map((src, i) => (
           <div
@@ -75,7 +96,17 @@ const services = [
       "Gouvernance",
       "Gestion du changement",
     ],
-    images: [img1, img2, img1, img2],
+    images: [
+      conseil1,
+      conseil2,
+      conseil3,
+      conseil4,
+      conseil6,
+      conseil7,
+      conseil8,
+      conseil9,
+      conseil10,
+    ],
     bg: "#009689",
     accent: "#f1f1f1",
   },
@@ -86,7 +117,7 @@ const services = [
     description:
       "Formation, communication, événements — des dispositifs opérationnels pour renforcer vos équipes et amplifier votre impact.",
     tags: ["Formation", "Communication", "Événements", "Contenus"],
-    images: [img2, img1, img2, img1],
+    images: [services1, services2, services5, services6, services7, services8],
     bg: "#edf2d0",
     accent: "#000",
   },
@@ -97,7 +128,7 @@ const services = [
     description:
       "Relations gouvernementales, diplomatie privée, partenariats internationaux — Marabu agit en coulisses avec discrétion et méthode.",
     tags: ["Relations gov.", "Diplomatie", "Partenariats PTF", "Influence"],
-    images: [img1, img2, img1, img2],
+    images: [inter1, inter2, inter4, inter5, inter6, inter7, inter8, inter9],
     bg: "#224851",
     accent: "#f5ede4",
   },

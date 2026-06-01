@@ -30,7 +30,13 @@ export default function Hero() {
   const opacity3 = useTransform(scrollYProgress, [0.62, 0.72], [0, 1]);
 
   return (
-    <section id="home" className="pt-32 pb-10 maxwidth mx-auto">
+    <motion.section
+      id="home"
+      className="pt-32 pb-10 maxwidth mx-auto"
+      initial={{ opacity: 0, scale: 0.94 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+    >
       <div style={{ position: "relative" }}>
         {/* Coris éparpillés dans la zone titre */}
         {[
@@ -215,6 +221,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

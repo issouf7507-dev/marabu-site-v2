@@ -4,8 +4,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import coris2 from "../assets/coris2.png";
 import logoMarabu from "../assets/Logo_Marabu_.png";
-import imgConseil from "../assets/imgs/marabu_conseil_accueil.jpg";
+import imgConseil from "../assets/imgs/houssene-ben-souda.jpg";
 import imgServices from "../assets/imgs/marabu_services_accueil.png";
+import bgLoader from "../assets/imgs/Cauris-bg.png";
 
 /* ─── sidebar links ─── */
 const sidebarLinks = [
@@ -57,7 +58,7 @@ export default function About() {
         style={{ height: "60vh", minHeight: 400 }}
       >
         <img
-          src={imgConseil}
+          src={bgLoader}
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -98,7 +99,7 @@ export default function About() {
 
       {/* ══ TITRE PRINCIPAL (sous le hero, fond blanc) ══ */}
       <div
-        className="maxwidth  mx-auto px-6 lg:px-12 pt-16 pb-12"
+        className="maxwidth  mx-auto px-6 lg:px-12 pt-16 pb-12 relative overflow-hidden"
         style={{ borderBottom: "1px solid #e5e7eb" }}
       >
         <FadeIn>
@@ -108,6 +109,29 @@ export default function About() {
             <span style={{ color: "#009689" }}>de la sagesse africaine.</span>
           </h1>
         </FadeIn>
+        {[
+          { top: "10%", right: "2%", size: 64, rotate: 15, opacity: 0.12 },
+          { top: "55%", right: "8%", size: 44, rotate: -30, opacity: 0.09 },
+          { top: "25%", right: "12%", size: 36, rotate: 55, opacity: 0.1 },
+        ].map((c, i) => (
+          <img
+            key={i}
+            src={coris2}
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: c.top,
+              right: c.right,
+              width: c.size,
+              height: c.size,
+              opacity: c.opacity,
+              transform: `rotate(${c.rotate}deg)`,
+              objectFit: "contain",
+              pointerEvents: "none",
+            }}
+          />
+        ))}
       </div>
 
       {/* ══ CORPS : contenu + sidebar ══ */}
@@ -166,7 +190,7 @@ export default function About() {
             {/* LE MOT DU FONDATEUR */}
             <section
               id="founder"
-              className="scroll-mt-28 py-20"
+              className="scroll-mt-28 py-20 relative overflow-hidden"
               style={{ borderBottom: "1px solid #f0f0f0" }}
             >
               <FadeIn>
@@ -200,16 +224,50 @@ export default function About() {
                   </FadeIn>
                   <FadeIn delay={0.2}>
                     <p className="text-sm font-medium text-gray-900">
-                      — Moussa Konaté, Fondateur & DG
+                      — Houssene Ben Souda, Fondateur
                     </p>
                   </FadeIn>
                 </div>
+                {[
+                  {
+                    top: "-5%",
+                    left: "-4%",
+                    size: 48,
+                    rotate: -20,
+                    opacity: 0.1,
+                  },
+                  {
+                    top: "80%",
+                    left: "-6%",
+                    size: 32,
+                    rotate: 40,
+                    opacity: 0.08,
+                  },
+                ].map((c, i) => (
+                  <img
+                    key={i}
+                    src={coris2}
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      top: c.top,
+                      left: c.left,
+                      width: c.size,
+                      height: c.size,
+                      opacity: c.opacity,
+                      transform: `rotate(${c.rotate}deg)`,
+                      objectFit: "contain",
+                      pointerEvents: "none",
+                    }}
+                  />
+                ))}
                 <FadeIn delay={0.1}>
                   <img
                     src={imgConseil}
                     alt="Le fondateur"
-                    className="w-full object-cover object-top"
-                    style={{ height: 320 }}
+                    className="w-full object-cover object-center"
+                    style={{ height: 880 }}
                   />
                 </FadeIn>
               </div>
@@ -251,48 +309,12 @@ export default function About() {
                     </p>
                   </FadeIn>
                 </div>
-                {/* Badge logo circulaire */}
                 <FadeIn delay={0.1}>
-                  <div className="flex items-center justify-center">
-                    <div
-                      className="relative w-64 h-64 rounded-full flex items-center justify-center"
-                      style={{
-                        backgroundColor: "#f0f7f6",
-                        border: "1px solid #009689",
-                      }}
-                    >
-                      <img
-                        src={logoMarabu}
-                        alt="Marabu"
-                        className="w-40 object-contain"
-                      />
-                      {/* coris autour du badge */}
-                      {[
-                        { top: "-8%", left: "42%", size: 36, rotate: 20 },
-                        { top: "42%", left: "-8%", size: 30, rotate: -40 },
-                        { top: "88%", left: "35%", size: 32, rotate: 60 },
-                        { top: "35%", left: "90%", size: 28, rotate: -20 },
-                      ].map((c, i) => (
-                        <img
-                          key={i}
-                          src={coris2}
-                          alt=""
-                          aria-hidden="true"
-                          style={{
-                            position: "absolute",
-                            top: c.top,
-                            left: c.left,
-                            width: c.size,
-                            height: c.size,
-                            opacity: 0.35,
-                            transform: `rotate(${c.rotate}deg)`,
-                            objectFit: "contain",
-                            pointerEvents: "none",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <img
+                    src={coris2}
+                    alt="Cauris"
+                    className="w-full object-contain"
+                  />
                 </FadeIn>
               </div>
             </section>
@@ -333,6 +355,23 @@ export default function About() {
                       </p>
                     </div>
                   </FadeIn>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 my-10 opacity-20">
+                {[0, 15, -10, 25, -5].map((rotate, i) => (
+                  <img
+                    key={i}
+                    src={coris2}
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      width: i % 2 === 0 ? 28 : 22,
+                      height: i % 2 === 0 ? 28 : 22,
+                      transform: `rotate(${rotate}deg)`,
+                      objectFit: "contain",
+                    }}
+                  />
                 ))}
               </div>
 
@@ -413,9 +452,25 @@ export default function About() {
                   ].map((s, i) => (
                     <FadeIn key={i} delay={i * 0.08}>
                       <div
-                        className="rounded-xl p-6 text-center"
+                        className="rounded-xl p-6 text-center relative overflow-hidden"
                         style={{ backgroundColor: "#f0f7f6" }}
                       >
+                        <img
+                          src={coris2}
+                          alt=""
+                          aria-hidden="true"
+                          style={{
+                            position: "absolute",
+                            bottom: "-8px",
+                            right: "-8px",
+                            width: 48,
+                            height: 48,
+                            opacity: 0.12,
+                            transform: `rotate(${i * 25}deg)`,
+                            objectFit: "contain",
+                            pointerEvents: "none",
+                          }}
+                        />
                         <p className="text-3xl font-light text-[#009689] mb-1">
                           {s.value}
                         </p>
@@ -432,9 +487,27 @@ export default function About() {
             {/* INFOS ENTREPRISE */}
             <section id="info" className="scroll-mt-28 py-20">
               <FadeIn>
-                <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-6">
-                  Infos entreprise
-                </p>
+                <div className="flex items-center gap-3 mb-6">
+                  <p className="text-xs uppercase tracking-[0.3em] text-black/35">
+                    Infos entreprise
+                  </p>
+                  <div className="flex items-center gap-1.5 opacity-25">
+                    {[-10, 20, -5].map((rotate, i) => (
+                      <img
+                        key={i}
+                        src={coris2}
+                        alt=""
+                        aria-hidden="true"
+                        style={{
+                          width: 14,
+                          height: 14,
+                          transform: `rotate(${rotate}deg)`,
+                          objectFit: "contain",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
               </FadeIn>
               <div className="grid md:grid-cols-3 gap-8">
                 {[
@@ -516,8 +589,8 @@ export default function About() {
         </div>
         <div className="grid grid-cols-3">
           {[
-            { img: imgConseil, label: "Conseil stratégique" },
-            { img: imgServices, label: "Services opérationnels" },
+            { img: imgConseil, label: "Conseil" },
+            { img: imgServices, label: "Services" },
             { img: imgConseil, label: "Intermédiation" },
           ].map((s, i) => (
             <div

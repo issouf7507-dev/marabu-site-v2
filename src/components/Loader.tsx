@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import logo from "../assets/logo.png"
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/logo.png";
+import bgLoader from "../assets/imgs/Cauris-bg.png";
 
 interface Props {
   onComplete: () => void;
@@ -16,10 +17,17 @@ interface Particle {
   size: number;
   rotation: number;
   rotSpeed: number;
-  shape: 'rect' | 'circle';
+  shape: "rect" | "circle";
 }
 
-const COLORS = ['#ffffff', '#d4f5e0', '#a3e4bc', '#fef9c3', '#fde68a', '#c7f2a4'];
+const COLORS = [
+  "#ffffff",
+  "#d4f5e0",
+  "#a3e4bc",
+  "#fef9c3",
+  "#fde68a",
+  "#c7f2a4",
+];
 const DURATION = 2600;
 
 function createParticles(count: number): Particle[] {
@@ -33,7 +41,7 @@ function createParticles(count: number): Particle[] {
     size: Math.random() * 10 + 5,
     rotation: Math.random() * 360,
     rotSpeed: (Math.random() - 0.5) * 12,
-    shape: Math.random() > 0.5 ? 'rect' : 'circle',
+    shape: Math.random() > 0.5 ? "rect" : "circle",
   }));
 }
 
@@ -80,7 +88,7 @@ export default function Loader({ onComplete }: Props) {
           vy: p.vy + 0.5,
           rotation: p.rotation + p.rotSpeed,
           vx: p.vx * 0.99,
-        }))
+        })),
       );
       gravityRef.current = requestAnimationFrame(animate);
     };
@@ -92,39 +100,49 @@ export default function Loader({ onComplete }: Props) {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
-          style={{ backgroundColor: '#224851' }}
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden h-screen w-full"
+          style={{ backgroundImage: `url(${bgLoader})`, backgroundSize: "cover", backgroundPosition: "center" }}
           initial={{ y: 0 }}
           exit={{
-            y: '-100%',
+            y: "-100%",
             transition: {
               duration: 0.9,
               ease: [0.76, 0, 0.24, 1],
             },
           }}
         >
-
-
+          <div className="absolute inset-0 bg-black/50 z-0" />
           {/* Center content */}
           <div className="flex flex-col items-center gap-6 select-none z-10">
             <motion.div
               className="text-white font-bold tracking-tight"
-              style={{ fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(2.5rem, 8vw, 5rem)' }}
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontSize: "clamp(2.5rem, 8vw, 5rem)",
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <img src={logo} className='w-80' />
+              <img src={logo} className="w-80" />
             </motion.div>
 
-            <motion.p
-              className="text-white/60 text-xs tracking-[0.25em] uppercase"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+            <motion.div
+              className="flex items-center gap-3 tracking-[0.3em] uppercase"
+              style={{ fontFamily: "Poppins, sans-serif", fontSize: "clamp(0.6rem, 1.5vw, 0.8rem)" }}
             >
-              CONSEIL - SERVICES - INTERMEDIATION
-            </motion.p>
+              {["CONSEIL", "·", "SERVICES", "·", "INTERMEDIATION"].map((word, i) => (
+                <motion.span
+                  key={i}
+                  className={i % 2 === 1 ? "text-white/40 text-base" : "text-white font-semibold"}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.div>
 
             {/* Progress bar */}
             <div className="w-48 h-px bg-white/20 rounded-full overflow-hidden">
@@ -138,23 +156,32 @@ export default function Loader({ onComplete }: Props) {
           {/* Counter bottom-right */}
           <div
             className="absolute bottom-8 right-10 select-none"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
+            style={{ fontFamily: "Poppins, sans-serif" }}
           >
             <motion.span
               className="tabular-nums"
               style={{
-                fontSize: 'clamp(2rem, 6vw, 4rem)',
-                color: 'white',
+                fontSize: "clamp(2rem, 6vw, 4rem)",
+                color: "white",
                 fontWeight: 700,
-                letterSpacing: '-0.04em',
+                letterSpacing: "-0.04em",
                 lineHeight: 1,
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.4 }}
             >
-              {String(progress).padStart(2, '0')}
-              <span style={{ fontSize: '0.4em', opacity: 0.5, verticalAlign: 'super', marginLeft: '0.1em' }}>%</span>
+              {String(progress).padStart(2, "0")}
+              <span
+                style={{
+                  fontSize: "0.4em",
+                  opacity: 0.5,
+                  verticalAlign: "super",
+                  marginLeft: "0.1em",
+                }}
+              >
+                %
+              </span>
             </motion.span>
           </div>
         </motion.div>

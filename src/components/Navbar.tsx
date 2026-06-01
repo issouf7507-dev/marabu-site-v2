@@ -56,7 +56,14 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="underline">
-                <a href="/#services">Services</a>
+                <Link
+                  to="/services"
+                  className={
+                    location.pathname === "/services" ? "font-semibold" : ""
+                  }
+                >
+                  Services
+                </Link>
               </li>
               <li className="underline">
                 <a href="">Blog</a>
