@@ -98,7 +98,7 @@ export default function Contact() {
           <div className="bg-gray-50 p-8 rounded-2xl">
             {submitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <div className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "#538253" }}>
                   <Send size={22} className="text-white" />
                 </div>
                 <h3
@@ -234,7 +234,8 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gray-900 text-white py-3.5 rounded-xl font-medium text-sm hover:bg-gray-700 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full text-white py-3.5 rounded-xl font-medium text-sm transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                  style={{ backgroundColor: "#1d454c" }}
                 >
                   Send message <Send size={16} />
                 </button>

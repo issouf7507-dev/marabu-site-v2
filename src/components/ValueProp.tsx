@@ -2,7 +2,7 @@ export default function ValueProp() {
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="bg-gray-900 rounded-3xl px-10 py-16 lg:px-20 lg:py-20 text-white">
+        <div className="rounded-3xl px-10 py-16 lg:px-20 lg:py-20 text-white" style={{ backgroundColor: "#1d454c" }}>
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
               <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4 block">

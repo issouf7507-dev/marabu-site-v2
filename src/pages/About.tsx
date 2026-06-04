@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FadeIn } from "../components/ui/fade-in";
 import Navbar from "../components/Navbar";
+import PageTransition from "../components/PageTransition";
 import Footer from "../components/Footer";
 import coris2 from "../assets/coris2.png";
 import logoMarabu from "../assets/Logo_Marabu_.png";
 import imgConseil from "../assets/imgs/houssene-ben-souda.jpg";
 import imgServices from "../assets/imgs/marabu_services_accueil.png";
 import bgLoader from "../assets/imgs/Cauris-bg.png";
-
-/* ─── sidebar links ─── */
-const sidebarLinks = [
-  { id: "who", label: "Qui sommes-nous" },
-  { id: "founder", label: "Le mot du fondateur" },
-  { id: "name", label: "Le sens du nom" },
-  { id: "values", label: "Mission, Vision, Valeurs" },
-  { id: "impact", label: "Impact Social" },
-  { id: "info", label: "Infos entreprise" },
-];
 
 /* ─── hook section active ─── */
 function useActiveSection(ids: string[]) {
@@ -40,6 +32,15 @@ function useActiveSection(ids: string[]) {
 }
 
 export default function About() {
+  const { t } = useTranslation();
+  const sidebarLinks = t("about.links", { returnObjects: true }) as { id: string; label: string }[];
+  const mvp = t("about.values.mvp", { returnObjects: true }) as { label: string; text: string }[];
+  const valueItems = t("about.values.items", { returnObjects: true }) as { n: string; title: string; desc: string }[];
+  const stats = t("about.impact.stats", { returnObjects: true }) as { value: string; label: string }[];
+  const infoItems = t("about.info.items", { returnObjects: true }) as { label: string; value: string }[];
+  const serviceItems = t("about.servicesSection.items", { returnObjects: true }) as { label: string }[];
+  const serviceImages = [imgConseil, imgServices, imgConseil];
+
   const active = useActiveSection(sidebarLinks.map((l) => l.id));
 
   function scrollTo(id: string) {
@@ -49,7 +50,8 @@ export default function About() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <PageTransition>
+    <div className="min-h-screen bg-[#eff3d4]">
       <Navbar />
 
       {/* ══ HERO IMAGE ══ */}
@@ -104,9 +106,9 @@ export default function About() {
       >
         <FadeIn>
           <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-light leading-tight text-gray-900 max-w-4xl">
-            Les traducteurs contemporains
+            {t("about.hero.title1")}
             <br />
-            <span style={{ color: "#009689" }}>de la sagesse africaine.</span>
+            <span style={{ color: "#538253" }}>{t("about.hero.title2")}</span>
           </h1>
         </FadeIn>
         {[
@@ -147,7 +149,7 @@ export default function About() {
             >
               <FadeIn>
                 <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-6">
-                  Qui sommes-nous
+                  {t("about.who.label")}
                 </p>
               </FadeIn>
               <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -162,25 +164,17 @@ export default function About() {
                 <div className="space-y-5">
                   <FadeIn delay={0.1}>
                     <h2 className="text-2xl font-light leading-snug text-gray-900">
-                      Un héritage séculaire réinventé en action stratégique
-                      moderne.
+                      {t("about.who.heading")}
                     </h2>
                   </FadeIn>
                   <FadeIn delay={0.15}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      Depuis des siècles, les marabouts africains ont guidé les
-                      communautés avec sagesse et clairvoyance. Conseillers,
-                      médiateurs et gardiens de la connaissance, ils incarnaient
-                      une autorité éclairée, capable de transformer les défis en
-                      opportunités.
+                      {t("about.who.p1")}
                     </p>
                   </FadeIn>
                   <FadeIn delay={0.2}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      Fondé en 2023, Marabu réinvente cet héritage. Acteur
-                      stratégique en conseils, services et intermédiations, nous
-                      allions tradition et technologie pour accompagner nos
-                      partenaires dans un monde en perpétuelle évolution.
+                      {t("about.who.p2")}
                     </p>
                   </FadeIn>
                 </div>
@@ -195,36 +189,29 @@ export default function About() {
             >
               <FadeIn>
                 <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-6">
-                  Le mot du fondateur
+                  {t("about.founder.label")}
                 </p>
               </FadeIn>
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-5">
                   <FadeIn delay={0.05}>
                     <h2 className="text-2xl font-light leading-snug text-gray-900">
-                      Pourquoi Marabu ?
+                      {t("about.founder.heading")}
                     </h2>
                   </FadeIn>
                   <FadeIn delay={0.1}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      "J'ai grandi avec cette idée que les marabouts de nos
-                      villages étaient les premiers stratèges — ceux à qui l'on
-                      confiait les décisions difficiles, les médiations
-                      délicates, les projets d'avenir. Ils agissaient avec
-                      discernement, réseau et confiance."
+                      {t("about.founder.quote1")}
                     </p>
                   </FadeIn>
                   <FadeIn delay={0.15}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      "Marabu est la traduction contemporaine de cette posture.
-                      Nous apportons aux entreprises et aux institutions ce que
-                      ces sages apportaient aux communautés : clarté, connexions
-                      et cap."
+                      {t("about.founder.quote2")}
                     </p>
                   </FadeIn>
                   <FadeIn delay={0.2}>
                     <p className="text-sm font-medium text-gray-900">
-                      — Houssene Ben Souda, Fondateur
+                      {t("about.founder.signature")}
                     </p>
                   </FadeIn>
                 </div>
@@ -281,31 +268,24 @@ export default function About() {
             >
               <FadeIn>
                 <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-6">
-                  Le sens du nom
+                  {t("about.name.label")}
                 </p>
               </FadeIn>
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-5">
                   <FadeIn delay={0.05}>
                     <h2 className="text-2xl font-light leading-snug text-gray-900">
-                      Un sage. Un guide. Un pont entre deux mondes.
+                      {t("about.name.heading")}
                     </h2>
                   </FadeIn>
                   <FadeIn delay={0.1}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      Dans les traditions africaines, le marabout est bien plus
-                      qu'un conseiller. Il est le gardien de la connaissance, le
-                      médiateur des conflits, le guide des communautés face aux
-                      décisions qui engagent l'avenir. Son autorité ne vient pas
-                      du titre — elle vient de la confiance qu'il a su mériter.
+                      {t("about.name.p1")}
                     </p>
                   </FadeIn>
                   <FadeIn delay={0.15}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      Nous sommes les héritiers de cette posture. Marabu traduit
-                      cette sagesse ancestrale en action stratégique
-                      contemporaine : accompagner, orienter, connecter — avec la
-                      même exigence d'intégrité et de clairvoyance.
+                      {t("about.name.p2")}
                     </p>
                   </FadeIn>
                 </div>
@@ -327,27 +307,14 @@ export default function About() {
             >
               <FadeIn>
                 <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-6">
-                  Mission, Vision, Valeurs
+                  {t("about.values.label")}
                 </p>
               </FadeIn>
               <div className="grid md:grid-cols-3 gap-10 mb-12">
-                {[
-                  {
-                    label: "Mission",
-                    text: "Incarner l'excellence et l'innovation à travers des solutions concrètes et stratégiques. Accompagner entreprises et institutions dans leurs ambitions de croissance, de digitalisation et de performance durable.",
-                  },
-                  {
-                    label: "Vision",
-                    text: "Construire des ponts entre les besoins locaux et les opportunités globales. Être le catalyseur de transformation qui place l'humain, l'innovation et la vision à long terme au cœur de chaque mission.",
-                  },
-                  {
-                    label: "Notre promesse",
-                    text: "Des réponses sur mesure, à forte valeur ajoutée. Avec agilité, audace et impact — nous façonnons ensemble les trajectoires de réussite.",
-                  },
-                ].map((item, i) => (
+                {mvp.map((item, i) => (
                   <FadeIn key={i} delay={i * 0.08}>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.25em] text-[#009689] mb-3">
+                      <p className="text-xs uppercase tracking-[0.25em] text-[#538253] mb-3">
                         {item.label}
                       </p>
                       <p className="text-black/60 text-sm leading-relaxed">
@@ -376,29 +343,13 @@ export default function About() {
               </div>
 
               <div className="space-y-4">
-                {[
-                  {
-                    n: "01",
-                    title: "Innovation Inspirée",
-                    desc: "Unir les traditions aux technologies modernes. Nous puisons dans la sagesse africaine pour concevoir des solutions ancrées dans le présent et tournées vers l'avenir.",
-                  },
-                  {
-                    n: "02",
-                    title: "Impact Positif",
-                    desc: "Contribuer à un développement durable et inclusif. Chaque mission est évaluée à l'aune de sa valeur réelle pour les organisations et les communautés qu'elles servent.",
-                  },
-                  {
-                    n: "03",
-                    title: "Engagement Client",
-                    desc: "Offrir des solutions personnalisées à vos besoins. Nous ne vendons pas de formules génériques — nous construisons des réponses sur mesure, avec vous.",
-                  },
-                ].map((v, i) => (
+                {valueItems.map((v, i) => (
                   <FadeIn key={i} delay={i * 0.07}>
                     <div
                       className="flex gap-6 py-5"
                       style={{ borderTop: "1px solid #f0f0f0" }}
                     >
-                      <span className="text-xs text-[#009689] tracking-widest shrink-0 pt-0.5">
+                      <span className="text-xs text-[#538253] tracking-widest shrink-0 pt-0.5">
                         {v.n}
                       </span>
                       <div>
@@ -423,37 +374,30 @@ export default function About() {
             >
               <FadeIn>
                 <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-6">
-                  Impact Social
+                  {t("about.impact.label")}
                 </p>
               </FadeIn>
               <div className="grid md:grid-cols-2 gap-12 items-center mb-10">
                 <div className="space-y-5">
                   <FadeIn delay={0.05}>
                     <h2 className="text-2xl font-light leading-snug text-gray-900">
-                      Des résultats concrets,
+                      {t("about.impact.heading1")}
                       <br />
-                      pas des promesses.
+                      {t("about.impact.heading2")}
                     </h2>
                   </FadeIn>
                   <FadeIn delay={0.1}>
                     <p className="text-black/55 leading-relaxed text-sm">
-                      Chaque mandat que nous acceptons est une responsabilité.
-                      Nous mesurons notre succès à l'aune de l'impact réel
-                      généré pour nos clients et les communautés qu'ils servent.
+                      {t("about.impact.desc")}
                     </p>
                   </FadeIn>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { value: "2023", label: "Année de fondation" },
-                    { value: "+15", label: "Clients accompagnés" },
-                    { value: "8", label: "Pays d'intervention" },
-                    { value: "3", label: "Expertises clés" },
-                  ].map((s, i) => (
+                  {stats.map((s, i) => (
                     <FadeIn key={i} delay={i * 0.08}>
                       <div
                         className="rounded-xl p-6 text-center relative overflow-hidden"
-                        style={{ backgroundColor: "#f0f7f6" }}
+                        style={{ backgroundColor: "#eff3d4" }}
                       >
                         <img
                           src={coris2}
@@ -471,7 +415,7 @@ export default function About() {
                             pointerEvents: "none",
                           }}
                         />
-                        <p className="text-3xl font-light text-[#009689] mb-1">
+                        <p className="text-3xl font-light text-[#538253] mb-1">
                           {s.value}
                         </p>
                         <p className="text-xs uppercase tracking-widest text-black/40">
@@ -489,7 +433,7 @@ export default function About() {
               <FadeIn>
                 <div className="flex items-center gap-3 mb-6">
                   <p className="text-xs uppercase tracking-[0.3em] text-black/35">
-                    Infos entreprise
+                    {t("about.info.label")}
                   </p>
                   <div className="flex items-center gap-1.5 opacity-25">
                     {[-10, 20, -5].map((rotate, i) => (
@@ -510,20 +454,7 @@ export default function About() {
                 </div>
               </FadeIn>
               <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  { label: "Siège social", value: "Abidjan, Côte d'Ivoire" },
-                  { label: "Fondée en", value: "2023" },
-                  {
-                    label: "Secteurs",
-                    value: "Conseil · Formation · Intermédiation",
-                  },
-                  {
-                    label: "Zone d'intervention",
-                    value: "Afrique de l'Ouest & Centrale",
-                  },
-                  { label: "Langues de travail", value: "Français · Anglais" },
-                  { label: "Contact", value: "hello@marabu-services.com" },
-                ].map((item, i) => (
+                {infoItems.map((item, i) => (
                   <FadeIn key={i} delay={i * 0.06}>
                     <div>
                       <p className="text-xs uppercase tracking-[0.2em] text-black/30 mb-1">
@@ -541,7 +472,7 @@ export default function About() {
           <aside className="hidden lg:block">
             <div className="sticky top-28">
               <p className="text-xs uppercase tracking-[0.25em] text-black/30 mb-5">
-                Sur cette page
+                {t("about.sidebarTitle")}
               </p>
               <nav className="space-y-0.5">
                 {sidebarLinks.map((link) => (
@@ -550,7 +481,7 @@ export default function About() {
                     onClick={() => scrollTo(link.id)}
                     className="block w-full text-left text-sm py-2.5 px-3 rounded-lg transition-all duration-200"
                     style={{
-                      color: active === link.id ? "#009689" : "#9ca3af",
+                      color: active === link.id ? "#538253" : "#9ca3af",
 
                       paddingLeft: active === link.id ? "12px" : "12px",
                       fontWeight: active === link.id ? 500 : 400,
@@ -564,9 +495,9 @@ export default function About() {
                 <a
                   href="/#contact"
                   className="block text-center text-xs uppercase tracking-[0.2em] px-6 py-3 transition-all duration-300 text-white"
-                  style={{ backgroundColor: "#224851" }}
+                  style={{ backgroundColor: "#1d454c" }}
                 >
-                  Nous contacter
+                  {t("about.sidebarCta")}
                 </a>
               </div>
             </div>
@@ -578,28 +509,24 @@ export default function About() {
       <section style={{ borderTop: "1px solid #f0f0f0" }}>
         <div className="maxwidth  mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
           <p className="text-xs uppercase tracking-[0.3em] text-black/35">
-            Nos services
+            {t("about.servicesSection.label")}
           </p>
           <a
             href="/#services"
-            className="text-xs uppercase tracking-[0.2em] text-[#009689] hover:underline"
+            className="text-xs uppercase tracking-[0.2em] text-[#538253] hover:underline"
           >
-            Voir tout →
+            {t("common.seeAll")}
           </a>
         </div>
         <div className="grid grid-cols-3">
-          {[
-            { img: imgConseil, label: "Conseil" },
-            { img: imgServices, label: "Services" },
-            { img: imgConseil, label: "Intermédiation" },
-          ].map((s, i) => (
+          {serviceItems.map((s, i) => (
             <div
               key={i}
               className="relative overflow-hidden group"
               style={{ height: 300 }}
             >
               <img
-                src={s.img}
+                src={serviceImages[i]}
                 alt={s.label}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -617,7 +544,7 @@ export default function About() {
       {/* ══ CTA FINAL ══ */}
       <section
         className="relative py-28 overflow-hidden"
-        style={{ backgroundColor: "#224851" }}
+        style={{ backgroundColor: "#1d454c" }}
       >
         {/* coris */}
         {[
@@ -667,8 +594,8 @@ export default function About() {
                 </ul>
                 <a
                   href="/#contact"
-                  className="inline-block text-xs uppercase tracking-[0.2em] px-10 py-4 transition-all duration-300 text-[#224851] font-medium"
-                  style={{ backgroundColor: "#edf2d0" }}
+                  className="inline-block text-xs uppercase tracking-[0.2em] px-10 py-4 transition-all duration-300 text-[#1d454c] font-medium"
+                  style={{ backgroundColor: "#eff3d4" }}
                 >
                   Nous écrire
                 </a>
@@ -680,5 +607,6 @@ export default function About() {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 }

@@ -9,27 +9,35 @@ import Manifesto from "./components/Manifesto";
 import Intro from "./components/Intro";
 import Services from "./components/Services";
 import CaseStudies from "./components/CaseStudies";
-
 import BlogPreview from "./components/BlogPreview";
 import Testimonials from "./components/Testimonials";
-
 import Footer from "./components/Footer";
 import CaurisTransition from "./components/CaurisTransition";
+import PageTransition from "./components/PageTransition";
+
+// Évite que le loader rejoue quand on revient sur Home
+let _homeLoaded = false;
 
 export default function App() {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(_homeLoaded);
 
-  // Lenis activé seulement après la fin du loader
   useLenis(loaded);
 
   return (
-    <>
-      <Loader onComplete={() => setLoaded(true)} />
+    <PageTransition>
+      {!_homeLoaded && (
+        <Loader
+          onComplete={() => {
+            _homeLoaded = true;
+            setLoaded(true);
+          }}
+        />
+      )}
 
       <AnimatePresence>
         {loaded && (
           <motion.div
-            className="min-h-screen bg-white"
+            className="min-h-screen"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -52,6 +60,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </PageTransition>
   );
 }

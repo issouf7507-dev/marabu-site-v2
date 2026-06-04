@@ -1,75 +1,41 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
 import conseil4 from "../assets/imgs/conseils/conseil-4.jpg";
 import erepution from "../assets/imgs/formation-e-reputation.jpg";
 import inter1 from "../assets/imgs/intermediation/intermediation-1.jpg";
-const cases = [
-  {
-    id: "01",
-    category: "Événementiel",
-    categoryColor: "#b07d5a",
-    client: "Yango",
-    project:
-      "Marabu, architecte de l'inauguration du siège national de Yango Côte d'Ivoire",
-    description:
-      "Conception, organisation et coordination globale de l'inauguration du siège national de Yango à Abidjan — scénographie, logistique, communication événementielle et coordination protocolaire.",
-    metric: "24 Août",
-    metricLabel: "2025",
-    year: "2025",
-    image: conseil4,
-  },
-  {
-    id: "02",
-    category: "Formation",
-    categoryColor: "#1a1a1a",
-    client: "GUCE CI",
-    project: "Formation E-réputation & Communication de Crise",
-    description:
-      "Animation d'une session de formation stratégique dédiée à l'e-réputation et la communication de crise pour les responsables du Guichet Unique du Commerce Extérieur de Côte d'Ivoire, en 5 modules animés par des experts.",
-    metric: "5",
-    metricLabel: "modules de formation",
-    year: "2025",
-    image: erepution,
-  },
-  {
-    id: "03",
-    category: "Intermédiation",
-    categoryColor: "#5a3728",
-    client: "GUCE CI",
-    project:
-      "Tournée stratégique auprès des Partenaires Techniques et Financiers",
-    description:
-      "Accompagnement du GUCE CI dans une tournée stratégique auprès des Partenaires Techniques et Financiers internationaux, dont l'ambassade de Turquie, pour promouvoir la dématérialisation du commerce extérieur en Côte d'Ivoire.",
-    metric: "Mai 2024",
-    metricLabel: "Tournée PTF",
-    year: "2024",
-    image: inter1,
-  },
-  // {
-  //   id: "04",
-  //   category: "Formation",
-  //   categoryColor: "#b07d5a",
-  //   client: "GUCE CI",
-  //   project: "Formation E-réputation & Communication de Crise",
-  //   description:
-  //     "Animation d'une session de formation stratégique en 5 modules à l'hôtel Mövenpick d'Abidjan, couvrant l'e-réputation institutionnelle, la gestion de crise digitale, la veille stratégique et la reconstruction d'image post-crise.",
-  //   metric: "27 Juin",
-  //   metricLabel: "2025",
-  //   year: "2025",
-  //   image: null,
-  // },
-];
 
-const categoryTag = {
-  Conseil: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
-  Services: { bg: "#e8e8e8", text: "#1a1a1a", placeholder: "#d0d0d0" },
+type CaseItem = {
+  id: string;
+  category: string;
+  client: string;
+  project: string;
+  description: string;
+  metric: string;
+  metricLabel: string;
+  year: string;
+  image?: string;
+};
+
+const caseImages = [conseil4, erepution, inter1];
+
+const categoryTag: Record<string, { bg: string; text: string; placeholder: string }> = {
+  Conseil:        { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
+  Consulting:     { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
+  Services:       { bg: "#e8e8e8", text: "#1a1a1a", placeholder: "#d0d0d0" },
   Intermédiation: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
-  Événementiel: { bg: "#e4f0ed", text: "#009689", placeholder: "#c0ddd9" },
-  Formation: { bg: "#eaf0f8", text: "#2a5298", placeholder: "#c8d8ee" },
-} as const;
+  Intermediation: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
+  Événementiel:   { bg: "#dde8d5", text: "#538253", placeholder: "#c4d9b8" },
+  Events:         { bg: "#dde8d5", text: "#538253", placeholder: "#c4d9b8" },
+  Formation:      { bg: "#e8f0d8", text: "#538253", placeholder: "#c4d9b8" },
+  Training:       { bg: "#e8f0d8", text: "#538253", placeholder: "#c4d9b8" },
+};
 
 export default function CaseStudies() {
+  const { t } = useTranslation();
+  const rawCases = t("caseStudies.cases", { returnObjects: true }) as CaseItem[];
+  const cases = rawCases.map((c, i) => ({ ...c, image: caseImages[i] }));
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [mouseY, setMouseY] = useState(0);
 
@@ -84,14 +50,14 @@ export default function CaseStudies() {
       <div className="grid grid-cols-[1fr_2fr] gap-24 items-end mb-20">
         <FadeIn>
           <p className="text-xs uppercase tracking-[0.25em] text-gray-900">
-            Client Success Stories
+            {t("caseStudies.label")}
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
           <h2 className="text-4xl font-light leading-snug">
-            Des résultats mesurables,
+            {t("caseStudies.heading1")}
             <br />
-            des partenariats durables.
+            {t("caseStudies.heading2")}
           </h2>
         </FadeIn>
       </div>
@@ -102,7 +68,7 @@ export default function CaseStudies() {
         onMouseMove={handleMouseMove}
       >
         {cases.map((c, i) => {
-          const tag = categoryTag[c.category as keyof typeof categoryTag];
+          const tag = categoryTag[c.category] ?? { bg: "#e5e5e5", text: "#333", placeholder: "#ddd" };
           const isHovered = hoveredId === c.id;
 
           return (
@@ -121,7 +87,7 @@ export default function CaseStudies() {
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* Ghost number */}
-              <span className="text-5xl font-light text-[#009689] leading-none mt-1 select-none">
+              <span className="text-5xl font-light text-[#538253] leading-none mt-1 select-none">
                 {c.id}
               </span>
 

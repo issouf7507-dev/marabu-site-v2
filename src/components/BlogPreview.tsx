@@ -1,49 +1,28 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
 
-const posts = [
-  {
-    id: "01",
-    date: "Mai 2026",
-    category: "Stratégie",
-    categoryColor: { bg: "#f5ede4", text: "#b07d5a" },
-    title:
-      "L'Afrique au cœur des nouvelles stratégies mondiales d'investissement",
-    excerpt:
-      "Les flux d'IDE vers l'Afrique subsaharienne ont atteint un niveau record en 2025. Analyse des secteurs porteurs, des risques réels et des leviers que les entreprises africaines peuvent actionner dès aujourd'hui.",
-    image:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=80",
-    featured: true,
-  },
-  {
-    id: "02",
-    date: "Avril 2026",
-    category: "Intermédiation",
-    categoryColor: { bg: "#e8dbd6", text: "#5a3728" },
-    title:
-      "Soft power et diplomatie privée : comment les entreprises influencent les politiques publiques",
-    excerpt:
-      "Les acteurs privés jouent un rôle croissant dans la fabrique des décisions publiques. Décryptage des pratiques et des limites éthiques.",
-    image:
-      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
-    featured: false,
-  },
-  {
-    id: "03",
-    date: "Mars 2026",
-    category: "Services",
-    categoryColor: { bg: "#e8e8e8", text: "#1a1a1a" },
-    title:
-      "Former pour transformer : l'impact du capacity building sur la performance des organisations",
-    excerpt:
-      "Quand la formation cesse d'être un coût pour devenir un levier de compétitivité. Retour sur trois programmes à fort impact.",
-    image:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80",
-    featured: false,
-  },
-];
+type Post = { id: string; date: string; category: string; title: string; excerpt: string; featured: boolean };
 
-function ArticleFeatured({ post }: { post: (typeof posts)[0] }) {
+const postImages: Record<string, string> = {
+  "01": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=80",
+  "02": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+  "03": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80",
+};
+
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  "Stratégie":      { bg: "#f5ede4", text: "#b07d5a" },
+  "Strategy":       { bg: "#f5ede4", text: "#b07d5a" },
+  "Intermédiation": { bg: "#e8dbd6", text: "#5a3728" },
+  "Intermediation": { bg: "#e8dbd6", text: "#5a3728" },
+  "Services":       { bg: "#e8e8e8", text: "#1a1a1a" },
+  "Formation":      { bg: "#e8f0d8", text: "#538253" },
+  "Training":       { bg: "#e8f0d8", text: "#538253" },
+};
+
+type PostWithImage = Post & { image: string; categoryColor: { bg: string; text: string } };
+
+function ArticleFeatured({ post }: { post: PostWithImage }) {
   return (
     <motion.article
       className="group cursor-pointer"
@@ -78,10 +57,26 @@ function ArticleFeatured({ post }: { post: (typeof posts)[0] }) {
       <p className="text-sm text-black/55 leading-relaxed mb-6">
         {post.excerpt}
       </p>
-      <span className="text-xs uppercase tracking-[0.2em] text-black/40 flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
-        Lire l'article <span>→</span>
-      </span>
+      <ReadMoreLink />
     </motion.article>
+  );
+}
+
+function ReadLink() {
+  const { t } = useTranslation();
+  return (
+    <span className="text-xs text-black/35 flex items-center gap-1.5 group-hover:gap-3 transition-all duration-300 mt-auto">
+      {t("common.read")} <span>→</span>
+    </span>
+  );
+}
+
+function ReadMoreLink() {
+  const { t } = useTranslation();
+  return (
+    <span className="text-xs uppercase tracking-[0.2em] text-black/40 flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+      {t("common.readMore")} <span>→</span>
+    </span>
   );
 }
 
@@ -89,7 +84,7 @@ function ArticleSmall({
   post,
   delay,
 }: {
-  post: (typeof posts)[0];
+  post: PostWithImage;
   delay: number;
 }) {
   return (
@@ -124,16 +119,22 @@ function ArticleSmall({
         <h3 className="text-sm font-light leading-snug group-hover:translate-x-1 transition-transform duration-300">
           {post.title}
         </h3>
-        <span className="text-xs text-black/35 flex items-center gap-1.5 group-hover:gap-3 transition-all duration-300 mt-auto">
-          Lire <span>→</span>
-        </span>
+        <ReadLink />
       </div>
     </motion.article>
   );
 }
 
 export default function BlogPreview() {
+  const { t } = useTranslation();
+  const rawPosts = t("blogPreview.posts", { returnObjects: true }) as Post[];
+  const posts: PostWithImage[] = rawPosts.map((p) => ({
+    ...p,
+    image: postImages[p.id] ?? "",
+    categoryColor: categoryColors[p.category] ?? { bg: "#e5e5e5", text: "#333" },
+  }));
   const [featured, ...rest] = posts;
+  const headingLines = t("blogPreview.heading").split("\n");
 
   return (
     <section id="blog" className="py-24 max-w-[1800px] mx-auto px-6">
@@ -141,20 +142,20 @@ export default function BlogPreview() {
       <div className="grid grid-cols-[1fr_2fr] gap-24 items-end mb-16">
         <FadeIn>
           <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
-            Insights
+            {t("blogPreview.label")}
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
           <div className="flex items-end justify-between">
             <h2 className="text-4xl font-light leading-snug text-gray-900">
-              Perspectives &<br />
-              analyses.
+              {headingLines[0]}<br />
+              {headingLines[1]}
             </h2>
             <a
               href="#blog"
               className="text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-black transition-colors duration-300 flex items-center gap-2 pb-1"
             >
-              Tous les articles <span>→</span>
+              {t("blogPreview.cta")} <span>→</span>
             </a>
           </div>
         </FadeIn>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import FlowArt, { FlowSection } from "./ui/story-scroll";
 import { FadeIn } from "./ui/fade-in";
 import coris2 from "../assets/coris2.png";
@@ -83,19 +84,8 @@ function VerticalReel({
   );
 }
 
-const services = [
+const serviceImages = [
   {
-    index: "01",
-    name: "Conseil",
-    tagline: "On vous aide à prendre les bonnes décisions.",
-    description:
-      "Stratégie, transformation, gouvernance — aux côtés des dirigeants qui veulent avancer avec méthode et exigence.",
-    tags: [
-      "Stratégie",
-      "Transformation",
-      "Gouvernance",
-      "Gestion du changement",
-    ],
     images: [
       conseil1,
       conseil2,
@@ -107,48 +97,42 @@ const services = [
       conseil9,
       conseil10,
     ],
-    bg: "#009689",
-    accent: "#f1f1f1",
+    bg: "#538253",
+    accent: "#eff3d4",
   },
   {
-    index: "02",
-    name: "Services",
-    tagline: "On fait le travail avec vous.",
-    description:
-      "Formation, communication, événements — des dispositifs opérationnels pour renforcer vos équipes et amplifier votre impact.",
-    tags: ["Formation", "Communication", "Événements", "Contenus"],
     images: [services1, services2, services5, services6, services7, services8],
-    bg: "#edf2d0",
-    accent: "#000",
+    bg: "#eff3d4",
+    accent: "#1d454c",
   },
   {
-    index: "03",
-    name: "Intermédiation",
-    tagline: "On vous ouvre les portes qui comptent.",
-    description:
-      "Relations gouvernementales, diplomatie privée, partenariats internationaux — Marabu agit en coulisses avec discrétion et méthode.",
-    tags: ["Relations gov.", "Diplomatie", "Partenariats PTF", "Influence"],
     images: [inter1, inter2, inter4, inter5, inter6, inter7, inter8, inter9],
-    bg: "#224851",
-    accent: "#f5ede4",
+    bg: "#1d454c",
+    accent: "#eff3d4",
   },
 ];
 
+type ServiceItem = { index: string; name: string; tagline: string; description: string; tags: string[] };
+
 export default function Services() {
+  const { t } = useTranslation();
+  const serviceItems = t("services.items", { returnObjects: true }) as ServiceItem[];
+  const services = serviceItems.map((item, i) => ({ ...item, ...serviceImages[i] }));
+
   return (
     <section id="services">
       <div className="maxwidth mx-auto px-6 pt-24 pb-10">
         <div className="flex items-end justify-between mb-16">
           <FadeIn>
-            <p className="text-[clamp(2.2rem,6vw,4.5rem)] uppercase tracking-[0.25em] text-[#009689]">
-              Nos services
+            <p className="text-[clamp(2.2rem,6vw,4.5rem)] uppercase tracking-[0.25em] text-[#538253]">
+              {t("services.label")}
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="text-4xl font-light max-w-md text-right leading-snug text-gray-900">
-              Trois expertises,
+              {t("services.heading1")}
               <br />
-              un seul engagement.
+              {t("services.heading2")}
             </h2>
           </FadeIn>
         </div>
