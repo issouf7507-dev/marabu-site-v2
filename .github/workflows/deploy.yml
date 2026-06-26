@@ -46,6 +46,3 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
-          script: |
-            chmod -R 755 /home/admin_marabu/apps/marabu_sitev2
-            nginx -s reload
