@@ -37,7 +37,7 @@ export default function CaseStudies() {
   const rawCases = t("caseStudies.cases", { returnObjects: true }) as CaseItem[];
   const cases = rawCases.map((c, i) => ({ ...c, image: caseImages[i] }));
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [mouseY, setMouseY] = useState(0);
+  const [, setMouseY] = useState(0);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
