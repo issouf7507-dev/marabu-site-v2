@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import coris2 from "../assets/coris2.png";
 
 const ease = [0.76, 0, 0.24, 1] as const;
