@@ -1,14 +1,14 @@
-import { StrictMode, useEffect } from 'react'
-import './i18n/index'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
-import './index.css'
-import App from './App.tsx'
-import About from './pages/About.tsx'
-import ServicesPage from './pages/ServicesPage.tsx'
-import BlogPage from './pages/BlogPage.tsx'
-import ContactPage from './pages/ContactPage.tsx'
+import { StrictMode, useEffect } from "react";
+import "./i18n/index";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import "./index.css";
+import App from "./App.tsx";
+import About from "./pages/About.tsx";
+import ServicesPage from "./pages/ServicesPage.tsx";
+import BlogPage from "./pages/BlogPage.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -33,11 +33,11 @@ function AppRoutes() {
   );
 }
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <ScrollToTop />
       <AppRoutes />
     </BrowserRouter>
   </StrictMode>,
-)
+);

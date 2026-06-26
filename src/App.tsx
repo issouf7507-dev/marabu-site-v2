@@ -12,7 +12,7 @@ import CaseStudies from "./components/CaseStudies";
 import BlogPreview from "./components/BlogPreview";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
-import CaurisTransition from "./components/CaurisTransition";
+// import CaurisTransition from "./components/CaurisTransition";
 import PageTransition from "./components/PageTransition";
 
 // Évite que le loader rejoue quand on revient sur Home
@@ -46,12 +46,12 @@ export default function App() {
             <main>
               <Hero />
               <LogoMarquee />
-              <CaurisTransition />
+              {/* <CaurisTransition /> */}
               <Intro />
-              <CaurisTransition />
+              {/* <CaurisTransition /> */}
               <Services />
               <CaseStudies />
-              <CaurisTransition />
+              {/* <CaurisTransition /> */}
               <Manifesto />
               <BlogPreview />
               <Testimonials />

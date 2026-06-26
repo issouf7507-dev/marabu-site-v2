@@ -29,13 +29,13 @@ const postImages: Record<string, string> = {
 };
 
 const categoryColors: Record<string, { bg: string; text: string }> = {
-  Stratégie:      { bg: "#dde8d5", text: "#538253" },
-  Strategy:       { bg: "#dde8d5", text: "#538253" },
+  Stratégie: { bg: "#dde8d5", text: "#538253" },
+  Strategy: { bg: "#dde8d5", text: "#538253" },
   Intermédiation: { bg: "#d4e0e2", text: "#1d454c" },
   Intermediation: { bg: "#d4e0e2", text: "#1d454c" },
-  Services:       { bg: "#c8d9db", text: "#1d454c" },
-  Formation:      { bg: "#e8f0d8", text: "#538253" },
-  Training:       { bg: "#e8f0d8", text: "#538253" },
+  Services: { bg: "#c8d9db", text: "#1d454c" },
+  Formation: { bg: "#e8f0d8", text: "#538253" },
+  Training: { bg: "#e8f0d8", text: "#538253" },
 };
 
 function CategoryBadge({ category }: { category: string }) {
@@ -92,7 +92,9 @@ function FeaturedCard({ post }: { post: BlogPost }) {
         <div className="flex items-center gap-3 mb-5">
           <CategoryBadge category={post.category} />
           <span className="text-xs text-white/40">{post.date}</span>
-          <span className="text-xs text-white/30">· {post.readTime} {t("common.readTime")}</span>
+          <span className="text-xs text-white/30">
+            · {post.readTime} {t("common.readTime")}
+          </span>
         </div>
         <h2 className="text-2xl lg:text-3xl font-light leading-snug text-white mb-5 group-hover:translate-x-1 transition-transform duration-300">
           {post.title}
@@ -100,7 +102,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
         <p className="text-sm text-white/55 leading-relaxed mb-8">
           {post.excerpt}
         </p>
-        <span className="text-xs uppercase tracking-[0.2em] text-[#eff3d4]/60 flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+        <span className="text-xs uppercase tracking-[0.2em] text-[#ecede3]/60 flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
           {t("common.readMore")} <span>→</span>
         </span>
       </div>
@@ -146,7 +148,9 @@ function ArticleCard({ post, delay }: { post: BlogPost; delay: number }) {
 
 export default function BlogPage() {
   const { t, i18n } = useTranslation();
-  const categories = t("blogPage.categories", { returnObjects: true }) as string[];
+  const categories = t("blogPage.categories", {
+    returnObjects: true,
+  }) as string[];
   const allPosts = t("blogPage.posts", { returnObjects: true }) as BlogPost[];
   const posts = allPosts.map((p) => ({ ...p, image: postImages[p.id] ?? "" }));
 
@@ -155,7 +159,7 @@ export default function BlogPage() {
   // Reset to "all" category when language changes
   useEffect(() => {
     setActiveCategory(categories[0] ?? "");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
   const filtered =
@@ -167,7 +171,7 @@ export default function BlogPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#eff3d4]">
+      <div className="min-h-screen bg-[#ecede3]">
         <Navbar />
 
         {/* ══ HERO ══ */}
@@ -177,11 +181,11 @@ export default function BlogPage() {
         >
           {/* Coris décoratifs */}
           {[
-            { top: "8%",  left: "4%",  size: 120, rotate: 20,  opacity: 0.12 },
-            { top: "50%", left: "1%",  size: 80,  rotate: -35, opacity: 0.1  },
-            { top: "15%", left: "88%", size: 140, rotate: 50,  opacity: 0.11 },
+            { top: "8%", left: "4%", size: 120, rotate: 20, opacity: 0.12 },
+            { top: "50%", left: "1%", size: 80, rotate: -35, opacity: 0.1 },
+            { top: "15%", left: "88%", size: 140, rotate: 50, opacity: 0.11 },
             { top: "60%", left: "92%", size: 100, rotate: -20, opacity: 0.09 },
-            { top: "30%", left: "50%", size: 180, rotate: 70,  opacity: 0.06 },
+            { top: "30%", left: "50%", size: 180, rotate: 70, opacity: 0.06 },
           ].map((c, i) => (
             <img
               key={i}
@@ -205,18 +209,19 @@ export default function BlogPage() {
 
           <div className="maxwidth mx-auto px-6 relative">
             <FadeIn>
-              <p className="text-xs uppercase tracking-[0.35em] text-[#eff3d4]/40 mb-4">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#ecede3]/40 mb-4">
                 {t("blogPage.eyebrow")}
               </p>
             </FadeIn>
             <FadeIn delay={0.08}>
-              <h1 className="text-[clamp(3rem,7vw,7rem)] font-light leading-none text-[#eff3d4] mb-6">
-                {t("blogPage.title1")}<br />
+              <h1 className="text-[clamp(3rem,7vw,7rem)] font-light leading-none text-[#ecede3] mb-6">
+                {t("blogPage.title1")}
+                <br />
                 <span style={{ color: "#538253" }}>{t("blogPage.title2")}</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
-              <p className="text-[#eff3d4]/50 text-sm leading-relaxed max-w-md">
+              <p className="text-[#ecede3]/50 text-sm leading-relaxed max-w-md">
                 {t("blogPage.subtitle")}
               </p>
             </FadeIn>
@@ -226,7 +231,7 @@ export default function BlogPage() {
         {/* ══ FILTRES ══ */}
         <div
           className="sticky top-0 z-40 border-b"
-          style={{ backgroundColor: "#eff3d4", borderColor: "#1d454c22" }}
+          style={{ backgroundColor: "#ecede3", borderColor: "#1d454c22" }}
         >
           <div className="maxwidth mx-auto px-6">
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-none py-4">
@@ -236,10 +241,12 @@ export default function BlogPage() {
                   onClick={() => setActiveCategory(cat)}
                   className="shrink-0 text-xs uppercase tracking-[0.2em] px-5 py-2 transition-all duration-200"
                   style={{
-                    backgroundColor: activeCategory === cat ? "#1d454c" : "transparent",
-                    color: activeCategory === cat ? "#eff3d4" : "#1d454c99",
+                    backgroundColor:
+                      activeCategory === cat ? "#1d454c" : "transparent",
+                    color: activeCategory === cat ? "#ecede3" : "#1d454c99",
                     border: "1px solid",
-                    borderColor: activeCategory === cat ? "#1d454c" : "#1d454c33",
+                    borderColor:
+                      activeCategory === cat ? "#1d454c" : "#1d454c33",
                   }}
                 >
                   {cat}
@@ -251,7 +258,6 @@ export default function BlogPage() {
 
         {/* ══ CONTENU ══ */}
         <div className="maxwidth mx-auto px-6 py-16">
-
           {filtered.length === 0 ? (
             <div className="text-center py-32 text-black/30 text-sm uppercase tracking-widest">
               {t("blogPage.noArticles")}
@@ -269,7 +275,10 @@ export default function BlogPage() {
               {rest.length > 0 && (
                 <div
                   className="flex items-center gap-4 mb-12"
-                  style={{ borderTop: "1px solid #1d454c22", paddingTop: "3rem" }}
+                  style={{
+                    borderTop: "1px solid #1d454c22",
+                    paddingTop: "3rem",
+                  }}
                 >
                   <p className="text-xs uppercase tracking-[0.3em] text-black/30 shrink-0">
                     {t("blogPage.recentLabel")}
@@ -306,12 +315,15 @@ export default function BlogPage() {
         </div>
 
         {/* ══ CTA NEWSLETTER ══ */}
-        <section className="py-24 relative overflow-hidden" style={{ backgroundColor: "#538253" }}>
+        <section
+          className="py-24 relative overflow-hidden"
+          style={{ backgroundColor: "#538253" }}
+        >
           {[
-            { top: "10%", left: "3%",  size: 120, rotate: 25,  opacity: 0.2  },
-            { top: "55%", left: "0%",  size: 90,  rotate: -40, opacity: 0.15 },
-            { top: "20%", left: "88%", size: 150, rotate: 55,  opacity: 0.18 },
-            { top: "65%", left: "92%", size: 80,  rotate: -15, opacity: 0.14 },
+            { top: "10%", left: "3%", size: 120, rotate: 25, opacity: 0.2 },
+            { top: "55%", left: "0%", size: 90, rotate: -40, opacity: 0.15 },
+            { top: "20%", left: "88%", size: 150, rotate: 55, opacity: 0.18 },
+            { top: "65%", left: "92%", size: 80, rotate: -15, opacity: 0.14 },
           ].map((c, i) => (
             <img
               key={i}
@@ -334,13 +346,13 @@ export default function BlogPage() {
           ))}
           <div className="maxwidth mx-auto px-6 text-center relative">
             <FadeIn>
-              <p className="text-xs uppercase tracking-[0.35em] text-[#eff3d4]/60 mb-4">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#ecede3]/60 mb-4">
                 {t("blogPage.newsletter.eyebrow")}
               </p>
-              <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-light text-[#eff3d4] mb-5 leading-snug">
+              <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-light text-[#ecede3] mb-5 leading-snug">
                 {t("blogPage.newsletter.heading")}
               </h2>
-              <p className="text-[#eff3d4]/60 text-sm max-w-md mx-auto mb-10">
+              <p className="text-[#ecede3]/60 text-sm max-w-md mx-auto mb-10">
                 {t("blogPage.newsletter.desc")}
               </p>
             </FadeIn>
@@ -353,11 +365,11 @@ export default function BlogPage() {
                   type="email"
                   required
                   placeholder={t("blogPage.newsletter.placeholder")}
-                  className="flex-1 px-5 py-3 text-sm text-[#1d454c] placeholder-[#1d454c]/40 focus:outline-none bg-[#eff3d4]"
+                  className="flex-1 px-5 py-3 text-sm text-[#1d454c] placeholder-[#1d454c]/40 focus:outline-none bg-[#ecede3]"
                 />
                 <button
                   type="submit"
-                  className="px-8 py-3 text-xs uppercase tracking-[0.2em] text-[#eff3d4] transition-opacity duration-200 hover:opacity-80 shrink-0"
+                  className="px-8 py-3 text-xs uppercase tracking-[0.2em] text-[#ecede3] transition-opacity duration-200 hover:opacity-80 shrink-0"
                   style={{ backgroundColor: "#1d454c" }}
                 >
                   {t("blogPage.newsletter.cta")}

@@ -98,26 +98,37 @@ const serviceImages = [
       conseil10,
     ],
     bg: "#538253",
-    accent: "#eff3d4",
+    accent: "#ecede3",
   },
   {
     images: [services1, services2, services5, services6, services7, services8],
-    bg: "#eff3d4",
+    bg: "#ecede3",
     accent: "#1d454c",
   },
   {
     images: [inter1, inter2, inter4, inter5, inter6, inter7, inter8, inter9],
     bg: "#1d454c",
-    accent: "#eff3d4",
+    accent: "#ecede3",
   },
 ];
 
-type ServiceItem = { index: string; name: string; tagline: string; description: string; tags: string[] };
+type ServiceItem = {
+  index: string;
+  name: string;
+  tagline: string;
+  description: string;
+  tags: string[];
+};
 
 export default function Services() {
   const { t } = useTranslation();
-  const serviceItems = t("services.items", { returnObjects: true }) as ServiceItem[];
-  const services = serviceItems.map((item, i) => ({ ...item, ...serviceImages[i] }));
+  const serviceItems = t("services.items", {
+    returnObjects: true,
+  }) as ServiceItem[];
+  const services = serviceItems.map((item, i) => ({
+    ...item,
+    ...serviceImages[i],
+  }));
 
   return (
     <section id="services">
