@@ -48,4 +48,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             chmod -R 755 /home/admin_marabu/apps/marabu_sitev2
-            sudo nginx -s reload
+            nginx -s reload
