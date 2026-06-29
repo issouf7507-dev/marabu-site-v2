@@ -139,14 +139,14 @@ export default function BlogPreview() {
   return (
     <section id="blog" className="py-24 max-w-[1800px] mx-auto px-6">
       {/* Header */}
-      <div className="grid grid-cols-[1fr_2fr] gap-24 items-end mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-24 items-end mb-10 md:mb-16">
         <FadeIn>
           <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
             {t("blogPreview.label")}
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <div className="flex items-end justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
             <h2 className="text-4xl font-light leading-snug text-gray-900">
               {headingLines[0]}<br />
               {headingLines[1]}
@@ -162,7 +162,7 @@ export default function BlogPreview() {
       </div>
 
       {/* Grid : 1 featured + 2 small */}
-      <div className="grid grid-cols-[3fr_2fr] gap-16 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-8 md:gap-16 items-start">
         <ArticleFeatured post={featured} />
 
         <div className="flex flex-col gap-8 pt-2">

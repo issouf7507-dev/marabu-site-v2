@@ -47,7 +47,7 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" className="py-24 maxwidth mx-auto px-6">
       {/* Header */}
-      <div className="grid grid-cols-[1fr_2fr] gap-24 items-end mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-24 items-end mb-10 md:mb-20">
         <FadeIn>
           <p className="text-xs uppercase tracking-[0.25em] text-gray-900">
             {t("caseStudies.label")}
@@ -74,7 +74,7 @@ export default function CaseStudies() {
           return (
             <motion.div
               key={c.id}
-              className="group border-b border-black/10 py-10 grid grid-cols-[80px_1fr_auto] gap-10 items-start cursor-default relative"
+              className="group border-b border-black/10 py-6 md:py-10 grid grid-cols-[50px_1fr] md:grid-cols-[80px_1fr_auto] gap-4 md:gap-10 items-start cursor-default relative"
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -87,7 +87,7 @@ export default function CaseStudies() {
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* Ghost number */}
-              <span className="text-5xl font-light text-[#538253] leading-none mt-1 select-none">
+              <span className="text-4xl md:text-5xl font-light text-[#538253] leading-none mt-1 select-none">
                 {c.id}
               </span>
 
@@ -115,10 +115,17 @@ export default function CaseStudies() {
                 <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
                   {c.description}
                 </p>
+                {/* Metric — visible on mobile only, inline below description */}
+                <div className="md:hidden">
+                  <p className="text-3xl font-light leading-none">{c.metric}</p>
+                  <p className="text-xs text-black/40 mt-1 uppercase tracking-wider">
+                    {c.metricLabel}
+                  </p>
+                </div>
               </div>
 
-              {/* Metric */}
-              <div className="text-right pt-1">
+              {/* Metric — hidden on mobile, shown on desktop */}
+              <div className="hidden md:block text-right pt-1">
                 <p className="text-4xl font-light leading-none">{c.metric}</p>
                 <p className="text-xs text-black/40 mt-2 uppercase tracking-wider">
                   {c.metricLabel}

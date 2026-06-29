@@ -6,6 +6,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+let _lenis: Lenis | null = null;
+
+export function scrollToTopInstant() {
+  if (_lenis) {
+    _lenis.scrollTo(0, { immediate: true });
+  } else {
+    window.scrollTo(0, 0);
+  }
+}
+
 export function useLenis(enabled: boolean) {
   useEffect(() => {
     if (!enabled) return;
@@ -15,6 +25,8 @@ export function useLenis(enabled: boolean) {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+
+    _lenis = lenis;
 
     // Keep GSAP ScrollTrigger in sync with Lenis scroll position
     lenis.on('scroll', ScrollTrigger.update);
@@ -30,6 +42,7 @@ export function useLenis(enabled: boolean) {
     return () => {
       cancelFrame(update);
       lenis.destroy();
+      _lenis = null;
     };
   }, [enabled]);
 }
