@@ -25,7 +25,7 @@ export default function Intro() {
         />
       ))}
 
-      <div className="grid grid-cols-[1fr_2fr] gap-24 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-24 items-start">
         <FadeIn>
           <p className="text-2xl uppercase tracking-[0.25em] text-[#538253] pt-1">
             {t("intro.label")}

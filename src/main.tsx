@@ -9,11 +9,12 @@ import About from "./pages/About.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
+import { scrollToTopInstant } from "./hooks/useLenis.ts";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTopInstant();
   }, [pathname]);
   return null;
 }

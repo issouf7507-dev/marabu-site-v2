@@ -39,12 +39,12 @@ export default function Hero() {
   return (
     <motion.section
       id="home"
-      className="pt-32 pb-10 maxwidth mx-auto"
+      className="pt-32 pb-10 maxwidth mx-auto px-6"
       initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
     >
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", overflowX: "hidden" }}>
         {[
           { top: "-18px", left: "48%", size: 70, rotate: 25, opacity: 0.35 },
           { top: "10px", left: "72%", size: 50, rotate: -40, opacity: 0.28 },
@@ -74,13 +74,13 @@ export default function Hero() {
         ))}
 
         <FadeIn>
-          <h1 className="text-6xl leading-tight text-gray-900">
+          <h1 className="text-[clamp(2rem,8vw,3.75rem)] leading-tight text-gray-900">
             {t("hero.tagline1")} <br />
             <span style={{ color: "#538253" }}>{t("hero.tagline2")}</span>
           </h1>
         </FadeIn>
 
-        <div className="mt-5 flex justify-between items-end">
+        <div className="mt-5 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
           <FadeIn delay={0.12}>
             <p className="text-lg text-gray-500">{t("hero.description")}</p>
           </FadeIn>
@@ -116,7 +116,7 @@ export default function Hero() {
             }}
           >
             <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
-            <div className="absolute bottom-12 left-12">
+            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
               <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
                 {images[0]?.subtitle}
               </p>
@@ -145,7 +145,7 @@ export default function Hero() {
             }}
           >
             <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
-            <div className="absolute bottom-12 left-12">
+            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
               <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
                 {images[1]?.subtitle}
               </p>
@@ -202,7 +202,7 @@ export default function Hero() {
                 }}
               />
             ))}
-            <div className="absolute bottom-12 left-12">
+            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
               <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
                 {images[2]?.subtitle}
               </p>

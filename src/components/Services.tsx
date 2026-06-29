@@ -133,7 +133,7 @@ export default function Services() {
   return (
     <section id="services">
       <div className="maxwidth mx-auto px-6 pt-24 pb-10">
-        <div className="flex items-end justify-between mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-16">
           <FadeIn>
             <p className="text-[clamp(2.2rem,6vw,4.5rem)] uppercase tracking-[0.25em] text-[#538253]">
               {t("services.label")}
@@ -208,14 +208,13 @@ export default function Services() {
               />
             ))}
 
-            {/* Full-height reel — absolute on the right */}
-            <VerticalReel images={s.images} tilt={-5} />
+            {/* Full-height reel — absolute on the right, hidden on mobile */}
+            <div className="hidden md:block">
+              <VerticalReel images={s.images} tilt={-5} />
+            </div>
 
             {/* Top row */}
-            <div
-              className="flex items-start justify-between"
-              style={{ paddingRight: REEL_W + 40 }}
-            >
+            <div className="flex items-start justify-between md:pr-90">
               <span className="text-[clamp(2.2rem,6vw,5.5rem)] uppercase tracking-[0.25em] opacity-40">
                 {s.name}
               </span>
@@ -225,17 +224,14 @@ export default function Services() {
             </div>
 
             {/* Center — tagline */}
-            <div style={{ paddingRight: REEL_W + 40 }}>
+            <div className="md:pr-90">
               <h3 className="text-[clamp(2.2rem,6vw,3.5rem)] font-light leading-tight">
                 {s.tagline}
               </h3>
             </div>
 
             {/* Bottom — description + tags */}
-            <div
-              className="flex flex-col gap-5"
-              style={{ paddingRight: REEL_W + 40 }}
-            >
+            <div className="flex flex-col gap-5 md:pr-90">
               <p className="text-base opacity-60 leading-relaxed max-w-md">
                 {s.description}
               </p>

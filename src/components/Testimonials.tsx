@@ -51,7 +51,7 @@ export default function Testimonials() {
       ))}
 
       <div className="maxwidth mx-auto px-6 lg:px-12">
-        <div className="flex items-end justify-between mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-16">
           <FadeIn>
             <p className="text-[clamp(2rem,5vw,4rem)] uppercase tracking-[0.25em] text-[#538253]">
               {t("testimonials.label")}
