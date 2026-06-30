@@ -301,7 +301,7 @@ export default function BlogPage() {
               {/* Grille */}
               {rest.length > 0 && (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                  {rest.map((article, i) => (
+                  {rest.filter((a): a is Article => a !== null).map((article, i) => (
                     <ArticleCard key={article.id} article={article} locale={locale} delay={i * 0.06} />
                   ))}
                 </div>
