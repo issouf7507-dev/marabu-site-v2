@@ -206,7 +206,7 @@
       { "label": "Introduction", "href": "#about" },
       { "label": "Services",     "href": "#services" },
       { "label": "Case Studies", "href": "#case-studies" },
-      { "label": "Blog",         "href": "/blog" },
+      { "label": "Blog",         "href": "/actualites" },
       { "label": "Contact",      "href": "#contact" }
     ],
     "expertises": ["Consulting", "Services", "Intermediation", "Strategy", "Training", "Private Diplomacy"]

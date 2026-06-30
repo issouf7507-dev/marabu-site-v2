@@ -9,7 +9,7 @@ const languages = [
   { code: "en", label: "ENGLISH" },
 ];
 
-const darkHeroRoutes = ["/about", "/services", "/blog", "/contact"];
+const darkHeroPrefixes = ["/about", "/services", "/actualites", "/contact"];
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -34,7 +34,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  const isDarkHero = darkHeroRoutes.includes(location.pathname);
+  const isDarkHero = darkHeroPrefixes.some((p) => location.pathname.startsWith(p));
   const isLight = !scrolled && isDarkHero;
 
   const textColor = isLight ? "#ecede3" : "#1d454c";
@@ -47,7 +47,7 @@ export default function Navbar() {
     { label: t("navbar.home"), to: "/" },
     { label: t("navbar.about"), to: "/about" },
     { label: t("navbar.services"), to: "/services" },
-    { label: t("navbar.blog"), to: "/blog" },
+    { label: t("navbar.blog"), to: "/actualites" },
   ];
 
   return (
