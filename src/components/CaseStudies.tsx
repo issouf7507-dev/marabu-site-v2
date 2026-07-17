@@ -2,9 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
-import conseil4 from "../assets/imgs/conseils/conseil-4.jpg";
-import erepution from "../assets/imgs/formation-e-reputation.jpg";
-import inter1 from "../assets/imgs/intermediation/intermediation-1.jpg";
+import conseil4 from "../assets/imgs/conseils/conseil-4.webp";
+import erepution from "../assets/imgs/formation-e-reputation.webp";
+import inter1 from "../assets/imgs/intermediation/intermediation-1.webp";
 
 type CaseItem = {
   id: string;
@@ -20,21 +20,26 @@ type CaseItem = {
 
 const caseImages = [conseil4, erepution, inter1];
 
-const categoryTag: Record<string, { bg: string; text: string; placeholder: string }> = {
-  Conseil:        { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
-  Consulting:     { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
-  Services:       { bg: "#e8e8e8", text: "#1a1a1a", placeholder: "#d0d0d0" },
+const categoryTag: Record<
+  string,
+  { bg: string; text: string; placeholder: string }
+> = {
+  Conseil: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
+  Consulting: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
+  Services: { bg: "#e8e8e8", text: "#1a1a1a", placeholder: "#d0d0d0" },
   Intermédiation: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
   Intermediation: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
-  Événementiel:   { bg: "#dde8d5", text: "#538253", placeholder: "#c4d9b8" },
-  Events:         { bg: "#dde8d5", text: "#538253", placeholder: "#c4d9b8" },
-  Formation:      { bg: "#e8f0d8", text: "#538253", placeholder: "#c4d9b8" },
-  Training:       { bg: "#e8f0d8", text: "#538253", placeholder: "#c4d9b8" },
+  Événementiel: { bg: "#dde8d5", text: "#3f6b3f", placeholder: "#c4d9b8" },
+  Events: { bg: "#dde8d5", text: "#3f6b3f", placeholder: "#c4d9b8" },
+  Formation: { bg: "#e8f0d8", text: "#3f6b3f", placeholder: "#c4d9b8" },
+  Training: { bg: "#e8f0d8", text: "#3f6b3f", placeholder: "#c4d9b8" },
 };
 
 export default function CaseStudies() {
   const { t } = useTranslation();
-  const rawCases = t("caseStudies.cases", { returnObjects: true }) as CaseItem[];
+  const rawCases = t("caseStudies.cases", {
+    returnObjects: true,
+  }) as CaseItem[];
   const cases = rawCases.map((c, i) => ({ ...c, image: caseImages[i] }));
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [, setMouseY] = useState(0);
@@ -54,7 +59,7 @@ export default function CaseStudies() {
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h2 className="text-4xl font-light leading-snug">
+          <h2 className="text-4xl font-light leading-snug text-[#1d454c]">
             {t("caseStudies.heading1")}
             <br />
             {t("caseStudies.heading2")}
@@ -68,7 +73,11 @@ export default function CaseStudies() {
         onMouseMove={handleMouseMove}
       >
         {cases.map((c, i) => {
-          const tag = categoryTag[c.category] ?? { bg: "#e5e5e5", text: "#333", placeholder: "#ddd" };
+          const tag = categoryTag[c.category] ?? {
+            bg: "#e5e5e5",
+            text: "#333",
+            placeholder: "#ddd",
+          };
           const isHovered = hoveredId === c.id;
 
           return (
@@ -100,37 +109,45 @@ export default function CaseStudies() {
                   >
                     {c.category}
                   </span>
-                  <span className="text-xs text-black/30">{c.year}</span>
+                  <span className="text-xs text-black/65">{c.year}</span>
                 </div>
 
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
+                  <p className="text-xs uppercase tracking-widest text-gray-600 mb-1">
                     {c.client}
                   </p>
-                  <h3 className="text-2xl font-light leading-snug group-hover:translate-x-2 transition-transform duration-300 text-gray-900">
+                  <h3 className="text-2xl font-light leading-snug group-hover:translate-x-2 transition-transform duration-300 text-[#1d454c]">
                     {c.project}
                   </h3>
                 </div>
 
-                <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
+                <p className="text-sm text-gray-600 leading-relaxed max-w-xl">
                   {c.description}
                 </p>
-                {/* Metric — visible on mobile only, inline below description */}
-                <div className="md:hidden">
-                  <p className="text-3xl font-light leading-none">{c.metric}</p>
-                  <p className="text-xs text-black/40 mt-1 uppercase tracking-wider">
-                    {c.metricLabel}
-                  </p>
-                </div>
+                {/* Metric — visible on mobile only, inline below description.
+                    Masqué quand la carte n'a pas de métrique chiffrée : sans
+                    ça on afficherait un libellé « orphelin » sans valeur. */}
+                {c.metric && (
+                  <div className="md:hidden">
+                    <p className="text-3xl font-light leading-none">
+                      {c.metric}
+                    </p>
+                    <p className="text-xs text-black/60 mt-1 uppercase tracking-wider">
+                      {c.metricLabel}
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Metric — hidden on mobile, shown on desktop */}
-              <div className="hidden md:block text-right pt-1">
-                <p className="text-4xl font-light leading-none">{c.metric}</p>
-                <p className="text-xs text-black/40 mt-2 uppercase tracking-wider">
-                  {c.metricLabel}
-                </p>
-              </div>
+              {c.metric && (
+                <div className="hidden md:block text-right pt-1">
+                  <p className="text-4xl font-light leading-none">{c.metric}</p>
+                  <p className="text-xs text-black/60 mt-2 uppercase tracking-wider">
+                    {c.metricLabel}
+                  </p>
+                </div>
+              )}
 
               {/* Hover image reveal */}
               <AnimatePresence>

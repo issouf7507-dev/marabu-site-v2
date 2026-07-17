@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
-import coris2 from "../assets/coris2.png";
+import coris2 from "../assets/coris2.webp";
 
 const ease = [0.76, 0, 0.24, 1] as const;
 
@@ -45,6 +45,24 @@ function CurtainContent() {
 }
 
 export default function PageTransition({ children }: { children: ReactNode }) {
+  const reduceMotion = useReducedMotion();
+
+  // Les rideaux reposent entièrement sur scaleY. Comme MotionConfig désactive
+  // les transforms en mode reduced-motion, les garder produirait un aplat figé
+  // en travers de l'écran : on ne monte qu'un fondu.
+  if (reduceMotion) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <>
       {/* Rideau ENTRANT : couvre l'écran lors du exit de l'ancienne page */}

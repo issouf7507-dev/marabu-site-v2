@@ -1,10 +1,12 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
-import img1 from "../assets/imgs/marabu_conseil_accueil.jpg";
-import img2 from "../assets/imgs/marabu_services_accueil.png";
-import coris2 from "../assets/coris2.png";
+import img1 from "../assets/imgs/conseils/conseil-marabu.webp";
+import img2 from "../assets/imgs/services/services-marabu.webp";
+import img3 from "../assets/imgs/intermediation/intermediation-marabu.webp";
+// import coris2 from "../assets/coris2.webp";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -45,36 +47,8 @@ export default function Hero() {
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
     >
       <div style={{ position: "relative", overflowX: "hidden" }}>
-        {[
-          { top: "-18px", left: "48%", size: 70, rotate: 25, opacity: 0.35 },
-          { top: "10px", left: "72%", size: 50, rotate: -40, opacity: 0.28 },
-          { top: "55px", left: "88%", size: 85, rotate: 60, opacity: 0.32 },
-          { top: "-10px", left: "92%", size: 45, rotate: 10, opacity: 0.25 },
-          { top: "80px", left: "60%", size: 60, rotate: -15, opacity: 0.3 },
-          { top: "120px", left: "80%", size: 55, rotate: 80, opacity: 0.22 },
-        ].map((c, i) => (
-          <img
-            key={i}
-            src={coris2}
-            alt=""
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              top: c.top,
-              left: c.left,
-              width: c.size,
-              height: c.size,
-              opacity: c.opacity,
-              transform: `rotate(${c.rotate}deg)`,
-              objectFit: "contain",
-              pointerEvents: "none",
-              userSelect: "none",
-            }}
-          />
-        ))}
-
         <FadeIn>
-          <h1 className="text-[clamp(2rem,8vw,3.75rem)] leading-tight text-gray-900">
+          <h1 className="text-[clamp(2rem,8vw,3.75rem)] leading-tight text-[#1d454c]">
             {t("hero.tagline1")} <br />
             <span style={{ color: "#538253" }}>{t("hero.tagline2")}</span>
           </h1>
@@ -82,15 +56,15 @@ export default function Hero() {
 
         <div className="mt-5 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
           <FadeIn delay={0.12}>
-            <p className="text-lg text-gray-500">{t("hero.description")}</p>
+            <p className="text-lg text-gray-600">{t("hero.description")}</p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <a
-              href="#contact"
-              className="block border border-[#1d454c] text-gray-500 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#1d454c] hover:text-[#ecede3] transition-all duration-300 w-fit"
+            <Link
+              to="/contact"
+              className="block border border-[#1d454c] text-gray-700 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#1d454c] hover:text-[#ecede3] transition-all duration-300 w-fit whitespace-nowrap"
             >
               {t("hero.cta")}
-            </a>
+            </Link>
           </FadeIn>
         </div>
       </div>
@@ -168,40 +142,13 @@ export default function Hero() {
               left: edgeGap,
               borderRadius,
               opacity: opacity3,
-              background:
-                "linear-gradient(135deg, #0f2a2e 0%, #1d454c 40%, #152f35 70%, #0a1d21 100%)",
+              backgroundImage: `url(${img3})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
-            {[
-              { top: "12%", left: "15%", size: 100, rotate: 20, opacity: 0.4 },
-              { top: "5%", left: "50%", size: 70, rotate: -35, opacity: 0.35 },
-              { top: "20%", left: "75%", size: 90, rotate: 55, opacity: 0.38 },
-              { top: "50%", left: "30%", size: 60, rotate: -10, opacity: 0.3 },
-              { top: "65%", left: "65%", size: 80, rotate: 70, opacity: 0.35 },
-              { top: "75%", left: "10%", size: 55, rotate: 45, opacity: 0.28 },
-              { top: "40%", left: "85%", size: 65, rotate: -60, opacity: 0.32 },
-            ].map((c, i) => (
-              <img
-                key={i}
-                src={coris2}
-                alt=""
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  top: c.top,
-                  left: c.left,
-                  width: c.size,
-                  height: c.size,
-                  opacity: c.opacity,
-                  transform: `rotate(${c.rotate}deg)`,
-                  objectFit: "contain",
-                  pointerEvents: "none",
-                  userSelect: "none",
-                  filter: "brightness(2)",
-                }}
-              />
-            ))}
+            <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
+
             <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
               <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
                 {images[2]?.subtitle}

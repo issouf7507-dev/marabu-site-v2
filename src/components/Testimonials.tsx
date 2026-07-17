@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
-import coris2 from "../assets/coris2.png";
+import coris2 from "../assets/coris2.webp";
 
 type Testimonial = {
   quote: string;
@@ -58,7 +58,7 @@ export default function Testimonials() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="text-3xl font-light max-w-xs text-right leading-snug text-gray-500">
+            <h2 className="text-3xl font-light max-w-xs text-right leading-snug text-gray-600">
               {headingLines[0]}
               <br />
               {headingLines[1]}
@@ -73,12 +73,12 @@ export default function Testimonials() {
                 <span className="text-6xl font-serif leading-none text-[#538253] select-none">
                   "
                 </span>
-                <p className="text-gray-500 leading-relaxed text-base flex-1">
+                <p className="text-gray-600 leading-relaxed text-base flex-1">
                   {t_.quote}
                 </p>
                 <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
                   <div className="w-10 h-10 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0">
-                    <span className="text-[#538253] font-semibold text-sm">
+                    <span className="text-[#3f6b3f] font-semibold text-sm">
                       {t_.name.charAt(0)}
                     </span>
                   </div>
@@ -86,7 +86,7 @@ export default function Testimonials() {
                     <p className="font-semibold text-gray-900 text-sm">
                       {t_.name}
                     </p>
-                    <p className="text-gray-500 text-xs">
+                    <p className="text-gray-600 text-xs">
                       {t_.role} · {t_.company}
                     </p>
                   </div>

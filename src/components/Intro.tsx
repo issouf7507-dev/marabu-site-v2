@@ -1,29 +1,64 @@
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
-import coris2 from "../assets/coris2.png";
+import coris2 from "../assets/coris2.webp";
 
 export default function Intro() {
   const { t } = useTranslation();
 
   return (
-    <section id="about" className="py-24 maxwidth mx-auto px-6"
-      style={{ position: "relative", overflow: "hidden" }}>
+    <section
+      id="about"
+      className="py-24 maxwidth mx-auto px-6"
+      style={{ position: "relative", overflow: "hidden" }}
+    >
       {[
-        { top: "5%",  left: "2%",  size: 80, rotate: 20,  opacity: 0.18 },
-        { top: "30%", left: "0%",  size: 55, rotate: -40, opacity: 0.14 },
-        { top: "65%", left: "3%",  size: 70, rotate: 60,  opacity: 0.16 },
+        { top: "5%", left: "2%", size: 80, rotate: 20, opacity: 0.18 },
+        { top: "30%", left: "0%", size: 55, rotate: -40, opacity: 0.14 },
+        { top: "65%", left: "3%", size: 70, rotate: 60, opacity: 0.16 },
         { top: "85%", left: "18%", size: 50, rotate: -15, opacity: 0.12 },
-        { top: "10%", left: "88%", size: 65, rotate: 35,  opacity: 0.15 },
+        { top: "10%", left: "88%", size: 65, rotate: 35, opacity: 0.15 },
         { top: "45%", left: "92%", size: 85, rotate: -55, opacity: 0.18 },
-        { top: "75%", left: "85%", size: 60, rotate: 75,  opacity: 0.13 },
-        { top: "20%", left: "45%", size: 45, rotate: 10,  opacity: 0.1  },
+        { top: "75%", left: "85%", size: 60, rotate: 75, opacity: 0.13 },
+        { top: "20%", left: "45%", size: 45, rotate: 10, opacity: 0.1 },
       ].map((c, i) => (
-        <img key={i} src={coris2} alt="" aria-hidden="true"
-          style={{ position: "absolute", top: c.top, left: c.left, width: c.size, height: c.size,
-            opacity: c.opacity, transform: `rotate(${c.rotate}deg)`, objectFit: "contain",
-            pointerEvents: "none", userSelect: "none" }}
+        <img
+          key={i}
+          src={coris2}
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: c.top,
+            left: c.left,
+            width: c.size,
+            height: c.size,
+            opacity: c.opacity,
+            transform: `rotate(${c.rotate}deg)`,
+            objectFit: "contain",
+            pointerEvents: "none",
+            userSelect: "none",
+          }}
         />
       ))}
+
+      <img
+        src={coris2}
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "5%",
+          top: "70%",
+          transform: "translate(-50%, -50%)",
+          width: "55%",
+          maxWidth: 550,
+          opacity: 0.52,
+          rotate: "40deg",
+          pointerEvents: "none",
+          userSelect: "none",
+          objectFit: "contain",
+        }}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-24 items-start">
         <FadeIn>
@@ -38,10 +73,16 @@ export default function Intro() {
               {t("intro.heading")}
             </h2>
           </FadeIn>
-          <div className="space-y-5 text-gray-500 text-base leading-relaxed max-w-2xl">
-            <FadeIn delay={0.1}><p>{t("intro.p1")}</p></FadeIn>
-            <FadeIn delay={0.18}><p>{t("intro.p2")}</p></FadeIn>
-            <FadeIn delay={0.26}><p>{t("intro.p3")}</p></FadeIn>
+          <div className="space-y-5 text-gray-600 text-base leading-relaxed max-w-2xl">
+            <FadeIn delay={0.1}>
+              <p>{t("intro.p1")}</p>
+            </FadeIn>
+            <FadeIn delay={0.18}>
+              <p>{t("intro.p2")}</p>
+            </FadeIn>
+            <FadeIn delay={0.26}>
+              <p>{t("intro.p3")}</p>
+            </FadeIn>
           </div>
         </div>
       </div>
