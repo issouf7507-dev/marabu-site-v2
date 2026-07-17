@@ -1,6 +1,9 @@
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import bg from '../assets/imgs/marabu_conseil_accueil.jpg';
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import bg from "../assets/imgs/conseils/conseil-3.webp";
+
+const MotionLink = motion.create(Link);
 
 export default function Manifesto() {
   const { t } = useTranslation();
@@ -8,7 +11,12 @@ export default function Manifesto() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      <img src={bg} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center" />
+      <img
+        src={bg}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
       <div className="absolute inset-0 bg-black/55" />
       <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-black/20" />
 
@@ -25,12 +33,17 @@ export default function Manifesto() {
 
         <div className="overflow-hidden">
           {lines.map((line, i) => (
-            <motion.h2 key={i}
+            <motion.h2
+              key={i}
               className="text-white text-[clamp(2rem,5.5vw,5.5rem)] font-light leading-tight"
               initial={{ opacity: 0, y: 48 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.25, 0, 0, 1], delay: 0.1 + i * 0.12 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0, 0, 1],
+                delay: 0.1 + i * 0.12,
+              }}
             >
               {line}
             </motion.h2>
@@ -47,15 +60,16 @@ export default function Manifesto() {
           {t("manifesto.desc")}
         </motion.p>
 
-        <motion.a href="#contact"
-          className="mt-12 border border-[#1d454c] text-white/80 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#1d454c] transition-all duration-300"
+        <MotionLink
+          to="/contact"
+          className="mt-12 border border-[#1d454c] text-white/80 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#1d454c] transition-all duration-300 whitespace-nowrap"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           {t("manifesto.cta")}
-        </motion.a>
+        </MotionLink>
       </div>
     </section>
   );

@@ -5,8 +5,9 @@ import { useTranslation } from "react-i18next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+import Seo from "../components/Seo";
 import { FadeIn } from "../components/ui/fade-in";
-import coris2 from "../assets/coris2.png";
+import coris2 from "../assets/coris2.webp";
 import { useArticles, formatDate, type Article, type Pagination } from "../hooks/useArticles";
 
 // ─── Article cards ────────────────────────────────────────────────────────────
@@ -38,7 +39,7 @@ function FeaturedCard({ article, locale }: { article: Article; locale: string })
               />
             ))}
           </div>
-          <span className="text-xs text-white/40 mb-5">
+          <span className="text-xs text-white/70 mb-5">
             {formatDate(article.publishedAt, locale)}
           </span>
           <h2 className="text-2xl lg:text-3xl font-light leading-snug text-white mb-8 group-hover:translate-x-1 transition-transform duration-300">
@@ -72,13 +73,13 @@ function ArticleCard({ article, locale, delay }: { article: Article; locale: str
             className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-600"
           />
         </div>
-        <span className="text-xs text-black/35 mb-3">
+        <span className="text-xs text-black/60 mb-3">
           {formatDate(article.publishedAt, locale)}
         </span>
         <h3 className="text-lg font-light leading-snug mb-5 flex-1 group-hover:translate-x-1 transition-transform duration-300 text-[#1d454c]">
           {article.title}
         </h3>
-        <span className="text-xs uppercase tracking-[0.2em] text-black/35 flex items-center gap-2 group-hover:gap-4 transition-all duration-300 mt-auto">
+        <span className="text-xs uppercase tracking-[0.2em] text-black/60 flex items-center gap-2 group-hover:gap-4 transition-all duration-300 mt-auto">
           {t("common.read")} <span>→</span>
         </span>
       </motion.article>
@@ -108,7 +109,7 @@ function Paginator({ pagination, onChange }: { pagination: Pagination; onChange:
 
   return (
     <div className="flex flex-col items-center gap-6 pt-16">
-      <p className="text-xs text-black/30 uppercase tracking-widest">
+      <p className="text-xs text-black/65 uppercase tracking-widest">
         {totalItems} articles · page {currentPage}/{totalPages}
       </p>
 
@@ -127,7 +128,7 @@ function Paginator({ pagination, onChange }: { pagination: Pagination; onChange:
         {/* Page numbers */}
         {pages.map((p, i) =>
           p === "…" ? (
-            <span key={`ellipsis-${i}`} className="w-10 h-10 flex items-center justify-center text-sm text-black/30">
+            <span key={`ellipsis-${i}`} className="w-10 h-10 flex items-center justify-center text-sm text-black/65">
               …
             </span>
           ) : (
@@ -210,8 +211,15 @@ export default function BlogPage() {
 
   return (
     <PageTransition>
+      <Seo
+        title={t("seo.blog.title")}
+        description={t("seo.blog.description")}
+        path="/actualites"
+      />
       <div className="min-h-screen bg-[#ecede3]">
         <Navbar />
+
+        <main id="main-content">
 
         {/* ── HERO ── */}
         <section className="relative overflow-hidden pt-36 pb-20" style={{ backgroundColor: "#1d454c" }}>
@@ -230,7 +238,7 @@ export default function BlogPage() {
           ))}
           <div className="maxwidth mx-auto px-6 relative">
             <FadeIn>
-              <p className="text-xs uppercase tracking-[0.35em] text-[#ecede3]/40 mb-4">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#ecede3]/70 mb-4">
                 {t("blogPage.eyebrow")}
               </p>
             </FadeIn>
@@ -260,13 +268,13 @@ export default function BlogPage() {
           )}
 
           {!isLoading && isError && (
-            <div className="py-32 text-center text-black/30 text-sm uppercase tracking-widest">
+            <div className="py-32 text-center text-black/65 text-sm uppercase tracking-widest">
               {t("blogPage.noArticles")}
             </div>
           )}
 
           {!isLoading && !isError && articles.length === 0 && (
-            <div className="py-32 text-center text-black/30 text-sm uppercase tracking-widest">
+            <div className="py-32 text-center text-black/65 text-sm uppercase tracking-widest">
               {t("blogPage.noArticles")}
             </div>
           )}
@@ -284,7 +292,7 @@ export default function BlogPage() {
               {rest.length > 0 && (
                 <div className="flex items-center gap-4 mb-12"
                   style={{ borderTop: "1px solid #1d454c22", paddingTop: isFirstPage ? "3rem" : "0" }}>
-                  <p className="text-xs uppercase tracking-[0.3em] text-black/30 shrink-0">
+                  <p className="text-xs uppercase tracking-[0.3em] text-black/65 shrink-0">
                     {isFirstPage ? t("blogPage.recentLabel") : `Page ${page}`}
                   </p>
                   <div className="flex items-center gap-2 opacity-15">
@@ -356,6 +364,8 @@ export default function BlogPage() {
             </FadeIn>
           </div>
         </section>
+
+        </main>
 
         <Footer />
       </div>

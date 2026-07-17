@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import logo from "../assets/Logo_Marabu_.png";
+import logo from "../assets/Logo_Marabu_.webp";
 
 const languages = [
   { code: "fr", label: "FRANCAIS" },
@@ -52,6 +52,13 @@ export default function Navbar() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[110] focus:px-5 focus:py-3 focus:bg-[#1d454c] focus:text-[#ecede3] focus:text-xs focus:uppercase focus:tracking-[0.2em]"
+      >
+        {t("navbar.skipToContent")}
+      </a>
+
       <motion.header
         className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300"
         style={{
@@ -68,9 +75,10 @@ export default function Navbar() {
           style={{ padding: scrolled ? "12px 24px" : "16px 24px" }}
         >
           {/* Logo */}
-          <Link to="/">
+          <Link to="/" aria-label={`${t("navbar.home")} — Marabu Services`}>
             <img
               src={logo}
+              alt="Marabu Services"
               className="w-32 md:w-36 transition-all duration-300"
               style={{ filter: isLight && !mobileOpen ? "brightness(0) invert(1)" : "none" }}
             />
@@ -78,40 +86,17 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex flex-col items-end gap-2 transition-all duration-300">
-            <div
-              className="flex transition-all duration-300 overflow-hidden"
-              style={{
-                maxHeight: scrolled ? 0 : 40,
-                opacity: scrolled ? 0 : 1,
-              }}
-            >
-              {languages.map((l) => (
-                <button
-                  key={l.code}
-                  className="w-28 p-1 text-xs cursor-pointer transition-all duration-200"
-                  style={{
-                    background: i18n.language === l.code ? langActiveBg : "transparent",
-                    color: i18n.language === l.code ? langActiveText : textColor,
-                    border: `1px solid ${langBorder}`,
-                    opacity: i18n.language === l.code ? 1 : 0.55,
-                  }}
-                  onClick={() => changeLang(l.code)}
-                >
-                  {l.label}
-                </button>
-              ))}
-            </div>
-
             <nav>
               <ul className="flex items-center gap-5">
                 {navItems.map(({ label, to }) => (
                   <li key={to}>
                     <Link
                       to={to}
+                      aria-current={location.pathname === to ? "page" : undefined}
                       className="text-sm transition-opacity duration-200 hover:opacity-100"
                       style={{
                         color: textColor,
-                        opacity: location.pathname === to ? 1 : 0.55,
+                        opacity: location.pathname === to ? 1 : 0.72,
                         fontWeight: location.pathname === to ? 600 : 400,
                         textDecoration: "underline",
                         textUnderlineOffset: "3px",
@@ -122,23 +107,26 @@ export default function Navbar() {
                   </li>
                 ))}
 
-                {scrolled &&
-                  languages.map((l) => (
-                    <li key={l.code}>
-                      <button
-                        className="text-xs cursor-pointer transition-all duration-200 px-2 py-0.5"
-                        style={{
-                          background: i18n.language === l.code ? langActiveBg : "transparent",
-                          color: i18n.language === l.code ? langActiveText : textColor,
-                          border: `1px solid ${langBorder}`,
-                          opacity: i18n.language === l.code ? 1 : 0.45,
-                        }}
-                        onClick={() => changeLang(l.code)}
-                      >
-                        {l.label}
-                      </button>
-                    </li>
-                  ))}
+                {/* Sélecteur de langue toujours au même endroit (stable au
+                    scroll) : l'ancienne version le faisait disparaître/réapparaître. */}
+                {languages.map((l) => (
+                  <li key={l.code}>
+                    <button
+                      lang={l.code}
+                      aria-pressed={i18n.language === l.code}
+                      className="text-xs cursor-pointer transition-all duration-200 px-2 py-0.5"
+                      style={{
+                        background: i18n.language === l.code ? langActiveBg : "transparent",
+                        color: i18n.language === l.code ? langActiveText : textColor,
+                        border: `1px solid ${langBorder}`,
+                        opacity: i18n.language === l.code ? 1 : 0.7,
+                      }}
+                      onClick={() => changeLang(l.code)}
+                    >
+                      {l.label}
+                    </button>
+                  </li>
+                ))}
 
                 <li>
                   <Link
@@ -163,20 +151,25 @@ export default function Navbar() {
           <button
             className="md:hidden flex flex-col justify-center gap-1.5 w-10 h-10 cursor-pointer"
             onClick={() => setMobileOpen((o) => !o)}
-            aria-label="Menu"
+            aria-label={mobileOpen ? t("navbar.closeMenu") : t("navbar.openMenu")}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             <motion.span
-              className="block w-6 h-px bg-[#1d454c]"
+              className="block w-6 h-0.5 rounded-full"
+              style={{ backgroundColor: mobileOpen ? "#1d454c" : textColor }}
               animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
             />
             <motion.span
-              className="block w-6 h-px bg-[#1d454c]"
+              className="block w-6 h-0.5 rounded-full"
+              style={{ backgroundColor: mobileOpen ? "#1d454c" : textColor }}
               animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="block w-6 h-px bg-[#1d454c]"
+              className="block w-6 h-0.5 rounded-full"
+              style={{ backgroundColor: mobileOpen ? "#1d454c" : textColor }}
               animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
             />
@@ -188,6 +181,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
             className="fixed inset-0 z-40 md:hidden bg-[#ecede3]"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
@@ -277,6 +271,8 @@ export default function Navbar() {
                 {languages.map((l) => (
                   <button
                     key={l.code}
+                    lang={l.code}
+                    aria-pressed={i18n.language === l.code}
                     className="flex-1 py-2.5 text-xs cursor-pointer transition-all duration-200"
                     style={{
                       background: i18n.language === l.code ? "#1d454c" : "transparent",

@@ -1,5 +1,32 @@
 {
+  "seo": {
+    "home": {
+      "title": "Consulting, Services & Intermediation",
+      "description": "Marabu Services supports organisations across West Africa: strategic consulting, operational services and business intermediation."
+    },
+    "about": {
+      "title": "About",
+      "description": "Discover Marabu Services: our story, our values and the team supporting organisations across West Africa."
+    },
+    "services": {
+      "title": "Our services",
+      "description": "Strategic consulting, operational services, intermediation, training and private diplomacy: explore the full range of Marabu Services expertise."
+    },
+    "blog": {
+      "title": "News",
+      "description": "Analysis, news and perspectives from Marabu Services on strategy, communication and business development in West Africa."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "A question, a project? Get in touch with the Marabu Services team in Abidjan. We reply within 24 hours."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "This page does not exist or has been moved."
+    }
+  },
   "common": {
+    "backToTop": "Back to top",
     "contactUs": "Contact us",
     "readMore": "Read article",
     "read": "Read",
@@ -14,19 +41,20 @@
     "replyDelay": "We will get back to you within 24 hours.",
     "required": "*"
   },
-
   "navbar": {
     "home": "Home",
     "about": "About Us",
     "services": "Services",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to main content"
   },
-
   "hero": {
     "tagline1": "The expertise that transforms",
     "tagline2": "your ambitions into lasting impact.",
-    "description": "From strategic consulting to international intermediation, Marabu Services guides businesses and institutions in their transformation, outreach, and influence.",
+    "description": "From strategic consulting to international intermediation, Marabu Services guides businesses and institutions in their transformation, their outreach, and the strengthening of their influence.",
     "cta": "Contact us",
     "images": [
       {
@@ -46,7 +74,6 @@
       }
     ]
   },
-
   "intro": {
     "label": "Introduction",
     "heading": "Innovative strategies for sustainable and high-performance growth.",
@@ -54,36 +81,50 @@
     "p2": "Specialised in strategic consulting, operational services and institutional intermediation, we operate where decisions are made — with governments, technical and financial partners, and the private actors shaping the continent.",
     "p3": "Founded in 2023 and based in Abidjan, Marabu is the partner of those who want to build with method, influence with integrity and grow with vision."
   },
-
   "services": {
     "label": "Our services",
     "heading1": "Three areas of",
     "heading2": "expertise, one commitment.",
+    "cta": "Explore this service",
     "items": [
       {
         "index": "01",
         "name": "Consulting",
         "tagline": "We help you make the right decisions.",
         "description": "Strategy, transformation, governance — alongside leaders who want to move forward with method and rigor.",
-        "tags": ["Strategy", "Transformation", "Governance", "Change Management"]
+        "tags": [
+          "Strategy",
+          "Transformation",
+          "Governance",
+          "Change Management"
+        ]
       },
       {
         "index": "02",
         "name": "Services",
         "tagline": "We do the work with you.",
         "description": "Training, communication, events — operational frameworks to strengthen your teams and amplify your impact.",
-        "tags": ["Training", "Communication", "Events", "Content"]
+        "tags": [
+          "Training",
+          "Communication",
+          "Events",
+          "Content"
+        ]
       },
       {
         "index": "03",
         "name": "Intermediation",
         "tagline": "We open the doors that matter.",
         "description": "Government relations, private diplomacy, international partnerships — Marabu acts behind the scenes with discretion and method.",
-        "tags": ["Gov. Relations", "Diplomacy", "PTF Partnerships", "Influence"]
+        "tags": [
+          "Gov. Relations",
+          "Diplomacy",
+          "PTF Partnerships",
+          "Influence"
+        ]
       }
     ]
   },
-
   "caseStudies": {
     "label": "Client Success Stories",
     "heading1": "Measurable results,",
@@ -95,9 +136,9 @@
         "client": "Yango",
         "project": "Marabu, architect of the inauguration of Yango Côte d'Ivoire's national headquarters",
         "description": "Global design, organisation and coordination of the inauguration of Yango's national headquarters in Abidjan — scenography, logistics, event communication and protocol coordination.",
-        "metric": "24 Aug.",
-        "metricLabel": "2025",
-        "year": "2025"
+        "metric": "",
+        "metricLabel": "",
+        "year": "24 Aug 2025"
       },
       {
         "id": "02",
@@ -115,13 +156,12 @@
         "client": "GUCE CI",
         "project": "Strategic tour with Technical and Financial Partners",
         "description": "Support for GUCE CI in a strategic tour with international Technical and Financial Partners, including the Turkish Embassy, to promote the digitisation of foreign trade in Côte d'Ivoire.",
-        "metric": "May 2024",
-        "metricLabel": "PTF Tour",
-        "year": "2024"
+        "metric": "",
+        "metricLabel": "",
+        "year": "May 2024"
       }
     ]
   },
-
   "testimonials": {
     "label": "Testimonials",
     "heading": "What our\nclients say.",
@@ -152,14 +192,15 @@
       }
     ]
   },
-
   "manifesto": {
     "eyebrow": "Our raison d'être",
-    "lines": ["Advisors, mediators", "and guardians of knowledge."],
+    "lines": [
+      "Advisors, mediators",
+      "and guardians of knowledge."
+    ],
     "desc": "Combining African wisdom with modern strategic action, for solutions that last and impacts that count.",
     "cta": "Work with us"
   },
-
   "blogPreview": {
     "label": "Insights",
     "heading": "Perspectives &\nanalyses.",
@@ -191,7 +232,6 @@
       }
     ]
   },
-
   "footer": {
     "cta": "Let's build\ntogether.",
     "contactBtn": "Contact us",
@@ -202,16 +242,36 @@
     "copyright": "© 2026 Marabu Services. All rights reserved.",
     "founded": "Founded in 2023 — Abidjan, Côte d'Ivoire",
     "nav": [
-      { "label": "Home",         "href": "#home" },
-      { "label": "Introduction", "href": "#about" },
-      { "label": "Services",     "href": "#services" },
-      { "label": "Case Studies", "href": "#case-studies" },
-      { "label": "Blog",         "href": "/actualites" },
-      { "label": "Contact",      "href": "#contact" }
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Blog",
+        "href": "/actualites"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
     ],
-    "expertises": ["Consulting", "Services", "Intermediation", "Strategy", "Training", "Private Diplomacy"]
+    "expertises": [
+      "Consulting",
+      "Services",
+      "Intermediation",
+      "Strategy",
+      "Training",
+      "Private Diplomacy"
+    ]
   },
-
   "contact": {
     "label": "Contact us",
     "heroTitle1": "Let's talk about",
@@ -253,11 +313,14 @@
       "Other / Not sure yet"
     ],
     "submit": "Send message →",
+    "submitting": "Sending…",
+    "errorMessage": "Sending failed. Please try again, or email us directly at",
+    "fieldRequired": "This field is required.",
+    "emailInvalid": "Invalid email address.",
     "successLabel": "Message sent",
     "successTitle": "Thank you for your message.",
     "successDesc": "We will get back to you within 24 hours."
   },
-
   "about": {
     "hero": {
       "title1": "The contemporary translators",
@@ -266,12 +329,30 @@
     "sidebarTitle": "On this page",
     "sidebarCta": "Contact us",
     "links": [
-      { "id": "who",     "label": "Who we are" },
-      { "id": "founder", "label": "Founder's note" },
-      { "id": "name",    "label": "The name's meaning" },
-      { "id": "values",  "label": "Mission, Vision, Values" },
-      { "id": "impact",  "label": "Social Impact" },
-      { "id": "info",    "label": "Company info" }
+      {
+        "id": "who",
+        "label": "Who we are"
+      },
+      {
+        "id": "founder",
+        "label": "Founder's note"
+      },
+      {
+        "id": "name",
+        "label": "The name's meaning"
+      },
+      {
+        "id": "values",
+        "label": "Mission, Vision, Values"
+      },
+      {
+        "id": "impact",
+        "label": "Social Impact"
+      },
+      {
+        "id": "info",
+        "label": "Company info"
+      }
     ],
     "who": {
       "label": "Who we are",
@@ -295,14 +376,39 @@
     "values": {
       "label": "Mission, Vision, Values",
       "mvp": [
-        { "label": "Mission", "text": "To embody excellence and innovation through concrete and strategic solutions. To support businesses and institutions in their ambitions for growth, digitalisation and sustainable performance." },
-        { "label": "Vision", "text": "To build bridges between local needs and global opportunities. To be the transformation catalyst that places people, innovation and long-term vision at the heart of every mission." },
-        { "label": "Our promise", "text": "Tailor-made, high-value answers. With agility, boldness and impact — we shape success trajectories together." }
+        {
+          "label": "Mission",
+          "text": "To embody excellence and innovation through concrete and strategic solutions. To support businesses and institutions in their ambitions for growth, digitalisation and sustainable performance."
+        },
+        {
+          "label": "Vision",
+          "text": "To build bridges between local needs and global opportunities. To be the transformation catalyst that places people, innovation and long-term vision at the heart of every mission."
+        },
+        {
+          "label": "Values",
+          "text": "Inspired innovation, positive impact and client commitment: three principles that guide each of our missions."
+        }
       ],
+      "promise": {
+        "label": "Our promise",
+        "text": "Tailor-made, high-value answers. With agility, boldness and impact — we shape success trajectories together."
+      },
       "items": [
-        { "n": "01", "title": "Inspired Innovation", "desc": "Uniting traditions with modern technologies. We draw on African wisdom to design solutions rooted in the present and oriented towards the future." },
-        { "n": "02", "title": "Positive Impact",     "desc": "Contributing to sustainable and inclusive development. Each mission is assessed on its real value to the organisations and communities they serve." },
-        { "n": "03", "title": "Client Commitment",   "desc": "Providing personalised solutions to your needs. We do not sell generic formulas — we build tailor-made answers, with you." }
+        {
+          "n": "01",
+          "title": "Inspired Innovation",
+          "desc": "Uniting traditions with modern technologies. We draw on African wisdom to design solutions rooted in the present and oriented towards the future."
+        },
+        {
+          "n": "02",
+          "title": "Positive Impact",
+          "desc": "Contributing to sustainable and inclusive development. Each mission is assessed on its real value to the organisations and communities they serve."
+        },
+        {
+          "n": "03",
+          "title": "Client Commitment",
+          "desc": "Providing personalised solutions to your needs. We do not sell generic formulas — we build tailor-made answers, with you."
+        }
       ]
     },
     "impact": {
@@ -311,33 +417,68 @@
       "heading2": "not promises.",
       "desc": "Every mandate we accept is a responsibility. We measure our success by the real impact generated for our clients and the communities they serve.",
       "stats": [
-        { "value": "2023", "label": "Year founded" },
-        { "value": "+15", "label": "Clients supported" },
-        { "value": "8",   "label": "Countries of operation" },
-        { "value": "3",   "label": "Key areas of expertise" }
+        {
+          "value": "2023",
+          "label": "Year founded"
+        },
+        {
+          "value": "+15",
+          "label": "Clients supported"
+        },
+        {
+          "value": "8",
+          "label": "Countries of operation"
+        },
+        {
+          "value": "3",
+          "label": "Key areas of expertise"
+        }
       ]
     },
     "info": {
       "label": "Company info",
       "items": [
-        { "label": "Headquarters",    "value": "Abidjan, Côte d'Ivoire" },
-        { "label": "Founded",         "value": "2023" },
-        { "label": "Sectors",         "value": "Consulting · Training · Intermediation" },
-        { "label": "Area of operation","value": "West & Central Africa" },
-        { "label": "Working languages","value": "French · English" },
-        { "label": "Contact",         "value": "hello@marabu-services.com" }
+        {
+          "label": "Headquarters",
+          "value": "Abidjan, Côte d'Ivoire"
+        },
+        {
+          "label": "Founded",
+          "value": "2023"
+        },
+        {
+          "label": "Sectors",
+          "value": "Consulting · Training · Intermediation"
+        },
+        {
+          "label": "Area of operation",
+          "value": "West & Central Africa"
+        },
+        {
+          "label": "Working languages",
+          "value": "French · English"
+        },
+        {
+          "label": "Contact",
+          "value": "contact@marabu.services"
+        }
       ]
     },
     "servicesSection": {
       "label": "Our services",
       "items": [
-        { "label": "Consulting" },
-        { "label": "Services" },
-        { "label": "Intermediation" }
+        {
+          "label": "Consulting"
+        },
+        {
+          "label": "Services"
+        },
+        {
+          "label": "Intermediation"
+        }
       ]
     }
   },
-
   "servicesPage": {
     "eyebrow": "What we do",
     "title1": "Three areas of",
@@ -346,15 +487,36 @@
     "sidebarTitle": "Our expertise",
     "sidebarCta": "Contact us",
     "stats": [
-      { "value": "3",   "label": "Key areas of expertise" },
-      { "value": "+15", "label": "Clients supported" },
-      { "value": "8",   "label": "Countries of operation" }
+      {
+        "value": "3",
+        "label": "Key areas of expertise"
+      },
+      {
+        "value": "+15",
+        "label": "Clients supported"
+      },
+      {
+        "value": "8",
+        "label": "Countries of operation"
+      }
     ],
     "links": [
-      { "id": "conseil",        "label": "Consulting" },
-      { "id": "services",       "label": "Services" },
-      { "id": "intermediation", "label": "Intermediation" },
-      { "id": "methode",        "label": "Our method" }
+      {
+        "id": "conseil",
+        "label": "Consulting"
+      },
+      {
+        "id": "services",
+        "label": "Services"
+      },
+      {
+        "id": "intermediation",
+        "label": "Intermediation"
+      },
+      {
+        "id": "methode",
+        "label": "Our method"
+      }
     ],
     "ctaInline": "Let's discuss your project",
     "services": [
@@ -364,10 +526,26 @@
         "name": "Consulting",
         "intro": "We support leaders and institutions in their most complex strategic decisions. Our approach combines analytical rigour with knowledge of the African terrain.",
         "offerings": [
-          { "n": "01", "title": "Business strategy",              "desc": "Setting direction, competitive positioning, medium and long-term development plans. We help organisations clarify their vision and build realistic trajectories." },
-          { "n": "02", "title": "Organisational transformation",  "desc": "Change management, optimisation of structures and processes. Marabu accompanies deep transformations with method and care for teams." },
-          { "n": "03", "title": "Governance & compliance",        "desc": "Design of governance frameworks adapted to regulatory requirements and institutional challenges of the sub-region." },
-          { "n": "04", "title": "Change management",              "desc": "Human and cultural change leadership. Training of executive teams, managing resistance, lasting accompaniment through transformation." }
+          {
+            "n": "01",
+            "title": "Business strategy",
+            "desc": "Setting direction, competitive positioning, medium and long-term development plans. We help organisations clarify their vision and build realistic trajectories."
+          },
+          {
+            "n": "02",
+            "title": "Organisational transformation",
+            "desc": "Change management, optimisation of structures and processes. Marabu accompanies deep transformations with method and care for teams."
+          },
+          {
+            "n": "03",
+            "title": "Governance & compliance",
+            "desc": "Design of governance frameworks adapted to regulatory requirements and institutional challenges of the sub-region."
+          },
+          {
+            "n": "04",
+            "title": "Change management",
+            "desc": "Human and cultural change leadership. Training of executive teams, managing resistance, lasting accompaniment through transformation."
+          }
         ]
       },
       {
@@ -376,10 +554,26 @@
         "name": "Services",
         "intro": "Operational frameworks to strengthen your teams, amplify your image and deliver tangible results. Marabu works with you, not in your place.",
         "offerings": [
-          { "n": "01", "title": "Professional training",          "desc": "Tailored modules: e-reputation, crisis communication, leadership, project management. Delivered by experts, in person or online." },
-          { "n": "02", "title": "Institutional communication",    "desc": "Editorial strategy, brand image management, press relations. We build coherent and lasting narratives for your institutions." },
-          { "n": "03", "title": "Strategic events",               "desc": "Design, organisation and coordination of high-impact events: inaugurations, summits, institutional ceremonies, forums." },
-          { "n": "04", "title": "Content creation",               "desc": "Production of high added-value content: reports, advocacy pieces, institutional publications, training materials." }
+          {
+            "n": "01",
+            "title": "Professional training",
+            "desc": "Tailored modules: e-reputation, crisis communication, leadership, project management. Delivered by experts, in person or online."
+          },
+          {
+            "n": "02",
+            "title": "Institutional communication",
+            "desc": "Editorial strategy, brand image management, press relations. We build coherent and lasting narratives for your institutions."
+          },
+          {
+            "n": "03",
+            "title": "Strategic events",
+            "desc": "Design, organisation and coordination of high-impact events: inaugurations, summits, institutional ceremonies, forums."
+          },
+          {
+            "n": "04",
+            "title": "Content creation",
+            "desc": "Production of high added-value content: reports, advocacy pieces, institutional publications, training materials."
+          }
         ]
       },
       {
@@ -388,10 +582,26 @@
         "name": "Intermediation",
         "intro": "Marabu acts behind the scenes with discretion and method. We open the doors that matter — in governmental, diplomatic and financial circles.",
         "offerings": [
-          { "n": "01", "title": "Government relations",           "desc": "Strategic interface with public decision-makers, ministries and regulatory institutions. Facilitation of high-sensitivity dialogues." },
-          { "n": "02", "title": "Private diplomacy",              "desc": "Support in bilateral negotiations, influence missions and mandates with an international dimension." },
-          { "n": "03", "title": "PTF partnerships",               "desc": "Networking and facilitation with Technical and Financial Partners: donors, development agencies, embassies." },
-          { "n": "04", "title": "Influence strategy",             "desc": "Building influence positioning, interest advocacy, mapping of key actors and management of power relations." }
+          {
+            "n": "01",
+            "title": "Government relations",
+            "desc": "Strategic interface with public decision-makers, ministries and regulatory institutions. Facilitation of high-sensitivity dialogues."
+          },
+          {
+            "n": "02",
+            "title": "Private diplomacy",
+            "desc": "Support in bilateral negotiations, influence missions and mandates with an international dimension."
+          },
+          {
+            "n": "03",
+            "title": "PTF partnerships",
+            "desc": "Networking and facilitation with Technical and Financial Partners: donors, development agencies, embassies."
+          },
+          {
+            "n": "04",
+            "title": "Influence strategy",
+            "desc": "Building influence positioning, interest advocacy, mapping of key actors and management of power relations."
+          }
         ]
       }
     ],
@@ -400,10 +610,26 @@
       "title": "How we work",
       "desc": "Every mandate is unique. Our process adapts to your constraints, but always rests on the same foundations: listening, rigour, impact.",
       "steps": [
-        { "n": "01", "title": "Listening & diagnosis",     "desc": "Before any recommendation, we take the time to understand your real challenges. An in-depth consultation to grasp the context, constraints and ambitions." },
-        { "n": "02", "title": "Designing the framework",   "desc": "We design a tailor-made response — no generic formulas. Each mission is built around your specific objectives." },
-        { "n": "03", "title": "Implementation & steering", "desc": "Rigorous execution with regular follow-up. We remain present throughout the mission to adjust in real time." },
-        { "n": "04", "title": "Assessment & impact",       "desc": "Impact measurement, clear reporting of results and recommendations for the next steps. We measure our success by yours." }
+        {
+          "n": "01",
+          "title": "Listening & diagnosis",
+          "desc": "Before any recommendation, we take the time to understand your real challenges. An in-depth consultation to grasp the context, constraints and ambitions."
+        },
+        {
+          "n": "02",
+          "title": "Designing the framework",
+          "desc": "We design a tailor-made response — no generic formulas. Each mission is built around your specific objectives."
+        },
+        {
+          "n": "03",
+          "title": "Implementation & steering",
+          "desc": "Rigorous execution with regular follow-up. We remain present throughout the mission to adjust in real time."
+        },
+        {
+          "n": "04",
+          "title": "Assessment & impact",
+          "desc": "Impact measurement, clear reporting of results and recommendations for the next steps. We measure our success by yours."
+        }
       ]
     },
     "contact": {
@@ -414,13 +640,18 @@
       "address": "Abidjan, Côte d'Ivoire"
     }
   },
-
   "blogPage": {
     "eyebrow": "Marabu Services",
     "title1": "Insights &",
     "title2": "Analyses.",
     "subtitle": "Strategic perspectives on Africa, governance, private diplomacy and organisational transformation.",
-    "categories": ["All", "Strategy", "Intermediation", "Services", "Training"],
+    "categories": [
+      "All",
+      "Strategy",
+      "Intermediation",
+      "Services",
+      "Training"
+    ],
     "noArticles": "No articles in this category.",
     "recentLabel": "Recent articles",
     "featuredLabel": "Featured",
@@ -496,5 +727,10 @@
         "featured": false
       }
     ]
+  },
+  "notFound": {
+    "title": "This page doesn't exist.",
+    "desc": "The link may be wrong, or the page has moved. Head back home or get in touch.",
+    "home": "Back to home"
   }
 }

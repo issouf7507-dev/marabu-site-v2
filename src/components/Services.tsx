@@ -1,31 +1,32 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FlowArt, { FlowSection } from "./ui/story-scroll";
 import { FadeIn } from "./ui/fade-in";
-import coris2 from "../assets/coris2.png";
-import conseil1 from "../assets/imgs/conseils/conseil-1.jpg";
-import conseil2 from "../assets/imgs/conseils/conseil-2.jpg";
-import conseil3 from "../assets/imgs/conseils/conseil-3.jpg";
-import conseil4 from "../assets/imgs/conseils/conseil-4.jpg";
-import conseil6 from "../assets/imgs/conseils/conseil-6.jpg";
-import conseil7 from "../assets/imgs/conseils/conseil-7.jpg";
-import conseil8 from "../assets/imgs/conseils/conseil-8.jpg";
-import conseil9 from "../assets/imgs/conseils/conseil-9.jpg";
-import conseil10 from "../assets/imgs/conseils/conseil-10.jpg";
-import services1 from "../assets/imgs/services/services-1.jpg";
-import services2 from "../assets/imgs/services/services-2.jpg";
-import services5 from "../assets/imgs/services/services-5.jpg";
-import services6 from "../assets/imgs/services/services-6.jpg";
-import services7 from "../assets/imgs/services/services-7.jpg";
-import services8 from "../assets/imgs/services/services-8.jpg";
-import inter1 from "../assets/imgs/intermediation/intermediation-1.jpg";
-import inter2 from "../assets/imgs/intermediation/intermediation-2.jpg";
-import inter4 from "../assets/imgs/intermediation/intermediation-4.jpg";
-import inter5 from "../assets/imgs/intermediation/intermediation-5.jpg";
-import inter6 from "../assets/imgs/intermediation/intermediation-6.jpg";
-import inter7 from "../assets/imgs/intermediation/intermediation-7.jpg";
-import inter8 from "../assets/imgs/intermediation/intermediation-8.jpg";
-import inter9 from "../assets/imgs/intermediation/intermediation-9.jpg";
+import coris2 from "../assets/coris2.webp";
+import conseil1 from "../assets/imgs/conseils/conseil-1.webp";
+import conseil2 from "../assets/imgs/conseils/conseil-2.webp";
+import conseil3 from "../assets/imgs/conseils/conseil-3.webp";
+import conseil4 from "../assets/imgs/conseils/conseil-4.webp";
+import conseil6 from "../assets/imgs/conseils/conseil-6.webp";
+import conseil7 from "../assets/imgs/conseils/conseil-7.webp";
+import conseil8 from "../assets/imgs/conseils/conseil-8.webp";
+import conseil9 from "../assets/imgs/conseils/conseil-9.webp";
+import conseil10 from "../assets/imgs/conseils/conseil-10.webp";
+import services1 from "../assets/imgs/services/services-1.webp";
+import services2 from "../assets/imgs/services/services-2.webp";
+import services5 from "../assets/imgs/services/services-5.webp";
+import services6 from "../assets/imgs/services/services-6.webp";
+import services7 from "../assets/imgs/services/services-7.webp";
+import services8 from "../assets/imgs/services/services-8.webp";
+import inter1 from "../assets/imgs/intermediation/intermediation-1.webp";
+import inter2 from "../assets/imgs/intermediation/intermediation-2.webp";
+import inter4 from "../assets/imgs/intermediation/intermediation-4.webp";
+import inter5 from "../assets/imgs/intermediation/intermediation-5.webp";
+import inter6 from "../assets/imgs/intermediation/intermediation-6.webp";
+import inter7 from "../assets/imgs/intermediation/intermediation-7.webp";
+import inter8 from "../assets/imgs/intermediation/intermediation-8.webp";
+import inter9 from "../assets/imgs/intermediation/intermediation-9.webp";
 
 const ITEM_H = 300;
 const GAP = 14;
@@ -84,6 +85,9 @@ function VerticalReel({
   );
 }
 
+// Slugs des sections correspondantes sur /services (pour l'ancrage des CTA).
+const serviceSlugs = ["conseil", "services", "intermediation"];
+
 const serviceImages = [
   {
     images: [
@@ -140,7 +144,7 @@ export default function Services() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="text-4xl font-light max-w-md text-right leading-snug text-gray-900">
+            <h2 className="text-4xl font-light max-w-md text-right leading-snug text-[#1d454c]">
               {t("services.heading1")}
               <br />
               {t("services.heading2")}
@@ -150,7 +154,7 @@ export default function Services() {
       </div>
 
       <FlowArt aria-label="Services Marabu">
-        {services.map((s) => (
+        {services.map((s, i) => (
           <FlowSection
             key={s.index}
             aria-label={s.name}
@@ -237,15 +241,29 @@ export default function Services() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {s.tags.map((tag) => (
-                  <span
+                  <Link
                     key={tag}
-                    className="text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
-                    style={{ border: "1px solid currentColor", opacity: 0.5 }}
+                    to={`/services#${serviceSlugs[i]}`}
+                    className="text-xs uppercase tracking-widest px-3 py-1.5 rounded-full transition-opacity duration-200 opacity-60 hover:opacity-100"
+                    style={{ border: "1px solid currentColor" }}
                   >
                     {tag}
-                  </span>
+                  </Link>
                 ))}
               </div>
+
+              {/* CTA principal du service — mène à sa section dédiée sur /services */}
+              <Link
+                to={`/services#${serviceSlugs[i]}`}
+                className="mt-2 inline-flex items-center gap-2 w-fit text-xs uppercase tracking-[0.2em] px-7 py-3.5 whitespace-nowrap transition-colors duration-200"
+                style={{
+                  backgroundColor: s.accent,
+                  color: s.bg,
+                }}
+              >
+                {t("services.cta")}
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </FlowSection>
         ))}

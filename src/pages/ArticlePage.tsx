@@ -1,9 +1,12 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import DOMPurify from "dompurify";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+import Seo from "../components/Seo";
 import { useArticle, formatDate } from "../hooks/useArticles";
 
 function ArticleSkeleton() {
@@ -28,10 +31,27 @@ export default function ArticlePage() {
   const locale = i18n.language;
   const { data: article, isLoading, isError } = useArticle(id ?? "");
 
+  // Le HTML vient du CMS : on l'assainit avant injection (cf. audit C4).
+  const safeContent = useMemo(
+    () => (article ? DOMPurify.sanitize(article.content) : ""),
+    [article],
+  );
+
   return (
     <PageTransition>
+      {article && (
+        <Seo
+          title={article.title}
+          description={article.excerpt}
+          path={`/actualites/${article.id}`}
+          image={article.featuredImage}
+          type="article"
+        />
+      )}
       <div className="min-h-screen bg-[#ecede3]">
         <Navbar />
+
+        <main id="main-content">
 
         {isLoading && (
           <div className="pt-20">
@@ -41,7 +61,7 @@ export default function ArticlePage() {
 
         {!isLoading && isError && (
           <div className="pt-40 text-center">
-            <p className="text-black/30 text-sm uppercase tracking-widest mb-8">
+            <p className="text-black/65 text-sm uppercase tracking-widest mb-8">
               {t("blogPage.noArticles")}
             </p>
             <Link
@@ -75,7 +95,7 @@ export default function ArticlePage() {
               {/* Back link */}
               <Link
                 to="/actualites"
-                className="text-xs uppercase tracking-[0.2em] text-black/40 flex items-center gap-2 mb-10 hover:gap-4 hover:text-[#1d454c] transition-all duration-300"
+                className="text-xs uppercase tracking-[0.2em] text-black/60 flex items-center gap-2 mb-10 hover:gap-4 hover:text-[#1d454c] transition-all duration-300"
               >
                 ← {t("blogPage.eyebrow")}
               </Link>
@@ -91,7 +111,7 @@ export default function ArticlePage() {
                     {cat.name}
                   </span>
                 ))}
-                <span className="text-xs text-black/35">
+                <span className="text-xs text-black/60">
                   {formatDate(article.publishedAt, locale)}
                 </span>
               </div>
@@ -112,11 +132,13 @@ export default function ArticlePage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                dangerouslySetInnerHTML={{ __html: article.content }}
+                dangerouslySetInnerHTML={{ __html: safeContent }}
               />
             </div>
           </>
         )}
+
+        </main>
 
         <Footer />
       </div>

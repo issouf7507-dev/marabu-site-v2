@@ -55,7 +55,7 @@ const FlowArt: React.FC<FlowArtProps> = ({
   className,
   'aria-label': ariaLabel = 'Story scroll',
 }) => {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -121,13 +121,17 @@ const FlowArt: React.FC<FlowArtProps> = ({
   );
 
   return (
-    <main
+    // Élément neutre (pas <main>) : ce composant est monté à l'intérieur du
+    // <main id="main-content"> de la page. Deux <main> imbriqués créent deux
+    // landmarks « main » sur la même page (violation WCAG 1.3.1 / ARIA).
+    <div
       ref={containerRef}
+      role="region"
       aria-label={ariaLabel}
       className={cx('w-full overflow-x-hidden', className)}
     >
       {children}
-    </main>
+    </div>
   );
 };
 

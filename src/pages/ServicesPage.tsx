@@ -1,32 +1,44 @@
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FocusEvent,
+  type FormEvent,
+} from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "../components/ui/fade-in";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
-import coris2 from "../assets/coris2.png";
-import bgLoader from "../assets/imgs/Cauris-bg.png";
-import conseil1 from "../assets/imgs/conseils/conseil-1.jpg";
-import conseil2 from "../assets/imgs/conseils/conseil-2.jpg";
-import conseil3 from "../assets/imgs/conseils/conseil-3.jpg";
-import conseil4 from "../assets/imgs/conseils/conseil-4.jpg";
-import conseil7 from "../assets/imgs/conseils/conseil-7.jpg";
-import conseil8 from "../assets/imgs/conseils/conseil-8.jpg";
-import conseil9 from "../assets/imgs/conseils/conseil-9.jpg";
-import services1 from "../assets/imgs/services/services-1.jpg";
-import services2 from "../assets/imgs/services/services-2.jpg";
-import services5 from "../assets/imgs/services/services-5.jpg";
-import services6 from "../assets/imgs/services/services-6.jpg";
-import services7 from "../assets/imgs/services/services-7.jpg";
-import services8 from "../assets/imgs/services/services-8.jpg";
-import inter1 from "../assets/imgs/intermediation/intermediation-1.jpg";
-import inter2 from "../assets/imgs/intermediation/intermediation-2.jpg";
-import inter4 from "../assets/imgs/intermediation/intermediation-4.jpg";
-import inter5 from "../assets/imgs/intermediation/intermediation-5.jpg";
-import inter6 from "../assets/imgs/intermediation/intermediation-6.jpg";
-import inter7 from "../assets/imgs/intermediation/intermediation-7.jpg";
-import ereputation from "../assets/imgs/formation-e-reputation.jpg";
+import Seo from "../components/Seo";
+import coris2 from "../assets/coris2.webp";
+import bgLoader from "../assets/imgs/Cauris-bg.webp";
+import conseil1 from "../assets/imgs/conseils/conseil-1.webp";
+import conseil2 from "../assets/imgs/conseils/conseil-2.webp";
+import conseil3 from "../assets/imgs/conseils/conseil-3.webp";
+import conseil4 from "../assets/imgs/conseils/conseil-4.webp";
+import conseil7 from "../assets/imgs/conseils/conseil-7.webp";
+import conseil8 from "../assets/imgs/conseils/conseil-8.webp";
+import conseil9 from "../assets/imgs/conseils/conseil-9.webp";
+import services1 from "../assets/imgs/services/services-1.webp";
+import services2 from "../assets/imgs/services/services-2.webp";
+import services5 from "../assets/imgs/services/services-5.webp";
+import services6 from "../assets/imgs/services/services-6.webp";
+import services7 from "../assets/imgs/services/services-7.webp";
+import services8 from "../assets/imgs/services/services-8.webp";
+import inter1 from "../assets/imgs/intermediation/intermediation-1.webp";
+import inter2 from "../assets/imgs/intermediation/intermediation-2.webp";
+import inter4 from "../assets/imgs/intermediation/intermediation-4.webp";
+import inter5 from "../assets/imgs/intermediation/intermediation-5.webp";
+import inter6 from "../assets/imgs/intermediation/intermediation-6.webp";
+import inter7 from "../assets/imgs/intermediation/intermediation-7.webp";
+import ereputation from "../assets/imgs/formation-e-reputation.webp";
+import { CONTACT_EMAIL } from "../config/site";
+
+// Clé publique Web3Forms (partagée avec ContactPage) — sûre côté client.
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
 
 // Images for serviceData (kept hardcoded as they can't be in JSON)
 const serviceHeroImages = [conseil1, services1, inter1];
@@ -60,8 +72,7 @@ function ParallaxHero() {
   return (
     <section
       ref={ref}
-      className="relative w-full overflow-hidden"
-      style={{ height: "60vh", minHeight: 400 }}
+      className="relative w-full overflow-hidden h-[40vh] min-h-[280px] md:h-[60vh] md:min-h-[400px]"
     >
       <motion.img
         src={bgLoader}
@@ -192,8 +203,15 @@ export default function ServicesPage() {
 
   return (
     <PageTransition>
+      <Seo
+        title={t("seo.services.title")}
+        description={t("seo.services.description")}
+        path="/services"
+      />
       <div className="min-h-screen bg-[#ecede3]">
         <Navbar />
+
+        <main id="main-content">
 
         <ParallaxHero />
 
@@ -203,7 +221,7 @@ export default function ServicesPage() {
           style={{ borderBottom: "1px solid #e5e7eb" }}
         >
           <FadeIn>
-            <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-4">
+            <p className="text-xs uppercase tracking-[0.3em] text-black/60 mb-4">
               {t("servicesPage.eyebrow")}
             </p>
             <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-light leading-tight text-gray-900 max-w-3xl">
@@ -215,7 +233,7 @@ export default function ServicesPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-black/50 text-sm leading-relaxed max-w-xl mt-6">
+            <p className="text-black/65 text-sm leading-relaxed max-w-xl mt-6">
               {t("servicesPage.subtitle")}
             </p>
           </FadeIn>
@@ -309,7 +327,7 @@ export default function ServicesPage() {
                         {svc.name}
                       </motion.h2>
                       <motion.p
-                        className="text-black/55 text-sm leading-relaxed"
+                        className="text-black/65 text-sm leading-relaxed"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 0.55, x: 0 }}
                         viewport={{ once: true, margin: "-60px" }}
@@ -404,7 +422,7 @@ export default function ServicesPage() {
                             <h3 className="text-base font-medium text-gray-900 mb-2">
                               {item.title}
                             </h3>
-                            <p className="text-sm text-black/50 leading-relaxed max-w-lg">
+                            <p className="text-sm text-black/65 leading-relaxed max-w-lg">
                               {item.desc}
                             </p>
                           </div>
@@ -531,7 +549,7 @@ export default function ServicesPage() {
                   />
                 ))}
                 <FadeIn>
-                  <p className="text-xs uppercase tracking-[0.3em] text-black/35 mb-2">
+                  <p className="text-xs uppercase tracking-[0.3em] text-black/60 mb-2">
                     {t("servicesPage.methode.eyebrow")}
                   </p>
                 </FadeIn>
@@ -541,7 +559,7 @@ export default function ServicesPage() {
                   </h2>
                 </FadeIn>
                 <FadeIn delay={0.1}>
-                  <p className="text-black/50 text-sm leading-relaxed max-w-lg mb-14">
+                  <p className="text-black/65 text-sm leading-relaxed max-w-lg mb-14">
                     {t("servicesPage.methode.desc")}
                   </p>
                 </FadeIn>
@@ -598,14 +616,14 @@ export default function ServicesPage() {
                         />
                       </div>
                       <div className="flex gap-6">
-                        <span className="text-xs text-[#538253] tracking-widest shrink-0 pt-0.5">
+                        <span className="text-xs text-[#3f6b3f] tracking-widest shrink-0 pt-0.5">
                           {step.n}
                         </span>
                         <div>
                           <p className="font-medium text-gray-900 mb-1.5">
                             {step.title}
                           </p>
-                          <p className="text-black/50 text-sm leading-relaxed">
+                          <p className="text-black/65 text-sm leading-relaxed">
                             {step.desc}
                           </p>
                         </div>
@@ -619,7 +637,7 @@ export default function ServicesPage() {
             {/* ── SIDEBAR ── */}
             <aside className="hidden lg:block self-stretch">
               <div className="sticky top-28">
-                <p className="text-xs uppercase tracking-[0.25em] text-black/30 mb-5">
+                <p className="text-xs uppercase tracking-[0.25em] text-black/65 mb-5">
                   {t("servicesPage.sidebarTitle")}
                 </p>
                 <nav className="space-y-0.5">
@@ -629,7 +647,7 @@ export default function ServicesPage() {
                       onClick={() => scrollTo(link.id)}
                       className="block w-full text-left text-sm py-2.5 px-3 rounded-lg transition-all duration-200"
                       style={{
-                        color: active === link.id ? "#538253" : "#9ca3af",
+                        color: active === link.id ? "#3f6b3f" : "#9ca3af",
                         fontWeight: active === link.id ? 500 : 400,
                       }}
                     >
@@ -687,7 +705,7 @@ export default function ServicesPage() {
                       <p className="text-2xl font-light text-[#538253]">
                         {s.value}
                       </p>
-                      <p className="text-xs uppercase tracking-widest text-black/40 mt-0.5">
+                      <p className="text-xs uppercase tracking-widest text-black/60 mt-0.5">
                         {s.label}
                       </p>
                     </div>
@@ -711,6 +729,8 @@ export default function ServicesPage() {
         {/* ══ CONTACT ══ */}
         <ContactSection />
 
+        </main>
+
         <Footer />
       </div>
     </PageTransition>
@@ -726,20 +746,109 @@ function ContactSection() {
     service: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const submitted = status === "sent";
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // Focus déplacé sur la confirmation après envoi (cf. ContactPage) : retour
+  // explicite du succès pour les utilisateurs clavier/lecteur d'écran.
+  useEffect(() => {
+    if (submitted) successRef.current?.focus();
+  }, [submitted]);
+
   const contactServices = t("contact.services", {
     returnObjects: true,
   }) as string[];
 
+  type FieldErrors = { name?: string; email?: string; message?: string };
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function fieldError(name: string, value: string): string | undefined {
+    const v = value.trim();
+    if (name === "email") {
+      if (!v) return t("contact.fieldRequired");
+      return emailRe.test(v) ? undefined : t("contact.emailInvalid");
+    }
+    if (name === "name" || name === "message") {
+      return v ? undefined : t("contact.fieldRequired");
+    }
+    return undefined;
+  }
+
+  function validateAll(): FieldErrors {
+    const next: FieldErrors = {};
+    (["name", "email", "message"] as const).forEach((k) => {
+      const err = fieldError(k, form[k]);
+      if (err) next[k] = err;
+    });
+    return next;
+  }
+
   function handleChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FieldErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   }
 
-  function handleSubmit(e: { preventDefault(): void }) {
+  function handleFieldBlur(
+    e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    e.target.style.borderColor = "#e5e7eb";
+    const { name, value } = e.target;
+    setErrors((prev) => ({ ...prev, [name]: fieldError(name, value) }));
+  }
+
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    if (status === "sending") return;
+
+    const errs = validateAll();
+    setErrors(errs);
+    const firstInvalid = (["name", "email", "message"] as const).find(
+      (k) => errs[k],
+    );
+    if (firstInvalid) {
+      document.getElementById(`c-${firstInvalid}`)?.focus();
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        // Borne l'attente : une connexion instable ne doit pas figer le bouton.
+        signal: AbortSignal.timeout(15000),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nouveau message du site (Services) — ${form.name}`,
+          from_name: "Site Marabu",
+          name: form.name,
+          email: form.email,
+          organisation: form.organisation || "—",
+          service: form.service || "—",
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message ?? "Submission failed");
+      }
+      setStatus("sent");
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      setStatus("error");
+    }
   }
 
   return (
@@ -778,7 +887,7 @@ function ContactSection() {
           {/* ── Côté gauche ── */}
           <div>
             <FadeIn>
-              <p className="text-xs uppercase tracking-[0.35em] text-black/35 mb-5">
+              <p className="text-xs uppercase tracking-[0.35em] text-black/60 mb-5">
                 {t("servicesPage.contact.eyebrow")}
               </p>
               <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light leading-tight text-gray-900 mb-6">
@@ -788,7 +897,7 @@ function ContactSection() {
                   {t("servicesPage.contact.heading2")}
                 </span>
               </h2>
-              <p className="text-black/50 text-sm leading-relaxed max-w-sm mb-10">
+              <p className="text-black/65 text-sm leading-relaxed max-w-sm mb-10">
                 {t("servicesPage.contact.desc")}
               </p>
             </FadeIn>
@@ -796,7 +905,7 @@ function ContactSection() {
               <div className="space-y-4">
                 <a
                   href="mailto:contact@marabu.services"
-                  className="flex items-center gap-3 text-sm text-gray-700 hover:text-[#538253] transition-colors duration-200"
+                  className="flex items-center gap-3 text-sm text-gray-700 hover:text-[#3f6b3f] transition-colors duration-200"
                 >
                   <span
                     className="w-8 h-8 flex items-center justify-center"
@@ -860,7 +969,11 @@ function ContactSection() {
           <FadeIn delay={0.1}>
             {submitted ? (
               <motion.div
-                className="flex flex-col items-center justify-center text-center py-20"
+                ref={successRef}
+                role="status"
+                aria-live="polite"
+                tabIndex={-1}
+                className="flex flex-col items-center justify-center text-center py-20 outline-none"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, ease: [0.25, 0, 0, 1] }}
@@ -881,13 +994,13 @@ function ContactSection() {
                     />
                   ))}
                 </div>
-                <p className="text-xs uppercase tracking-[0.35em] text-[#538253] mb-3">
+                <p className="text-xs uppercase tracking-[0.35em] text-[#3f6b3f] mb-3">
                   {t("contact.successLabel")}
                 </p>
                 <h3 className="text-2xl font-light text-gray-900 mb-2">
                   {t("contact.successTitle")}
                 </h3>
-                <p className="text-black/45 text-sm">
+                <p className="text-black/65 text-sm">
                   {t("contact.successDesc")}
                 </p>
               </motion.div>
@@ -897,10 +1010,10 @@ function ContactSection() {
                   <div>
                     <label
                       htmlFor="c-name"
-                      className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2"
+                      className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
                     >
                       {t("contact.fields.name")}{" "}
-                      <span style={{ color: "#538253" }}>
+                      <span style={{ color: "#538253" }} aria-hidden="true">
                         {t("common.required")}
                       </span>
                     </label>
@@ -909,22 +1022,36 @@ function ContactSection() {
                       name="name"
                       type="text"
                       required
+                      aria-required="true"
+                      aria-invalid={errors.name ? true : undefined}
+                      aria-describedby={
+                        errors.name ? "c-name-error" : undefined
+                      }
                       value={form.name}
                       onChange={handleChange}
                       placeholder={t("contact.fields.namePlaceholder")}
-                      className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/25 focus:outline-none transition-colors duration-200 bg-white"
+                      className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/45 focus:outline-none transition-colors duration-200 bg-white"
                       style={{ border: "1px solid #e5e7eb" }}
                       onFocus={(e) => (e.target.style.borderColor = "#538253")}
-                      onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                      onBlur={handleFieldBlur}
                     />
+                    {errors.name && (
+                      <p
+                        id="c-name-error"
+                        role="alert"
+                        className="mt-1.5 text-xs text-[#b4231d]"
+                      >
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label
                       htmlFor="c-email"
-                      className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2"
+                      className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
                     >
                       {t("contact.fields.email")}{" "}
-                      <span style={{ color: "#538253" }}>
+                      <span style={{ color: "#538253" }} aria-hidden="true">
                         {t("common.required")}
                       </span>
                     </label>
@@ -933,21 +1060,35 @@ function ContactSection() {
                       name="email"
                       type="email"
                       required
+                      aria-required="true"
+                      aria-invalid={errors.email ? true : undefined}
+                      aria-describedby={
+                        errors.email ? "c-email-error" : undefined
+                      }
                       value={form.email}
                       onChange={handleChange}
                       placeholder={t("contact.fields.emailPlaceholder")}
-                      className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/25 focus:outline-none transition-colors duration-200 bg-white"
+                      className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/45 focus:outline-none transition-colors duration-200 bg-white"
                       style={{ border: "1px solid #e5e7eb" }}
                       onFocus={(e) => (e.target.style.borderColor = "#538253")}
-                      onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                      onBlur={handleFieldBlur}
                     />
+                    {errors.email && (
+                      <p
+                        id="c-email-error"
+                        role="alert"
+                        className="mt-1.5 text-xs text-[#b4231d]"
+                      >
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 <div>
                   <label
                     htmlFor="c-org"
-                    className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2"
+                    className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
                   >
                     {t("contact.fields.org")}
                   </label>
@@ -958,7 +1099,7 @@ function ContactSection() {
                     value={form.organisation}
                     onChange={handleChange}
                     placeholder={t("contact.fields.orgPlaceholder")}
-                    className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/25 focus:outline-none transition-colors duration-200 bg-white"
+                    className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/45 focus:outline-none transition-colors duration-200 bg-white"
                     style={{ border: "1px solid #e5e7eb" }}
                     onFocus={(e) => (e.target.style.borderColor = "#538253")}
                     onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
@@ -968,7 +1109,7 @@ function ContactSection() {
                 <div>
                   <label
                     htmlFor="c-service"
-                    className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2"
+                    className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
                   >
                     {t("contact.fields.service")}
                   </label>
@@ -992,7 +1133,7 @@ function ContactSection() {
                 <div>
                   <label
                     htmlFor="c-message"
-                    className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2"
+                    className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
                   >
                     {t("contact.fields.message")}{" "}
                     <span style={{ color: "#538253" }}>
@@ -1003,25 +1144,64 @@ function ContactSection() {
                     id="c-message"
                     name="message"
                     required
+                    aria-required="true"
+                    aria-invalid={errors.message ? true : undefined}
+                    aria-describedby={
+                      errors.message ? "c-message-error" : undefined
+                    }
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
                     placeholder={t("contact.fields.messagePlaceholder")}
-                    className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/25 focus:outline-none transition-colors duration-200 bg-white resize-none"
+                    className="w-full px-4 py-3 text-sm text-gray-900 placeholder-black/45 focus:outline-none transition-colors duration-200 bg-white resize-none"
                     style={{ border: "1px solid #e5e7eb" }}
                     onFocus={(e) => (e.target.style.borderColor = "#538253")}
-                    onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                    onBlur={handleFieldBlur}
                   />
+                  {errors.message && (
+                    <p
+                      id="c-message-error"
+                      role="alert"
+                      className="mt-1.5 text-xs text-[#b4231d]"
+                    >
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
+
+                {status === "error" && (
+                  <p
+                    role="alert"
+                    className="text-sm px-4 py-3"
+                    style={{
+                      backgroundColor: "#b4231d10",
+                      border: "1px solid #b4231d40",
+                      color: "#8c1a15",
+                    }}
+                  >
+                    {t("contact.errorMessage")}{" "}
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+                      {CONTACT_EMAIL}
+                    </a>
+                  </p>
+                )}
 
                 <motion.button
                   type="submit"
-                  className="w-full py-4 text-xs uppercase tracking-[0.25em] text-white transition-opacity duration-200"
-                  style={{ backgroundColor: "#1d454c" }}
-                  whileHover={{ opacity: 0.85 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={status === "sending"}
+                  className="w-full py-4 text-xs uppercase tracking-[0.25em] text-white transition-opacity duration-200 disabled:cursor-not-allowed"
+                  style={{
+                    backgroundColor: "#1d454c",
+                    opacity: status === "sending" ? 0.6 : 1,
+                  }}
+                  whileHover={
+                    status === "sending" ? undefined : { opacity: 0.85 }
+                  }
+                  whileTap={status === "sending" ? undefined : { scale: 0.98 }}
                 >
-                  {t("contact.submit")}
+                  {status === "sending"
+                    ? t("contact.submitting")
+                    : t("contact.submit")}
                 </motion.button>
               </form>
             )}

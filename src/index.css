@@ -1,4 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+/*
+  Poppins auto-hébergée (subset latin), au lieu d'un @import Google Fonts :
+  l'@import bloquait le rendu et transmettait l'IP des visiteurs à Google
+  (cf. audit m2). Seules les graisses réellement employées sont chargées.
+*/
+@import "@fontsource/poppins/latin-300.css";
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
 @import "tailwindcss";
 
 * {
@@ -19,6 +28,18 @@ h3,
 h4,
 h5 {
   font-family: "Poppins", sans-serif;
+}
+
+/*
+  Indicateur de focus clavier cohérent (WCAG 2.4.7). :focus-visible ne
+  s'affiche qu'à la navigation clavier, pas au clic souris, pour ne pas
+  parasiter l'usage au pointeur. Le vert foncé #3f6b3f reste visible aussi
+  bien sur les fonds clairs (crème) que foncés (bleu marque).
+*/
+:focus-visible {
+  outline: 2px solid #3f6b3f;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 @keyframes marquee {
@@ -50,6 +71,29 @@ h5 {
 .marquee-track:hover,
 .marquee-track-reverse:hover {
   animation-play-state: paused;
+}
+
+/*
+  Respect de prefers-reduced-motion (WCAG 2.3.3) : le mouvement permanent des
+  marquees et les transitions longues peuvent provoquer nausées et vertiges
+  chez les personnes sujettes aux troubles vestibulaires.
+  Les composants Framer Motion sont traités côté JS via useReducedMotion.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 .maxwidth {
   max-width: 1800px;

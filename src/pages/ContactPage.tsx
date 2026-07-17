@@ -1,13 +1,17 @@
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+import Seo from "../components/Seo";
 import { FadeIn } from "../components/ui/fade-in";
-import coris2 from "../assets/coris2.png";
+import coris2 from "../assets/coris2.webp";
+import { ACTIVE_SOCIAL_LINKS, CONTACT_EMAIL } from "../config/site";
 
 const ease = [0.25, 0, 0, 1] as const;
+
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
 
 function InfoItem({
   icon,
@@ -29,7 +33,7 @@ function InfoItem({
         {icon}
       </div>
       <div>
-        <p className="text-xs uppercase tracking-[0.2em] text-white/35 mb-1">
+        <p className="text-xs uppercase tracking-[0.2em] text-white/70 mb-1">
           {label}
         </p>
         <p className="text-sm text-white/75 leading-relaxed whitespace-pre-line group-hover:text-white transition-colors duration-200">
@@ -59,17 +63,113 @@ export default function ContactPage() {
     service: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const submitted = status === "sent";
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // Après envoi, on déplace le focus sur le message de confirmation : sinon un
+  // utilisateur clavier/lecteur d'écran reste sur un bouton qui a disparu et
+  // n'a aucun retour que l'action a réussi.
+  useEffect(() => {
+    if (submitted) successRef.current?.focus();
+  }, [submitted]);
+
+  type FieldErrors = { name?: string; email?: string; message?: string };
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function fieldError(name: string, value: string): string | undefined {
+    const v = value.trim();
+    if (name === "email") {
+      if (!v) return t("contact.fieldRequired");
+      return emailRe.test(v) ? undefined : t("contact.emailInvalid");
+    }
+    if (name === "name" || name === "message") {
+      return v ? undefined : t("contact.fieldRequired");
+    }
+    return undefined;
+  }
+
+  function validateAll(): FieldErrors {
+    const next: FieldErrors = {};
+    (["name", "email", "message"] as const).forEach((k) => {
+      const err = fieldError(k, form[k]);
+      if (err) next[k] = err;
+    });
+    return next;
+  }
 
   function handleChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    // On efface l'erreur d'un champ dès que l'utilisateur le corrige.
+    if (errors[name as keyof FieldErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleFieldBlur(
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    inputBlur(e);
+    const { name, value } = e.target;
+    setErrors((prev) => ({ ...prev, [name]: fieldError(name, value) }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    if (status === "sending") return;
+
+    // Validation côté client avant tout envoi : messages par champ + focus sur
+    // le premier champ invalide (a11y — l'utilisateur sait quoi corriger).
+    const errs = validateAll();
+    setErrors(errs);
+    const firstInvalid = (["name", "email", "message"] as const).find(
+      (k) => errs[k],
+    );
+    if (firstInvalid) {
+      document.getElementById(`contact-${firstInvalid}`)?.focus();
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        // Sans borne, une connexion instable laisse le bouton bloqué sur
+        // « Envoi en cours… » indéfiniment, sans erreur ni possibilité de
+        // réessayer : le formulaire redevient un trou noir à leads.
+        signal: AbortSignal.timeout(15000),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nouveau message du site — ${form.name}`,
+          from_name: "Site Marabu",
+          name: form.name,
+          email: form.email,
+          organisation: form.organisation || "—",
+          service: form.service || "—",
+          message: form.message,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message ?? "Submission failed");
+      }
+      setStatus("sent");
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      setStatus("error");
+    }
   }
 
   const inputStyle = {
@@ -82,7 +182,7 @@ export default function ContactPage() {
     >,
   ) => {
     e.target.style.borderColor = "#538253";
-    e.target.style.outline = "none";
+    e.target.style.boxShadow = "0 0 0 3px #53825340";
   };
   const inputBlur = (
     e: React.FocusEvent<
@@ -90,12 +190,20 @@ export default function ContactPage() {
     >,
   ) => {
     e.target.style.borderColor = "#1d454c33";
+    e.target.style.boxShadow = "none";
   };
 
   return (
     <PageTransition>
+      <Seo
+        title={t("seo.contact.title")}
+        description={t("seo.contact.description")}
+        path="/contact"
+      />
       <div className="min-h-screen bg-[#ecede3]">
         <Navbar />
+
+        <main id="main-content">
 
         {/* ══ HERO ══ */}
         <section
@@ -133,7 +241,7 @@ export default function ContactPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-end">
               <div>
                 <FadeIn>
-                  <p className="text-xs uppercase tracking-[0.35em] text-[#ecede3]/40 mb-5">
+                  <p className="text-xs uppercase tracking-[0.35em] text-[#ecede3]/70 mb-5">
                     {t("contact.label")}
                   </p>
                 </FadeIn>
@@ -147,7 +255,7 @@ export default function ContactPage() {
                   </h1>
                 </FadeIn>
                 <FadeIn delay={0.16}>
-                  <p className="text-[#ecede3]/50 text-sm leading-relaxed max-w-md mt-6">
+                  <p className="text-[#ecede3]/75 text-sm leading-relaxed max-w-md mt-6">
                     {t("contact.heroDesc")}
                   </p>
                 </FadeIn>
@@ -259,7 +367,7 @@ export default function ContactPage() {
             {/* Côté gauche — context */}
             <div className="lg:sticky lg:top-32">
               <FadeIn>
-                <p className="text-xs uppercase tracking-[0.3em] text-black/30 mb-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-black/65 mb-5">
                   {t("contact.formTitle")}
                 </p>
                 <h2 className="text-3xl font-light leading-snug text-[#1d454c] mb-6">
@@ -269,7 +377,7 @@ export default function ContactPage() {
                     {t("contact.heroTitle2")}
                   </span>
                 </h2>
-                <p className="text-black/50 text-sm leading-relaxed max-w-sm mb-10">
+                <p className="text-black/65 text-sm leading-relaxed max-w-sm mb-10">
                   {t("contact.heroDesc")}
                 </p>
               </FadeIn>
@@ -315,7 +423,11 @@ export default function ContactPage() {
             <FadeIn delay={0.1}>
               {submitted ? (
                 <motion.div
-                  className="flex flex-col items-center justify-center text-center py-24"
+                  ref={successRef}
+                  role="status"
+                  aria-live="polite"
+                  tabIndex={-1}
+                  className="flex flex-col items-center justify-center text-center py-24 outline-none"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease }}
@@ -350,13 +462,13 @@ export default function ContactPage() {
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-[#538253] mb-3">
+                  <p className="text-xs uppercase tracking-[0.35em] text-[#3f6b3f] mb-3">
                     {t("contact.successLabel")}
                   </p>
                   <h3 className="text-2xl font-light text-[#1d454c] mb-2">
                     {t("contact.successTitle")}
                   </h3>
-                  <p className="text-black/45 text-sm">
+                  <p className="text-black/65 text-sm">
                     {t("contact.successDesc")}
                   </p>
                 </motion.div>
@@ -365,55 +477,99 @@ export default function ContactPage() {
                   {/* Nom + Email */}
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2">
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
+                      >
                         {t("contact.fields.name")}{" "}
-                        <span style={{ color: "#538253" }}>*</span>
+                        <span style={{ color: "#538253" }} aria-hidden="true">
+                          *
+                        </span>
                       </label>
                       <input
+                        id="contact-name"
                         name="name"
                         type="text"
                         required
+                        aria-required="true"
+                        aria-invalid={errors.name ? true : undefined}
+                        aria-describedby={
+                          errors.name ? "contact-name-error" : undefined
+                        }
                         value={form.name}
                         onChange={handleChange}
                         placeholder={t("contact.fields.namePlaceholder")}
-                        className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/25 transition-all duration-200"
+                        className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/45 transition-all duration-200"
                         style={inputStyle}
                         onFocus={inputFocus}
-                        onBlur={inputBlur}
+                        onBlur={handleFieldBlur}
                       />
+                      {errors.name && (
+                        <p
+                          id="contact-name-error"
+                          role="alert"
+                          className="mt-1.5 text-xs text-[#b4231d]"
+                        >
+                          {errors.name}
+                        </p>
+                      )}
                     </div>
                     <div>
-                      <label className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2">
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
+                      >
                         {t("contact.fields.email")}{" "}
-                        <span style={{ color: "#538253" }}>*</span>
+                        <span style={{ color: "#538253" }} aria-hidden="true">
+                          *
+                        </span>
                       </label>
                       <input
+                        id="contact-email"
                         name="email"
                         type="email"
                         required
+                        aria-required="true"
+                        aria-invalid={errors.email ? true : undefined}
+                        aria-describedby={
+                          errors.email ? "contact-email-error" : undefined
+                        }
                         value={form.email}
                         onChange={handleChange}
                         placeholder={t("contact.fields.emailPlaceholder")}
-                        className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/25 transition-all duration-200"
+                        className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/45 transition-all duration-200"
                         style={inputStyle}
                         onFocus={inputFocus}
-                        onBlur={inputBlur}
+                        onBlur={handleFieldBlur}
                       />
+                      {errors.email && (
+                        <p
+                          id="contact-email-error"
+                          role="alert"
+                          className="mt-1.5 text-xs text-[#b4231d]"
+                        >
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   {/* Organisation */}
                   <div>
-                    <label className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2">
+                    <label
+                      htmlFor="contact-org"
+                      className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
+                    >
                       {t("contact.fields.org")}
                     </label>
                     <input
+                      id="contact-org"
                       name="organisation"
                       type="text"
                       value={form.organisation}
                       onChange={handleChange}
                       placeholder={t("contact.fields.orgPlaceholder")}
-                      className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/25 transition-all duration-200"
+                      className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/45 transition-all duration-200"
                       style={inputStyle}
                       onFocus={inputFocus}
                       onBlur={inputBlur}
@@ -422,10 +578,14 @@ export default function ContactPage() {
 
                   {/* Service */}
                   <div>
-                    <label className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2">
+                    <label
+                      htmlFor="contact-service"
+                      className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
+                    >
                       {t("contact.fields.service")}
                     </label>
                     <select
+                      id="contact-service"
                       name="service"
                       value={form.service}
                       onChange={handleChange}
@@ -443,32 +603,80 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-xs uppercase tracking-[0.2em] text-black/40 mb-2">
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs uppercase tracking-[0.2em] text-black/60 mb-2"
+                    >
                       {t("contact.fields.message")}{" "}
-                      <span style={{ color: "#538253" }}>*</span>
+                      <span style={{ color: "#538253" }} aria-hidden="true">
+                        *
+                      </span>
                     </label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       required
+                      aria-required="true"
+                      aria-invalid={errors.message ? true : undefined}
+                      aria-describedby={
+                        errors.message ? "contact-message-error" : undefined
+                      }
                       rows={6}
                       value={form.message}
                       onChange={handleChange}
                       placeholder={t("contact.fields.messagePlaceholder")}
-                      className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/25 transition-all duration-200 resize-none"
+                      className="w-full px-4 py-3 text-sm text-[#1d454c] placeholder-black/45 transition-all duration-200 resize-none"
                       style={inputStyle}
                       onFocus={inputFocus}
-                      onBlur={inputBlur}
+                      onBlur={handleFieldBlur}
                     />
+                    {errors.message && (
+                      <p
+                        id="contact-message-error"
+                        role="alert"
+                        className="mt-1.5 text-xs text-[#b4231d]"
+                      >
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
+
+                  {status === "error" && (
+                    <p
+                      role="alert"
+                      className="text-sm px-4 py-3"
+                      style={{
+                        backgroundColor: "#b4231d10",
+                        border: "1px solid #b4231d40",
+                        color: "#8c1a15",
+                      }}
+                    >
+                      {t("contact.errorMessage")}{" "}
+                      <a
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="underline"
+                      >
+                        {CONTACT_EMAIL}
+                      </a>
+                    </p>
+                  )}
 
                   <motion.button
                     type="submit"
-                    className="w-full py-4 text-xs uppercase tracking-[0.25em] text-[#ecede3] transition-opacity duration-200"
-                    style={{ backgroundColor: "#1d454c" }}
-                    whileHover={{ opacity: 0.85 }}
-                    whileTap={{ scale: 0.98 }}
+                    disabled={status === "sending"}
+                    className="w-full py-4 text-xs uppercase tracking-[0.25em] text-[#ecede3] transition-opacity duration-200 disabled:cursor-not-allowed"
+                    style={{
+                      backgroundColor: "#1d454c",
+                      opacity: status === "sending" ? 0.6 : 1,
+                    }}
+                    whileHover={
+                      status === "sending" ? undefined : { opacity: 0.85 }
+                    }
+                    whileTap={status === "sending" ? undefined : { scale: 0.98 }}
                   >
-                    {t("contact.submit")}
+                    {status === "sending"
+                      ? t("contact.submitting")
+                      : t("contact.submit")}
                   </motion.button>
                 </form>
               )}
@@ -485,32 +693,26 @@ export default function ContactPage() {
         >
           <div className="maxwidth mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <FadeIn>
-              <p className="text-xs uppercase tracking-[0.3em] text-black/30">
+              <p className="text-xs uppercase tracking-[0.3em] text-black/65">
                 {t("footer.expertisesTitle")}
               </p>
             </FadeIn>
             <FadeIn delay={0.05}>
               <div className="flex items-center gap-4">
-                {[
-                  {
-                    label: "LinkedIn",
-                    path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
-                  },
-                  {
-                    label: "X / Twitter",
-                    path: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z",
-                  },
-                ].map((s) => (
+                {ACTIVE_SOCIAL_LINKS.map((s) => (
                   <a
                     key={s.label}
-                    href="#"
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="w-10 h-10 flex items-center justify-center transition-all duration-200 hover:opacity-100"
+                    className="w-11 h-11 flex items-center justify-center transition-all duration-200 hover:opacity-100"
                     style={{ border: "1px solid #1d454c25", opacity: 0.5 }}
                   >
                     <svg
                       viewBox="0 0 24 24"
                       fill="currentColor"
+                      aria-hidden="true"
                       className="w-4 h-4"
                       style={{ color: "#1d454c" }}
                     >
@@ -519,16 +721,18 @@ export default function ContactPage() {
                   </a>
                 ))}
                 <a
-                  href="mailto:contact@marabu.services"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="text-xs uppercase tracking-[0.2em] px-6 py-2.5 text-[#ecede3] transition-opacity duration-200 hover:opacity-80"
                   style={{ backgroundColor: "#538253" }}
                 >
-                  contact@marabu.services
+                  {CONTACT_EMAIL}
                 </a>
               </div>
             </FadeIn>
           </div>
         </section>
+
+        </main>
 
         <Footer />
       </div>

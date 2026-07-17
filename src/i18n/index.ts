@@ -15,4 +15,14 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
 });
 
+// Garde <html lang> aligné sur la langue courante : sans ça, les lecteurs
+// d'écran et les crawlers lisent tout le site avec la mauvaise prononciation
+// et le mauvais ciblage linguistique.
+function syncHtmlLang(lng: string) {
+  document.documentElement.lang = lng;
+}
+
+syncHtmlLang(i18n.language);
+i18n.on("languageChanged", syncHtmlLang);
+
 export default i18n;
