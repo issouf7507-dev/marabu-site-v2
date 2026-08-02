@@ -167,28 +167,68 @@
     "heading": "Ce que disent\nnos clients.",
     "items": [
       {
-        "quote": "Marabu nous a aidés à structurer notre stratégie de croissance en Afrique de l'Ouest avec une clarté et une méthode que nous n'avions jamais eu auparavant.",
-        "name": "Aminata Koné",
-        "role": "Directrice Générale",
-        "company": "Groupe Soleil Invest"
+        "quote": "Avec Marabu, j'ai trouvé bien plus qu'un partenaire : une vraie famille professionnelle. Entre vision stratégique, engagement sincère et humanité rare, cette collaboration a marqué un tournant dans mon parcours.",
+        "name": "Zanyiwe Asare",
+        "role": "Vice-Présidente Affaires Publiques",
+        "company": "Yango",
+        "image": "/persons/Zanyiwe_Asare_yango_marabu.jpeg",
+        "alt": "Zanyiwe Asare - Vice-Présidente Affaires Publiques Yango"
       },
       {
-        "quote": "Leur réseau et leur discrétion dans les négociations institutionnelles ont été déterminants pour l'aboutissement de notre partenariat avec les autorités locales.",
-        "name": "Jean-Pierre Assoumou",
-        "role": "Directeur des Affaires Publiques",
-        "company": "TechBridge Africa"
+        "quote": "Avec Marabu, nous avons construit bien plus qu'une collaboration : une relation de confiance durable. Leur professionnalisme, leur capacité d'écoute et leur sens de l'impact font d'eux des partenaires précieux… et une famille de travail avec qui l'on avance avec sérénité.",
+        "name": "Touré Abdoulaye",
+        "role": "Directeur des Études et du Développement",
+        "company": "GUCE CI",
+        "image": "/persons/TOURE_Abdoulaye_guce-ci_marabu.jpeg",
+        "alt": "Touré Abdoulaye - Directeur des Études et du Développement GUCE CI"
       },
       {
-        "quote": "Une équipe qui comprend véritablement les réalités du terrain africain. Les formations délivrées ont transformé la posture de nos équipes dirigeantes.",
-        "name": "Dr. Fatoumata Bah",
-        "role": "Responsable RH & Formation",
-        "company": "UEMOA Partners"
+        "quote": "Les Journées du Digital en Milieu Rural organisées par Marabu ont été une véritable leçon d'impact social et d'innovation responsable. Une initiative rare, qui allie humanité, vision et transformation digitale.",
+        "name": "Ismahill Diaby",
+        "role": "Vice-Président",
+        "company": "Visa Afrique Centrale et Ouest",
+        "image": "/persons/Ismahill_Diaby_visa_marabu.jpeg",
+        "alt": "Ismahill Diaby - Vice-Président Visa Afrique Centrale et Ouest"
       },
       {
-        "quote": "Marabu a su nous ouvrir des portes que nous pensions fermées. Leur approche mêlant stratégie et culture est un vrai différenciateur.",
-        "name": "Koffi Mensah",
-        "role": "CEO",
-        "company": "Meridian Capital CI"
+        "quote": "Marabu a su allier rigueur stratégique et sens de l'humain pour faire avancer nos projets de protection sociale. Au-delà de l'expertise, j'ai découvert une équipe engagée, proche du terrain, et portée par une vraie vision de l'impact.",
+        "name": "Ayebi Modeste",
+        "role": "Directeur de la Sécurité Sociale et de la Mutualité",
+        "company": "Ministère de l'Emploi et de la Protection Sociale",
+        "image": "/persons/Ayebi_Modeste_ministere-emploi_marabu.jpeg",
+        "alt": "Ayebi Modeste - Directeur de la Sécurité Sociale et de la Mutualité, Ministère de l'Emploi et de la Protection Sociale"
+      },
+      {
+        "quote": "Marabu n'est pas simplement un partenaire stratégique, c'est un moteur d'impact. Leur compréhension fine du terrain, leur agilité et leur engagement ont été essentiels pour faire avancer Yango avec efficacité et ambition.",
+        "name": "Raley White",
+        "role": "Vice President of Operations",
+        "company": "Yango",
+        "image": "/persons/Raley_White_yango_marabu.jpeg",
+        "alt": "Raley White - Vice President of Operations Yango"
+      },
+      {
+        "quote": "Avec Marabu, nous avons posé les bases d'un cadre structurant pour le e-commerce en Côte d'Ivoire. Leur approche collaborative, stratégique et engagée a été un véritable levier pour faire émerger un Livre Blanc ambitieux et inclusif.",
+        "name": "Esmel Meledje",
+        "role": "Directeur du Commerce Électronique",
+        "company": "Ministère du Commerce et de l'Industrie",
+        "image": "/persons/M._Esmel_Meledje_ministere-commerce_marabu.jpeg",
+        "alt": "Esmel Meledje - Directeur du Commerce Électronique, Ministère du Commerce et de l'Industrie"
+      },
+      {
+        "quote": "Marabu incarne une nouvelle génération d'expertise africaine : agile, engagée et tournée vers l'impact. Leur capacité à fédérer, structurer et livrer avec excellence en fait un partenaire de choix pour l'AmCham et pour tout acteur tourné vers l'avenir.",
+        "name": "Yohannes Mekebebe",
+        "role": "Président",
+        "company": "AmCham Côte d'Ivoire",
+        "image": "/persons/Yohannes_Mekebebe_AmCham_marabu.jpeg",
+        "alt": "Yohannes Mekebebe - Président AmCham Côte d'Ivoire"
+      },
+      {
+        "quote": "Marabu, c'est l'alliance parfaite entre vision stratégique et proximité humaine. Un partenaire rare avec qui j'ai partagé des projets porteurs de sens, d'innovation et de transformation réelle.",
+        "name": "Djigbenou Antoine",
+        "role": "Directeur Général Adjoint",
+        "company": "GS2E",
+        "image": "/persons/Djigbenou_Antoine_GS2E_marabu.jpeg",
+        "alt": "Djigbenou Antoine - Directeur Général Adjoint GS2E"
       }
     ]
   },

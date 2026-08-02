@@ -2,10 +2,25 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1d454c" />
 
+    <!--
+      seo-fallback:start
+      Métadonnées de repli, valeurs de l'accueil. Elles servent aux routes NON
+      prérendues (articles de blog, dont les URLs viennent d'une API et ne sont
+      pas connues au build) : Nginx leur sert ce fichier via le fallback SPA.
+      scripts/prerender.mjs retire ce bloc des pages prérendues, où le composant
+      Seo pose déjà les bonnes valeurs — deux <title> ou deux canonical
+      concurrents sur une même page brouillent l'indexation.
+      Ne pas retirer les marqueurs de commentaire.
+    -->
     <title>Marabu Services — Conseil, Services & Intermédiation</title>
     <meta
       name="description"
@@ -40,6 +55,7 @@
       content="Marabu Services accompagne les organisations en Afrique de l'Ouest : conseil stratégique, services opérationnels et intermédiation d'affaires."
     />
     <meta name="twitter:image" content="https://v2.marabu.services/og-image.jpg" />
+    <!-- seo-fallback:end -->
 
     <script type="application/ld+json">
       {

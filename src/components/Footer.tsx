@@ -43,12 +43,6 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.25, 0, 0, 1], delay: 0.2 }}
           >
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="text-white/75 text-sm hover:text-white transition-colors duration-300"
-            >
-              {CONTACT_EMAIL}
-            </a>
             <Link
               to="/contact"
               className="border border-white/30 text-white/80 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#ecede3] hover:text-[#1d454c] transition-all duration-300 w-fit whitespace-nowrap"
