@@ -7,7 +7,12 @@ import PageTransition from "../components/PageTransition";
 import Seo from "../components/Seo";
 import { FadeIn } from "../components/ui/fade-in";
 import coris2 from "../assets/coris2.webp";
-import { ACTIVE_SOCIAL_LINKS, CONTACT_EMAIL } from "../config/site";
+import {
+  ACTIVE_SOCIAL_LINKS,
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+} from "../config/site";
 
 const ease = [0.25, 0, 0, 1] as const;
 
@@ -284,8 +289,8 @@ export default function ContactPage() {
                   />
                   <InfoItem
                     label={t("contact.phoneLabel")}
-                    value={t("contact.phoneValue")}
-                    href="tel:+22507207770000"
+                    value={CONTACT_PHONE}
+                    href={CONTACT_PHONE_HREF}
                     icon={
                       <svg
                         viewBox="0 0 20 20"

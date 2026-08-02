@@ -16,7 +16,9 @@ server {
     root /home/admin_marabu/apps/marabu_sitev2;
     index index.html;
 
-    # SPA fallback — toutes les routes renvoient vers index.html
+    # Les routes prérendues existent en dur (about/index.html, services/…),
+    # $uri/ les sert. Le fallback /index.html ne concerne plus que les routes
+    # non prérendues, essentiellement les articles /actualites/<id>.
     location / {
         try_files $uri $uri/ /index.html;
     }
@@ -27,8 +29,10 @@ server {
         add_header Cache-Control "public, immutable";
     }
 
-    # Désactiver le cache sur index.html
-    location = /index.html {
+    # Désactiver le cache sur TOUS les index.html prérendus, pas seulement
+    # celui de la racine : sinon une page mise à jour reste servie depuis le
+    # cache navigateur après un déploiement.
+    location ~* \.html$ {
         add_header Cache-Control "no-cache";
     }
 

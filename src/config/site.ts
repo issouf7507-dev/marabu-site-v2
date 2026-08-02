@@ -7,7 +7,11 @@ export const SITE_URL = "https://v2.marabu.services";
 export const SITE_NAME = "Marabu Services";
 export const CONTACT_EMAIL = "contact@marabu.services";
 export const CONTACT_PHONE = "+225 07 20 77 70 00";
-export const CONTACT_PHONE_HREF = "tel:+22507207770000";
+/**
+ * Dérivé de CONTACT_PHONE plutôt que saisi à la main : les deux avaient
+ * divergé (un zéro de trop dans le lien, qui composait un numéro invalide).
+ */
+export const CONTACT_PHONE_HREF = `tel:${CONTACT_PHONE.replace(/[^\d+]/g, "")}`;
 
 export type SocialLink = { label: string; url: string; path: string };
 
