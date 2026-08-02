@@ -15,17 +15,27 @@ type Testimonial = {
 /**
  * Photo du client, avec repli sur l'initiale : les visuels vivent dans
  * `public/persons/` et peuvent manquer selon le déploiement.
+ *
+ * L'image est décorative (`alt=""`) : nom, fonction et entreprise sont déjà
+ * dans le texte juste à côté. Un alt descriptif les ferait énoncer deux fois
+ * par les lecteurs d'écran — même écueil que le marquee (cf. audit A11Y-5).
+ * Le champ `alt` reste dans les fichiers i18n comme métadonnée éditoriale.
  */
 function Avatar({ item }: { item: Testimonial }) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(item.image) && !failed;
 
   return (
-    <div className="w-12 h-12 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0 overflow-hidden">
+    <div
+      className="w-12 h-12 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0 overflow-hidden"
+      aria-hidden="true"
+    >
       {showImage ? (
         <img
           src={item.image}
-          alt={item.alt ?? `${item.name} — ${item.role}, ${item.company}`}
+          alt=""
+          width={48}
+          height={48}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover"
@@ -99,15 +109,18 @@ export default function Testimonials() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {items.map((t_, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
-              <div className="bg-white rounded-2xl p-8 flex flex-col gap-6 h-full">
-                <span className="text-6xl font-serif leading-none text-[#538253] select-none">
+            <FadeIn key={t_.name} delay={i * 0.08}>
+              <figure className="bg-white rounded-2xl p-8 flex flex-col gap-6 h-full">
+                <span
+                  aria-hidden="true"
+                  className="text-6xl font-serif leading-none text-[#538253] select-none"
+                >
                   "
                 </span>
-                <p className="text-gray-600 leading-relaxed text-base flex-1">
+                <blockquote className="text-gray-600 leading-relaxed text-base flex-1">
                   {t_.quote}
-                </p>
-                <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
+                </blockquote>
+                <figcaption className="flex items-center gap-4 pt-2 border-t border-gray-100">
                   <Avatar item={t_} />
                   <div>
                     <p className="font-semibold text-gray-900 text-sm">
@@ -117,8 +130,8 @@ export default function Testimonials() {
                       {t_.role} · {t_.company}
                     </p>
                   </div>
-                </div>
-              </div>
+                </figcaption>
+              </figure>
             </FadeIn>
           ))}
         </div>
