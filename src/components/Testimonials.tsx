@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
 import coris2 from "../assets/coris2.webp";
@@ -7,7 +8,37 @@ type Testimonial = {
   name: string;
   role: string;
   company: string;
+  image?: string;
+  alt?: string;
 };
+
+/**
+ * Photo du client, avec repli sur l'initiale : les visuels vivent dans
+ * `public/persons/` et peuvent manquer selon le déploiement.
+ */
+function Avatar({ item }: { item: Testimonial }) {
+  const [failed, setFailed] = useState(false);
+  const showImage = Boolean(item.image) && !failed;
+
+  return (
+    <div className="w-12 h-12 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0 overflow-hidden">
+      {showImage ? (
+        <img
+          src={item.image}
+          alt={item.alt ?? `${item.name} — ${item.role}, ${item.company}`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span className="text-[#3f6b3f] font-semibold text-sm">
+          {item.name.charAt(0)}
+        </span>
+      )}
+    </div>
+  );
+}
 
 export default function Testimonials() {
   const { t } = useTranslation();
@@ -77,11 +108,7 @@ export default function Testimonials() {
                   {t_.quote}
                 </p>
                 <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
-                  <div className="w-10 h-10 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0">
-                    <span className="text-[#3f6b3f] font-semibold text-sm">
-                      {t_.name.charAt(0)}
-                    </span>
-                  </div>
+                  <Avatar item={t_} />
                   <div>
                     <p className="font-semibold text-gray-900 text-sm">
                       {t_.name}
