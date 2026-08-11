@@ -272,6 +272,11 @@
       }
     ]
   },
+  "linkedinCard": {
+    "label": "Follow us",
+    "desc": "News, engagements and perspectives on consulting and business intermediation in West Africa — the essentials from Marabu, on LinkedIn too.",
+    "cta": "Follow on LinkedIn"
+  },
   "footer": {
     "cta": "Let's build\ntogether.",
     "contactBtn": "Contact us",
@@ -378,6 +383,10 @@
         "label": "Founder's note"
       },
       {
+        "id": "team",
+        "label": "Our team"
+      },
+      {
         "id": "name",
         "label": "The name's meaning"
       },
@@ -406,6 +415,25 @@
       "quote1": "\"I grew up with the idea that the marabouts of our villages were the first strategists — those entrusted with difficult decisions, delicate mediations, future projects. They acted with discernment, network and trust.\"",
       "quote2": "\"Marabu is the contemporary translation of this posture. We bring to businesses and institutions what these wise men brought to communities: clarity, connections and direction.\"",
       "signature": "— Houssene Ben Souda, Founder"
+    },
+    "team": {
+      "label": "Our team",
+      "heading": "The people behind Marabu.",
+      "linkedinAria": "{{name}}'s LinkedIn profile (opens in a new tab)",
+      "linkedinCompanyAria": "Marabu Services on LinkedIn (opens in a new tab)",
+      "roles": {
+        "houssene-ben-souda": "Founder",
+        "thomas-dabadie": "Managing Partner",
+        "aida-ouattara": "Managing Partner",
+        "brice-brou": "Marketing Director",
+        "kimana-misago": "Innovation Lead",
+        "bossoh-aka": "Senior Consultant",
+        "gilles-dogbo": "Senior Consultant",
+        "issouf-ouattara": "Senior Consultant",
+        "herve-toure": "Senior Consultant",
+        "souleymane-coulibaly": "Consultant",
+        "khalil-diop": "Consultant"
+      }
     },
     "name": {
       "label": "The name's meaning",

@@ -30,3 +30,11 @@ dist-ssr
 
 # Claude Code (réglages locaux par machine)
 .claude/settings.local.json
+
+# Originaux du shooting (6000x4000, ~60 Mo) : ils ne sont jamais servis, seuls
+# les WebP générés dans public/persons/ le sont. Les archiver hors dépôt et
+# les remettre ici pour rejouer scripts/build-portraits.py.
+/src/assets/persons/
+
+# Specs (documents de travail, dont des .docx binaires)
+/specs/

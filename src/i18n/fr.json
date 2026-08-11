@@ -272,6 +272,11 @@
       }
     ]
   },
+  "linkedinCard": {
+    "label": "Suivez-nous",
+    "desc": "Actualités, missions et regards sur le conseil et l'intermédiation en Afrique de l'Ouest : l'essentiel de Marabu passe aussi par LinkedIn.",
+    "cta": "Suivre sur LinkedIn"
+  },
   "footer": {
     "cta": "Construisons\nensemble.",
     "contactBtn": "Nous contacter",
@@ -378,6 +383,10 @@
         "label": "Le mot du fondateur"
       },
       {
+        "id": "team",
+        "label": "Notre équipe"
+      },
+      {
         "id": "name",
         "label": "Le sens du nom"
       },
@@ -406,6 +415,25 @@
       "quote1": "\"J'ai grandi avec cette idée que les marabouts de nos villages étaient les premiers stratèges — ceux à qui l'on confiait les décisions difficiles, les médiations délicates, les projets d'avenir. Ils agissaient avec discernement, réseau et confiance.\"",
       "quote2": "\"Marabu est la traduction contemporaine de cette posture. Nous apportons aux entreprises et aux institutions ce que ces sages apportaient aux communautés : clarté, connexions et cap.\"",
       "signature": "— Houssene Ben Souda, Fondateur"
+    },
+    "team": {
+      "label": "Notre équipe",
+      "heading": "Les femmes et les hommes qui portent Marabu.",
+      "linkedinAria": "Profil LinkedIn de {{name}} (nouvel onglet)",
+      "linkedinCompanyAria": "LinkedIn de Marabu Services (nouvel onglet)",
+      "roles": {
+        "houssene-ben-souda": "Fondateur",
+        "thomas-dabadie": "Directeur associé",
+        "aida-ouattara": "Directeur associé",
+        "brice-brou": "Directeur marketing",
+        "kimana-misago": "Chargé de l'innovation",
+        "bossoh-aka": "Consultant senior",
+        "gilles-dogbo": "Consultant senior",
+        "issouf-ouattara": "Consultant senior",
+        "herve-toure": "Consultant senior",
+        "souleymane-coulibaly": "Consultant",
+        "khalil-diop": "Consultant"
+      }
     },
     "name": {
       "label": "Le sens du nom",

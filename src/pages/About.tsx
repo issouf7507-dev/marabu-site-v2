@@ -6,6 +6,8 @@ import Navbar from "../components/Navbar";
 import PageTransition from "../components/PageTransition";
 import Seo from "../components/Seo";
 import Footer from "../components/Footer";
+import LinkedInCard from "../components/LinkedInCard";
+import TeamSection from "../components/TeamSection";
 import coris2 from "../assets/coris2.webp";
 
 import imgConseil from "../assets/imgs/houssene-ben-souda.webp";
@@ -236,6 +238,9 @@ export default function About() {
                   </div>
                 </section>
 
+                {/* NOTRE ÉQUIPE */}
+                <TeamSection />
+
                 {/* LE SENS DU NOM */}
                 <section
                   id="name"
@@ -428,6 +433,11 @@ export default function About() {
                     ))}
                   </div>
                 </section>
+
+                {/* SUIVEZ-NOUS SUR LINKEDIN */}
+                <div className="pb-20">
+                  <LinkedInCard />
+                </div>
               </div>
 
               {/* ── SIDEBAR STICKY ── */}
