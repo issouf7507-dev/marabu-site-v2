@@ -22,25 +22,29 @@ import manju from '../assets/imgs/partners/manju logo.png';
 import aoc from '../assets/imgs/partners/AOC.webp';
 import mouchoirBlanc from '../assets/imgs/partners/Mouchoir Blqnc.png';
 
-type Partner = { src: string; name: string };
+/*
+  `url` est optionnel : les partenaires sans site connu restent affichés, mais
+  sous forme de simple vignette non cliquable (pas de lien mort).
+*/
+type Partner = { src: string; name: string; url?: string };
 
 const row1: Partner[] = [
-  { src: ministereCommerce, name: 'Ministère du Commerce' },
-  { src: cie, name: 'CIE' },
-  { src: gs2e, name: 'GS2E' },
-  { src: ansut, name: 'ANSUT' },
-  { src: poste, name: 'La Poste' },
-  { src: nsia, name: 'NSIA Asset Management' },
-  { src: visa, name: 'Visa' },
-  { src: yango, name: 'Yango' },
-  { src: amcham, name: 'AmCham' },
+  { src: ministereCommerce, name: 'Ministère du Commerce', url: 'https://www.commerce.gouv.ci/' },
+  { src: cie, name: 'CIE', url: 'https://www.cie.ci/' },
+  { src: gs2e, name: 'GS2E', url: 'https://www.gs2e.ci/' },
+  { src: ansut, name: 'ANSUT', url: 'https://ansut.ci/' },
+  { src: poste, name: 'La Poste', url: 'https://laposte.ci.post/' },
+  { src: nsia, name: 'NSIA Asset Management', url: 'https://nsia-asset.com/' },
+  { src: visa, name: 'Visa', url: 'https://www.visa.com/' },
+  { src: yango, name: 'Yango', url: 'https://yango.com/' },
+  { src: amcham, name: 'AmCham', url: 'https://amcham-ci.org/' },
   { src: gudePme, name: 'Guichet Unique de Développement des PME' },
 ];
 
 const row2: Partner[] = [
-  { src: guci, name: 'Guichet Unique du Commerce Extérieur' },
+  { src: guci, name: 'Guichet Unique du Commerce Extérieur', url: 'https://guce.gouv.ci/' },
   { src: gdcci, name: 'GDCCI' },
-  { src: vitib, name: 'VITIB' },
+  { src: vitib, name: 'VITIB', url: 'https://www.vitib.ci/' },
   { src: cpcs, name: 'CPCS' },
   { src: caderac, name: 'CADERAC' },
   { src: amtTransit, name: 'AMT Transit' },
@@ -51,30 +55,56 @@ const row2: Partner[] = [
   { src: mouchoirBlanc, name: 'Mouchoir Blanc' },
 ];
 
-function Track({ items, reverse = false }: { items: Partner[]; reverse?: boolean }) {
-  const track = [...items, ...items];
+const FRAME =
+  'flex items-center justify-center px-8 py-3 border border-black/10 rounded-full select-none';
+
+function LogoItem({ partner, clone = false }: { partner: Partner; clone?: boolean }) {
+  const logo = (
+    <img
+      src={partner.src}
+      alt={clone ? '' : partner.name}
+      className="h-10 w-auto object-contain"
+      loading="lazy"
+      draggable={false}
+    />
+  );
 
   return (
+    // Les clones ne servent qu'à boucler visuellement : masqués aux lecteurs
+    // d'écran, et sortis du parcours de tabulation via tabIndex={-1} plus bas.
+    <li className="shrink-0" aria-hidden={clone || undefined}>
+      {partner.url ? (
+        <a
+          href={partner.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={clone ? -1 : undefined}
+          className={`${FRAME} transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50 focus-visible:ring-offset-2`}
+        >
+          {logo}
+          {!clone && <span className="sr-only"> (nouvel onglet)</span>}
+        </a>
+      ) : (
+        <div className={FRAME}>{logo}</div>
+      )}
+    </li>
+  );
+}
+
+function Track({ items, reverse = false }: { items: Partner[]; reverse?: boolean }) {
+  return (
     <div className="overflow-hidden relative">
-      <div
-        className={reverse ? "marquee-track-reverse flex gap-10" : "marquee-track flex gap-10"}
-        style={{ width: "max-content" }}
+      <ul
+        className={reverse ? 'marquee-track-reverse flex gap-10' : 'marquee-track flex gap-10'}
+        style={{ width: 'max-content' }}
       >
-        {track.map((partner, i) => (
-          <div
-            key={i}
-            className="shrink-0 flex items-center justify-center px-8 py-3 border border-black/10 rounded-full select-none"
-          >
-            <img
-              src={partner.src}
-              alt={partner.name}
-              className="h-10 w-auto object-contain"
-              loading="lazy"
-              draggable={false}
-            />
-          </div>
+        {items.map((partner) => (
+          <LogoItem key={partner.name} partner={partner} />
         ))}
-      </div>
+        {items.map((partner) => (
+          <LogoItem key={`clone-${partner.name}`} partner={partner} clone />
+        ))}
+      </ul>
     </div>
   );
 }
@@ -88,19 +118,7 @@ export default function LogoMarquee() {
         </p>
       </FadeIn>
 
-      {/*
-        Liste accessible, énoncée UNE seule fois. Le marquee visuel duplique
-        chaque logo (…items, …items) pour l'effet de boucle : lu tel quel, un
-        lecteur d'écran annoncerait chaque partenaire deux fois. On l'expose
-        donc ici en sr-only et on masque le défilement décoratif (aria-hidden).
-      */}
-      <ul className="sr-only">
-        {[...row1, ...row2].map((partner) => (
-          <li key={partner.name}>{partner.name}</li>
-        ))}
-      </ul>
-
-      <div className="relative space-y-4" aria-hidden="true">
+      <div className="relative space-y-4">
         {/* Fade masks */}
         <div className="absolute left-0 top-0 bottom-0 w-40 z-1 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-40 z-10  pointer-events-none" />
