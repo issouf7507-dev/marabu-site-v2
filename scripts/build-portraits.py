@@ -2,22 +2,29 @@
 
     python3 scripts/build-portraits.py public/persons
 
-Entrée  : src/assets/persons/*.jpg — photos d'origine (6000x4000, ~6 Mo).
+Entrée  : src/assets/persons/*.jpg — photos d'origine (le shooting fait du
+          6000x4000, ~6 Mo, mais toute taille passe).
 Sortie  : carrés 600x600 WebP < 40 Ko, aux noms attendus par `TEAM`
           (src/config/team.ts). Voir docs/photos-equipe.md.
 
 Deux pièges que ce script règle et qu'un simple `sips` ne règle pas :
 
-1. **Orientation EXIF.** Les originaux sont physiquement en paysage
+1. **Orientation EXIF.** Les originaux du shooting sont physiquement en paysage
    6000x4000 avec un tag Orientation=8 (rotation 270°). Les navigateurs
    l'appliquent, `sips -g orientation` ne le rapporte même pas. Sans
    `exif_transpose`, le recadrage porte sur l'image couchée et coupe à côté.
 
-2. **Ancrage du carré.** Un crop centré coupe les visages, qui sont dans le
-   tiers supérieur. `ANCHOR` place le carré dans la marge disponible :
-   0 = collé au haut (portrait) ou à gauche (paysage), 1 = à l'opposé,
-   0.5 = centré. Les valeurs ci-dessous ont été réglées à l'œil, photo par
-   photo — à revoir si les originaux changent.
+2. **Cadrage du carré.** Un crop centré coupe les visages, qui sont dans le
+   tiers supérieur. Chaque photo porte donc son propre cadrage, réglé à l'œil :
+
+   - `zoom` : côté du carré, en fraction du petit côté de la source. 1 = le plus
+     grand carré possible. Une valeur < 1 resserre — indispensable sur les
+     photos en pied, où le plus grand carré ne montre que le buste.
+   - `ax` / `ay` : position du carré dans la marge restante, 0 = collé au
+     bord gauche / haut, 1 = à l'opposé, 0.5 = centré. Sans marge sur un axe
+     (zoom = 1 sur le petit côté), la valeur n'a aucun effet.
+
+   À revoir photo par photo si les originaux changent.
 """
 import sys
 from pathlib import Path
@@ -29,31 +36,31 @@ OUT = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / "public/persons")
 SIZE = 600
 QUALITY = 82
 
-# fichier source (sans .jpg) -> (nom de sortie, ancrage)
+# fichier source (sans .jpg) -> (nom de sortie, ax, ay, zoom)
 MAP = {
-    "Houssene-Ben-Souda":          ("Houssene_Ben_Souda_marabu",   0.05),
-    "Thomas-Dabadie":              ("Thomas_Dabadie_marabu",       0.05),
-    "Ouattara-Aida":               ("Aida_Ouattara_marabu",        0.55),
-    "Brice-Brou":                  ("Brice_Brou_marabu",           0.22),
-    "Bossoh-Aka":                  ("Bossoh_Aka_marabu",           0.05),
-    "Gilles-Dogbo":                ("Gilles_Dogbo_marabu",         0.05),
-    "Ouattara-Bitcheresse-Issouf": ("Issouf_Ouattara_marabu",      0.05),
-    "Toure-herve":                 ("Herve_Toure_marabu",          0.05),
-    "Coulibaly-Nourgo-Souleymane": ("Souleymane_Coulibaly_marabu", 0.05),
-    "Khalil-Diop":                 ("Khalil_Diop_marabu",          0.05),
+    # Photo en pied (853x1280, hors shooting) : sans zoom, le carré s'arrête au
+    # torse et le visage sort du cadre.
+    "Houssene-Ben-Souda":          ("Houssene_Ben_Souda_marabu",   0.64, 0.02, 0.73),
+    "Thomas-Dabadie":              ("Thomas_Dabadie_marabu",       0.50, 0.05, 1.0),
+    "Ouattara-Aida":               ("Aida_Ouattara_marabu",        0.55, 0.50, 1.0),
+    "Brice-Brou":                  ("Brice_Brou_marabu",           0.50, 0.22, 1.0),
+    "Bossoh-Aka":                  ("Bossoh_Aka_marabu",           0.50, 0.05, 1.0),
+    "Gilles-Dogbo":                ("Gilles_Dogbo_marabu",         0.50, 0.05, 1.0),
+    "Ouattara-Bitcheresse-Issouf": ("Issouf_Ouattara_marabu",      0.50, 0.05, 1.0),
+    "Toure-herve":                 ("Herve_Toure_marabu",          0.50, 0.05, 1.0),
+    "Coulibaly-Nourgo-Souleymane": ("Souleymane_Coulibaly_marabu", 0.50, 0.05, 1.0),
+    "Khalil-Diop":                 ("Khalil_Diop_marabu",          0.50, 0.05, 1.0),
 }
 
 OUT.mkdir(parents=True, exist_ok=True)
 
-for stem, (out_name, anchor) in MAP.items():
+for stem, (out_name, ax, ay, zoom) in MAP.items():
     img = ImageOps.exif_transpose(Image.open(SRC / f"{stem}.jpg")).convert("RGB")
     w, h = img.size
-    side = min(w, h)
+    side = round(min(w, h) * zoom)
 
-    if h >= w:  # portrait : l'ancrage choisit la bande verticale
-        left, top = (w - side) // 2, round((h - side) * anchor)
-    else:       # paysage : l'ancrage choisit la bande horizontale
-        left, top = round((w - side) * anchor), (h - side) // 2
+    left = round((w - side) * ax)
+    top = round((h - side) * ay)
 
     square = img.crop((left, top, left + side, top + side))
     square = square.resize((SIZE, SIZE), Image.LANCZOS)
