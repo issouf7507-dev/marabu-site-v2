@@ -38,3 +38,8 @@ dist-ssr
 
 # Specs (documents de travail, dont des .docx binaires)
 /specs/
+
+# Sources des CV (.pptx, ~1,6 Mo) : jamais servies, leur contenu est transcrit
+# dans src/config/cv.ts. Les archiver hors dépôt et les remettre ici pour
+# reprendre la transcription lors d'une mise à jour.
+/src/assets/*.pptx
