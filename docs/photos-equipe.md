@@ -38,8 +38,9 @@ L'ordre d'affichage est celui du tableau `TEAM`.
 
 ## Générer les fichiers depuis les originaux
 
-Les photos brutes du shooting sont versionnées dans `src/assets/persons/`
-(6000×4000, ~6 Mo pièce) : elles ne sont **pas** servies telles quelles.
+Les photos brutes sont déposées dans `src/assets/persons/` (le shooting fait du
+6000×4000, ~6 Mo pièce). Ce dossier est hors dépôt (`.gitignore`) et n'est
+**pas** servi tel quel : seuls les WebP générés sont committés.
 
 ```sh
 python3 scripts/build-portraits.py public/persons   # nécessite Pillow
@@ -52,8 +53,12 @@ Le script redresse l'orientation EXIF, recadre en carré et réencode en WebP
   `Orientation=8`. Les navigateurs le respectent, `sips -g orientation` ne le
   rapporte même pas — d'où le passage obligé par `ImageOps.exif_transpose`.
 - Un crop centré couperait les visages : le dictionnaire `MAP` du script porte,
-  pour chaque photo, un **ancrage** réglé à l'œil. Ajouter une photo = une
-  entrée dans `MAP`, puis vérifier le rendu.
+  pour chaque photo, un **cadrage** réglé à l'œil — `ax`/`ay` (position du carré
+  dans la marge, 0 = bord haut/gauche, 0.5 = centré) et `zoom` (côté du carré en
+  fraction du petit côté ; 1 = le plus grand carré possible, en dessous on
+  resserre). Une photo en pied **exige** un `zoom` < 1 : le plus grand carré
+  s'arrête au torse et le visage sort du cadre. Ajouter une photo = une entrée
+  dans `MAP`, puis vérifier le rendu.
 
 ## Comportement si une donnée manque
 
