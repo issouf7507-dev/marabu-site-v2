@@ -421,6 +421,8 @@
       "heading": "Les femmes et les hommes qui portent Marabu.",
       "linkedinAria": "Profil LinkedIn de {{name}} (nouvel onglet)",
       "linkedinCompanyAria": "LinkedIn de Marabu Services (nouvel onglet)",
+      "viewCv": "Voir le CV de {{name}}",
+      "viewCvShort": "Voir le CV",
       "roles": {
         "houssene-ben-souda": "Fondateur",
         "thomas-dabadie": "Directeur associé",
@@ -546,6 +548,22 @@
         }
       ]
     }
+  },
+  "teamMember": {
+    "back": "Notre équipe",
+    "expertise": "Domaines d'expertise",
+    "figures": "Repères",
+    "profile": "Profil",
+    "experience": "Expérience professionnelle",
+    "education": "Diplômes",
+    "certifications": "Certificats",
+    "references": "Références pertinentes",
+    "languages": "Langues",
+    "seoDescription": "{{name}}, {{role}} chez Marabu Services : parcours, domaines d'expertise et références de missions.",
+    "notFoundTitle": "Profil introuvable",
+    "notFoundDesc": "Ce membre de l'équipe n'a pas de CV publié, ou l'adresse saisie est incorrecte.",
+    "ctaHeading": "Une mission en tête ? Parlons-en.",
+    "ctaButton": "Nous écrire"
   },
   "servicesPage": {
     "eyebrow": "Ce que nous faisons",

@@ -8,6 +8,7 @@ import App from "../App";
  * du site. Les autres routes arrivent à la demande (cf. audit C6).
  */
 const About = lazy(() => import("../pages/About"));
+const TeamMemberPage = lazy(() => import("../pages/TeamMemberPage"));
 const ServicesPage = lazy(() => import("../pages/ServicesPage"));
 const BlogPage = lazy(() => import("../pages/BlogPage"));
 const ArticlePage = lazy(() => import("../pages/ArticlePage"));
@@ -28,6 +29,7 @@ export default function AppRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<App />} />
           <Route path="/about" element={<About />} />
+          <Route path="/equipe/:id" element={<TeamMemberPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/actualites" element={<BlogPage />} />
           <Route path="/actualites/:id" element={<ArticlePage />} />

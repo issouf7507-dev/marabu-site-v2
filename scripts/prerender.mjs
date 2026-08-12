@@ -37,8 +37,35 @@ const DIST = join(ROOT, "dist");
  */
 const TEMPLATE = await readFile(join(DIST, "index.html"), "utf8");
 
+/**
+ * Identifiants des membres ayant un CV publié.
+ *
+ * Extraits de `src/config/cv-ids.ts` plutôt que recopiés : la liste bougera à
+ * chaque CV ajouté, et un oubli ici ne se verrait pas (la page resterait
+ * servie par le fallback SPA, donc invisible des crawlers).
+ */
+async function cvRoutes() {
+  const source = await readFile(join(ROOT, "src/config/cv-ids.ts"), "utf8");
+  const list = source.slice(source.indexOf("export const CV_IDS"));
+  const ids = [...list.matchAll(/^ {2}"([a-z0-9-]+)",$/gm)].map((m) => m[1]);
+
+  if (ids.length === 0) {
+    throw new Error(
+      "Aucun CV détecté dans src/config/cv-ids.ts : la forme du fichier a changé.",
+    );
+  }
+  return ids.map((id) => `/equipe/${id}`);
+}
+
 /** Doit rester aligné sur public/sitemap.xml et src/routes/AppRoutes.tsx. */
-const ROUTES = ["/", "/about", "/services", "/actualites", "/contact"];
+const ROUTES = [
+  "/",
+  "/about",
+  "/services",
+  "/actualites",
+  "/contact",
+  ...(await cvRoutes()),
+];
 
 const MIME = {
   ".html": "text/html; charset=utf-8",

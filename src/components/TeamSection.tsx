@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
 import { LINKEDIN } from "../config/site";
 import { TEAM, type TeamMember } from "../config/team";
+import { hasCv } from "../config/cv-ids";
 
 /**
  * Portrait du membre, avec repli sur ses initiales : les photos vivent dans
@@ -57,6 +59,10 @@ function Portrait({ member }: { member: TeamMember }) {
  * L'icône LinkedIn n'est rendue que si `linkedin` est renseigné — même règle
  * que le footer : un lien mort est pire qu'un lien absent. La section entière
  * disparaît tant qu'aucun membre n'est déclaré.
+ *
+ * Même règle pour le CV : la carte n'est cliquable que si le membre a une
+ * entrée dans `src/config/cv.ts`. Sinon elle reste statique, plutôt que de
+ * mener à une page vide.
  */
 export default function TeamSection() {
   const { t } = useTranslation();
@@ -96,18 +102,46 @@ export default function TeamSection() {
             ? t("about.team.linkedinAria", { name: member.name })
             : t("about.team.linkedinCompanyAria");
 
+          const cvPath = hasCv(member.id) ? `/equipe/${member.id}` : null;
+          const cvLabel = t("about.team.viewCv", { name: member.name });
+
           return (
             <FadeIn key={member.id} delay={i * 0.06}>
               <li>
-                <Portrait member={member} />
+                {cvPath ? (
+                  <Link to={cvPath} aria-label={cvLabel} className="block">
+                    <Portrait member={member} />
+                  </Link>
+                ) : (
+                  <Portrait member={member} />
+                )}
                 <div className="flex items-start justify-between gap-3 mt-4">
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
-                      {member.name}
-                    </p>
+                    {cvPath ? (
+                      <Link
+                        to={cvPath}
+                        className="text-sm font-medium text-gray-900 hover:text-[#3f6b3f] transition-colors duration-200"
+                      >
+                        {member.name}
+                      </Link>
+                    ) : (
+                      <p className="text-sm font-medium text-gray-900">
+                        {member.name}
+                      </p>
+                    )}
                     <p className="text-xs text-black/65 leading-relaxed mt-1">
                       {t(`about.team.roles.${member.id}`)}
                     </p>
+                    {cvPath && (
+                      <Link
+                        to={cvPath}
+                        aria-label={cvLabel}
+                        className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-[#3f6b3f] mt-3 hover:gap-3 transition-all duration-300"
+                      >
+                        {t("about.team.viewCvShort")}
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    )}
                   </div>
 
                   {href && (
