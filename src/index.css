@@ -106,6 +106,14 @@ h5 {
   max-width: 1800px;
 }
 
+/*
+  Variante `wide:` — écran à la fois assez large ET au moins aussi large que
+  haut. Le hero n'affiche son visuel plein cadre (texte en surimpression) que
+  dans ce cas : sur un écran portrait, même large (tablette 834×1112), un
+  visuel 1920×1280 en `cover` perdrait la moitié de sa largeur au recadrage.
+*/
+@custom-variant wide (@media (min-width: 768px) and (min-aspect-ratio: 1/1));
+
 /* Article HTML content */
 .article-content {
   color: #1a1a1a;
