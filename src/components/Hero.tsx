@@ -1,6 +1,11 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
 import img1 from "../assets/imgs/conseils/conseil-marabu.webp";
@@ -17,7 +22,14 @@ export default function Hero() {
     offset: ["start end", "end start"],
   });
 
-  const edgeGap = useTransform(scrollYProgress, [0.1, 0.9], [40, 0]);
+  /*
+    La marge autour du visuel se resserre au scroll. Elle est exprimée en
+    proportion (1 → 0) d'une variable CSS `--hero-gap` : 40px en `wide`, 0 hors
+    `wide` où la mise en page carte gère elle-même ses marges (une marge animée
+    aurait fini par coller le texte au bord de l'écran).
+  */
+  const gapProgress = useTransform(scrollYProgress, [0.1, 0.9], [1, 0]);
+  const edgeGap = useMotionTemplate`calc(var(--hero-gap) * ${gapProgress})`;
   const borderRadius = useTransform(
     scrollYProgress,
     [0.1, 0.35],
@@ -38,10 +50,22 @@ export default function Hero() {
     desc: string;
   }[];
 
+  const slides = [
+    { src: img1, opacity: opacity1 },
+    { src: img2, opacity: opacity2 },
+    { src: img3, opacity: opacity3 },
+  ];
+
   return (
     <motion.section
       id="home"
-      className="pt-32 pb-10 maxwidth mx-auto px-6"
+      /*
+        `overflow-x-clip` (et non `hidden`, qui casserait le `position: sticky`
+        du panneau) : le plein-bleed `100vw` déborde de la largeur utile quand
+        le navigateur affiche une scrollbar classique, d'où un scroll
+        horizontal parasite sur desktop.
+      */
+      className="pt-32 pb-10 maxwidth mx-auto px-6 overflow-x-clip"
       initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
@@ -69,98 +93,65 @@ export default function Hero() {
         </div>
       </div>
 
-      <div ref={containerRef} className="mt-10 h-[350vh]">
+      <div ref={containerRef} className="mt-10 h-[350svh]">
+        {/*
+          `100svh` plutôt que `100vh` : sur mobile, 100vh vaut la hauteur écran
+          barre d'URL rétractée, ce qui poussait le bas du panneau (le texte)
+          hors du champ visible tant que la barre est déployée.
+        */}
         <div
-          className="sticky top-0 h-screen overflow-hidden"
+          className="sticky top-0 h-svh overflow-hidden [--hero-gap:0px] wide:[--hero-gap:2.5rem]"
           style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}
         >
-          {/* Image 1 */}
-          <motion.div
-            className="absolute overflow-hidden"
-            style={{
-              top: edgeGap,
-              right: edgeGap,
-              bottom: edgeGap,
-              left: edgeGap,
-              borderRadius,
-              opacity: opacity1,
-              backgroundImage: `url(${img1})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
-            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
-              <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
-                {images[0]?.subtitle}
-              </p>
-              <h2 className="text-white text-3xl font-light leading-snug">
-                {images[0]?.title}
-              </h2>
-              <p className="mt-3 text-white/70 text-sm max-w-sm">
-                {images[0]?.desc}
-              </p>
-            </div>
-          </motion.div>
+          {slides.map(({ src, opacity }, i) => (
+            <motion.div
+              key={src}
+              /*
+                Écran étroit ou portrait : colonne centrée (visuel au ratio 4/3
+                puis texte en dessous). En `wide`, les enfants repassent en
+                absolu pour retrouver le visuel plein cadre avec texte en
+                surimpression.
+              */
+              className="absolute flex flex-col justify-center overflow-hidden px-5 wide:block wide:px-0"
+              style={{
+                top: edgeGap,
+                right: edgeGap,
+                bottom: edgeGap,
+                left: edgeGap,
+                borderRadius,
+                opacity,
+              }}
+            >
+              {/*
+                Hors `wide`, le cadre plein écran est très portrait alors que
+                les visuels sont en 1920×1280 : `cover` en rognait jusqu'à 60 %
+                de la largeur (sujets coupés). Le ratio 4/3 ramène le rognage à
+                une dizaine de pourcents. `max-h` protège le cas paysage court
+                (téléphone couché), où 4/3 dépasserait la hauteur du panneau.
+              */}
+              <div
+                className="w-full aspect-4/3 max-h-[55svh] rounded-2xl wide:absolute wide:inset-0 wide:max-h-none wide:aspect-auto wide:rounded-none"
+                style={{
+                  backgroundImage: `url(${src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
+              <div className="absolute inset-0 hidden bg-linear-to-t from-black/65 via-black/15 to-transparent wide:block" />
 
-          {/* Image 2 */}
-          <motion.div
-            className="absolute overflow-hidden"
-            style={{
-              top: edgeGap,
-              right: edgeGap,
-              bottom: edgeGap,
-              left: edgeGap,
-              borderRadius,
-              opacity: opacity2,
-              backgroundImage: `url(${img2})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
-            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
-              <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
-                {images[1]?.subtitle}
-              </p>
-              <h2 className="text-white text-3xl font-light leading-snug">
-                {images[1]?.title}
-              </h2>
-              <p className="mt-3 text-white/70 text-sm max-w-sm">
-                {images[1]?.desc}
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Image 3 */}
-          <motion.div
-            className="absolute overflow-hidden"
-            style={{
-              top: edgeGap,
-              right: edgeGap,
-              bottom: edgeGap,
-              left: edgeGap,
-              borderRadius,
-              opacity: opacity3,
-              backgroundImage: `url(${img3})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
-
-            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
-              <p className="text-white/55 text-xs uppercase tracking-[0.2em] mb-3">
-                {images[2]?.subtitle}
-              </p>
-              <h2 className="text-white text-3xl font-light leading-snug">
-                {images[2]?.title}
-              </h2>
-              <p className="mt-3 text-white/70 text-sm max-w-sm">
-                {images[2]?.desc}
-              </p>
-            </div>
-          </motion.div>
+              <div className="mt-6 wide:absolute wide:bottom-12 wide:left-12 wide:mt-0">
+                <p className="text-[#1d454c]/60 text-xs uppercase tracking-[0.2em] mb-3 wide:text-white/55">
+                  {images[i]?.subtitle}
+                </p>
+                <h2 className="text-[#1d454c] text-2xl font-light leading-snug wide:text-white wide:text-3xl">
+                  {images[i]?.title}
+                </h2>
+                <p className="mt-3 text-gray-600 text-sm max-w-sm wide:text-white/70">
+                  {images[i]?.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </motion.section>
