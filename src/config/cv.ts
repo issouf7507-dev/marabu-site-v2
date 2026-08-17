@@ -344,7 +344,7 @@ export const CVS: Record<CvId, Cv> = {
     experience: [
       {
         period: "2026 – Présent",
-        role: "Directeur associé",
+        role: "Associé",
         org: "MARABU – Abidjan, Côte d'Ivoire",
       },
       {
