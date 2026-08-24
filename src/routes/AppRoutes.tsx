@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import App from "../App";
+import FloatingContact from "../components/FloatingContact";
 
 /**
  * Seule la home est chargée dans le bundle initial : c'est la porte d'entrée
@@ -24,19 +25,28 @@ export default function AppRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Suspense fallback={<RouteFallback />}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<App />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/equipe/:id" element={<TeamMemberPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/actualites" element={<BlogPage />} />
-          <Route path="/actualites/:id" element={<ArticlePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        <Suspense fallback={<RouteFallback />}>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<App />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/equipe/:id" element={<TeamMemberPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/actualites" element={<BlogPage />} />
+            <Route path="/actualites/:id" element={<ArticlePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </AnimatePresence>
+
+      {/*
+        Hors de l'<AnimatePresence> des routes : le raccourci reste affiché
+        pendant le rideau de transition au lieu de disparaître avec la page
+        sortante.
+      */}
+      <FloatingContact />
+    </>
   );
 }
