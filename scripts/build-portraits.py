@@ -2,8 +2,8 @@
 
     python3 scripts/build-portraits.py public/persons
 
-Entrée  : src/assets/persons/*.jpg — photos d'origine (le shooting fait du
-          6000x4000, ~6 Mo, mais toute taille passe).
+Entrée  : src/assets/persons/<stem>.<jpg|jpeg|png> — photos d'origine (le
+          shooting fait du 6000x4000, ~6 Mo, mais toute taille passe).
 Sortie  : carrés 600x600 WebP < 40 Ko, aux noms attendus par `TEAM`
           (src/config/team.ts). Voir docs/photos-equipe.md.
 
@@ -36,7 +36,19 @@ OUT = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / "public/persons")
 SIZE = 600
 QUALITY = 82
 
-# fichier source (sans .jpg) -> (nom de sortie, ax, ay, zoom)
+SOURCE_EXTS = (".jpg", ".jpeg", ".png")
+
+
+def source_path(stem: str) -> Path:
+    """Les originaux n'ont pas tous la même extension selon leur provenance."""
+    for ext in SOURCE_EXTS:
+        candidate = SRC / f"{stem}{ext}"
+        if candidate.exists():
+            return candidate
+    raise SystemExit(f"{stem}: aucun original {'/'.join(SOURCE_EXTS)} dans {SRC}")
+
+
+# fichier source (sans extension) -> (nom de sortie, ax, ay, zoom)
 MAP = {
     # Photo en pied (853x1280, hors shooting) : sans zoom, le carré s'arrête au
     # torse et le visage sort du cadre.
@@ -50,12 +62,15 @@ MAP = {
     "Toure-herve":                 ("Herve_Toure_marabu",          0.50, 0.05, 1.0),
     "Coulibaly-Nourgo-Souleymane": ("Souleymane_Coulibaly_marabu", 0.50, 0.05, 1.0),
     "Khalil-Diop":                 ("Khalil_Diop_marabu",          0.50, 0.05, 1.0),
+    # Source quasi carrée (1280x1249, hors shooting) : le plus grand carré
+    # laisse le visage trop petit face aux autres portraits, d'où le zoom.
+    "kimana-misago":               ("Kimana_Misago_marabu",        0.42, 0.33, 0.72),
 }
 
 OUT.mkdir(parents=True, exist_ok=True)
 
 for stem, (out_name, ax, ay, zoom) in MAP.items():
-    img = ImageOps.exif_transpose(Image.open(SRC / f"{stem}.jpg")).convert("RGB")
+    img = ImageOps.exif_transpose(Image.open(source_path(stem))).convert("RGB")
     w, h = img.size
     side = round(min(w, h) * zoom)
 
@@ -67,4 +82,4 @@ for stem, (out_name, ax, ay, zoom) in MAP.items():
 
     dest = OUT / f"{out_name}.webp"
     square.save(dest, "WEBP", quality=QUALITY, method=6)
-    print(f"{stem}.jpg ({w}x{h}) -> {dest.name}  {dest.stat().st_size // 1024} Ko")
+    print(f"{stem} ({w}x{h}) -> {dest.name}  {dest.stat().st_size // 1024} Ko")

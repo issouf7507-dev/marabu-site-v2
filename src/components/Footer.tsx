@@ -144,7 +144,12 @@ export default function Footer() {
         </FadeIn>
       </div>
 
-      <div className="maxwidth mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      {/*
+        pb-24 : le CTA flottant de <FloatingContact /> se pose sur ce bandeau,
+        qui est le dernier élément de la page — sans réserve, il recouvrait la
+        ligne de droite.
+      */}
+      <div className="maxwidth mx-auto px-6 pt-6 pb-24 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-xs text-white/70">{t("footer.copyright")}</p>
         <p className="text-xs text-white/70">{t("footer.founded")}</p>
       </div>

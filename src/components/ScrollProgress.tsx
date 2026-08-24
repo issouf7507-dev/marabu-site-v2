@@ -48,7 +48,8 @@ export default function ScrollProgress() {
           pointerEvents: visible ? "auto" : "none",
         }}
         transition={{ duration: 0.25 }}
-        className="fixed bottom-6 right-6 z-[60] w-11 h-11 flex items-center justify-center rounded-full shadow-lg"
+        /* bottom-24 : le coin bas-droit revient au CTA de <FloatingContact />. */
+        className="fixed bottom-24 right-6 z-[60] w-11 h-11 flex items-center justify-center rounded-full shadow-lg ring-1 ring-[#ecede3]/30"
         style={{ backgroundColor: "#1d454c", color: "#ecede3" }}
       >
         <svg

@@ -615,22 +615,86 @@
           {
             "n": "01",
             "title": "Stratégie d'entreprise",
-            "desc": "Définition de cap, positionnement concurrentiel, plans de développement à moyen et long terme. Nous aidons les organisations à clarifier leur vision et à construire des trajectoires réalistes."
+            "desc": "Définition de cap, positionnement concurrentiel, plans de développement à moyen et long terme. Nous aidons les organisations à clarifier leur vision et à construire des trajectoires réalistes.",
+            "details": {
+              "intro": "Nous aidons les dirigeants à trancher : sur quel marché aller, avec quelles ressources et à quelle échéance. Le travail part de vos données réelles — chiffres, concurrence, contraintes réglementaires — et aboutit à un cap défendable devant un conseil d'administration ou un investisseur.",
+              "includes": [
+                "Diagnostic stratégique : marché, concurrence, forces et vulnérabilités internes",
+                "Définition du positionnement et des priorités de croissance",
+                "Business plan et modélisation financière à 3–5 ans",
+                "Arbitrage du portefeuille d'activités et scénarios d'investissement",
+                "Déclinaison du cap en objectifs annuels et indicateurs de suivi"
+              ],
+              "deliverables": [
+                "Note de cadrage stratégique et synthèse pour le conseil",
+                "Plan de développement chiffré à 3–5 ans",
+                "Feuille de route opérationnelle et tableau de bord d'indicateurs"
+              ],
+              "audience": "Directions générales, actionnaires et conseils d'administration d'entreprises en croissance ou en phase de repositionnement."
+            }
           },
           {
             "n": "02",
             "title": "Transformation organisationnelle",
-            "desc": "Pilotage du changement, optimisation des structures et des processus. Marabu accompagne les transformations profondes avec méthode et attention aux équipes."
+            "desc": "Pilotage du changement, optimisation des structures et des processus. Marabu accompagne les transformations profondes avec méthode et attention aux équipes.",
+            "details": {
+              "intro": "Une organisation qui a grandi vite finit par se heurter à ses propres processus. Nous remettons à plat la structure, les rôles et les circuits de décision, puis nous accompagnons la mise en œuvre jusqu'à ce que les nouvelles règles tiennent sans nous.",
+              "includes": [
+                "Audit organisationnel : organigramme, rôles, circuits de décision",
+                "Cartographie et optimisation des processus clés",
+                "Refonte des structures et dimensionnement des équipes",
+                "Mise en place des instances de pilotage et des rituels de gestion",
+                "Accompagnement des managers pendant la bascule"
+              ],
+              "deliverables": [
+                "Rapport d'audit organisationnel et recommandations priorisées",
+                "Organigramme cible, fiches de poste et matrice de responsabilités",
+                "Plan de transformation séquencé, avec jalons et indicateurs"
+              ],
+              "audience": "Entreprises et institutions en forte croissance, en rapprochement, ou confrontées à des pertes d'efficacité opérationnelle."
+            }
           },
           {
             "n": "03",
             "title": "Gouvernance & conformité",
-            "desc": "Conception de dispositifs de gouvernance adaptés aux exigences réglementaires et aux enjeux institutionnels de la sous-région."
+            "desc": "Conception de dispositifs de gouvernance adaptés aux exigences réglementaires et aux enjeux institutionnels de la sous-région.",
+            "details": {
+              "intro": "Les exigences des régulateurs, des bailleurs et des investisseurs se durcissent dans la sous-région. Nous construisons des dispositifs de gouvernance qui répondent à ces attentes sans paralyser la décision au quotidien.",
+              "includes": [
+                "Diagnostic de gouvernance et revue des instances existantes",
+                "Rédaction des chartes, règlements intérieurs et délégations de pouvoir",
+                "Dispositifs de conformité : contrôle interne, gestion des risques, lutte anti-blanchiment",
+                "Préparation aux audits des régulateurs, bailleurs et investisseurs",
+                "Formation des administrateurs et des comités spécialisés"
+              ],
+              "deliverables": [
+                "Cartographie des risques et plan de remédiation",
+                "Corpus documentaire de gouvernance : chartes, procédures, délégations",
+                "Calendrier de conformité et dispositif de reporting"
+              ],
+              "audience": "Institutions financières, entreprises publiques, groupes privés et organisations soumis à un régulateur ou à des bailleurs."
+            }
           },
           {
             "n": "04",
             "title": "Gestion du changement",
-            "desc": "Conduite du changement humain et culturel. Formation des équipes dirigeantes, gestion des résistances, accompagnement durable à la transformation."
+            "desc": "Conduite du changement humain et culturel. Formation des équipes dirigeantes, gestion des résistances, accompagnement durable à la transformation.",
+            "details": {
+              "intro": "Une réorganisation échoue rarement sur le papier : elle échoue dans les couloirs. Nous travaillons sur ce qui bloque réellement — l'adhésion des équipes, les jeux d'acteurs, la capacité des managers à porter le discours.",
+              "includes": [
+                "Analyse des parties prenantes et des zones de résistance",
+                "Plan de communication interne et dispositif d'écoute",
+                "Formation et coaching des équipes dirigeantes et des relais internes",
+                "Ateliers d'appropriation et accompagnement sur le terrain",
+                "Mesure de l'adhésion et ajustement du dispositif"
+              ],
+              "deliverables": [
+                "Cartographie des parties prenantes et plan d'accompagnement",
+                "Kit de communication interne et argumentaires pour les managers",
+                "Bilan d'adhésion et recommandations de consolidation"
+              ],
+              "audience": "Organisations engagées dans une fusion, une restructuration, un changement d'outil ou de culture managériale."
+            }
           }
         ]
       },
@@ -643,22 +707,86 @@
           {
             "n": "01",
             "title": "Formation professionnelle",
-            "desc": "Modules sur mesure : e-réputation, communication de crise, leadership, gestion de projet. Animés par des experts, en présentiel ou en ligne."
+            "desc": "Modules sur mesure : e-réputation, communication de crise, leadership, gestion de projet. Animés par des experts, en présentiel ou en ligne.",
+            "details": {
+              "intro": "Nos formations partent de vos situations réelles, pas de cas d'école. Chaque module est construit sur mesure, animé par des praticiens, et se termine par des outils que vos équipes utilisent dès le lendemain.",
+              "includes": [
+                "Conception de modules sur mesure à partir d'un diagnostic de besoins",
+                "E-réputation, communication de crise, leadership, gestion de projet",
+                "Animation en présentiel, à distance ou en format mixte",
+                "Mises en situation et études de cas tirées de votre secteur",
+                "Évaluation des acquis et suivi post-formation"
+              ],
+              "deliverables": [
+                "Programme pédagogique et supports de formation personnalisés",
+                "Kit d'outils et fiches pratiques pour les participants",
+                "Rapport d'évaluation et recommandations de suivi"
+              ],
+              "audience": "Équipes dirigeantes, cadres intermédiaires, services communication et ressources humaines."
+            }
           },
           {
             "n": "02",
             "title": "Communication institutionnelle",
-            "desc": "Stratégie éditoriale, gestion de l'image de marque, relations presse. Nous construisons des récits cohérents et durables pour vos institutions."
+            "desc": "Stratégie éditoriale, gestion de l'image de marque, relations presse. Nous construisons des récits cohérents et durables pour vos institutions.",
+            "details": {
+              "intro": "Une institution qui ne raconte pas son action laisse d'autres le faire à sa place. Nous construisons un récit cohérent, tenable dans la durée, et les moyens de le porter auprès de vos publics.",
+              "includes": [
+                "Audit d'image et analyse de la perception par vos publics",
+                "Plateforme de marque et ligne éditoriale",
+                "Plan de communication annuel et calendrier de prise de parole",
+                "Relations presse : ciblage, dossiers, accompagnement des porte-parole",
+                "Gestion des situations sensibles et communication de crise"
+              ],
+              "deliverables": [
+                "Diagnostic d'image et plateforme de marque",
+                "Plan de communication et calendrier éditorial",
+                "Kit presse, éléments de langage et procédure de crise"
+              ],
+              "audience": "Institutions publiques, entreprises, ONG et organisations internationales exposées médiatiquement."
+            }
           },
           {
             "n": "03",
             "title": "Événementiel stratégique",
-            "desc": "Conception, organisation et coordination d'événements à forte portée : inaugurations, sommets, cérémonies institutionnelles, forums."
+            "desc": "Conception, organisation et coordination d'événements à forte portée : inaugurations, sommets, cérémonies institutionnelles, forums.",
+            "details": {
+              "intro": "Un sommet, une inauguration ou une cérémonie officielle se juge sur des détails : le protocole, la logistique, la couverture médiatique. Nous prenons l'ensemble en charge, de la conception au bilan.",
+              "includes": [
+                "Conception du format, du fil conducteur et du dispositif protocolaire",
+                "Coordination logistique : lieux, prestataires, sécurité, accréditations",
+                "Gestion des invitations et des délégations officielles",
+                "Couverture médiatique et production de contenus sur place",
+                "Pilotage du budget et retour d'expérience"
+              ],
+              "deliverables": [
+                "Note de conception et scénographie détaillée",
+                "Rétroplanning, budget et plan logistique",
+                "Dossier de presse et bilan post-événement chiffré"
+              ],
+              "audience": "Ministères, institutions, entreprises et organisations internationales organisant des événements à forte visibilité."
+            }
           },
           {
             "n": "04",
             "title": "Création de contenus",
-            "desc": "Production de contenus à haute valeur ajoutée : rapports, plaidoyers, publications institutionnelles, supports de formation."
+            "desc": "Production de contenus à haute valeur ajoutée : rapports, plaidoyers, publications institutionnelles, supports de formation.",
+            "details": {
+              "intro": "Un rapport annuel, un plaidoyer ou une note de position n'ont d'effet que s'ils sont lus. Nous produisons des contenus rigoureux sur le fond et lisibles sur la forme, adaptés aux exigences des bailleurs comme du grand public.",
+              "includes": [
+                "Rapports annuels, rapports d'activité et publications institutionnelles",
+                "Notes de position, plaidoyers et argumentaires",
+                "Supports de formation et guides méthodologiques",
+                "Recherche documentaire, entretiens et vérification des données",
+                "Direction artistique, mise en page et déclinaisons numériques"
+              ],
+              "deliverables": [
+                "Contenus rédigés, sourcés et validés",
+                "Documents mis en page, prêts à imprimer et à diffuser en ligne",
+                "Déclinaisons courtes pour les réseaux et les relations presse"
+              ],
+              "audience": "Institutions, ONG, bailleurs et entreprises devant produire des documents de référence."
+            }
           }
         ]
       },
@@ -671,22 +799,86 @@
           {
             "n": "01",
             "title": "Relations gouvernementales",
-            "desc": "Interface stratégique avec les décideurs publics, les ministères et les institutions de régulation. Facilitation de dialogues à haute sensibilité."
+            "desc": "Interface stratégique avec les décideurs publics, les ministères et les institutions de régulation. Facilitation de dialogues à haute sensibilité.",
+            "details": {
+              "intro": "Accéder au bon interlocuteur public, au bon moment, avec le bon dossier : c'est là que se jouent la plupart des blocages. Nous préparons ces échanges et les accompagnons, dans le respect des règles et de la transparence.",
+              "includes": [
+                "Cartographie des décideurs publics et des circuits de décision",
+                "Préparation des dossiers et des argumentaires techniques",
+                "Organisation et accompagnement des rendez-vous institutionnels",
+                "Suivi des procédures administratives et réglementaires",
+                "Veille sur les réformes et les textes en préparation"
+              ],
+              "deliverables": [
+                "Cartographie des acteurs et note de contexte institutionnel",
+                "Dossier de présentation et éléments de langage",
+                "Comptes rendus d'entretiens et plan de suivi"
+              ],
+              "audience": "Entreprises, investisseurs et organisations dont les projets dépendent d'autorisations, de concessions ou d'arbitrages publics."
+            }
           },
           {
             "n": "02",
             "title": "Diplomatie privée",
-            "desc": "Accompagnement dans les négociations bilatérales, les missions d'influence et les mandats à dimension internationale."
+            "desc": "Accompagnement dans les négociations bilatérales, les missions d'influence et les mandats à dimension internationale.",
+            "details": {
+              "intro": "Certaines discussions ne peuvent pas se tenir en pleine lumière. Marabu agit comme tiers de confiance : nous préparons le terrain, portons les messages et sécurisons le cadre jusqu'à l'accord.",
+              "includes": [
+                "Analyse du contexte politique et des rapports de force",
+                "Préparation et facilitation de négociations bilatérales",
+                "Missions d'influence et représentation sur mandat",
+                "Médiation et gestion des désaccords sensibles",
+                "Confidentialité stricte et sécurisation des échanges"
+              ],
+              "deliverables": [
+                "Note de contexte et stratégie de négociation",
+                "Mandat écrit, avec périmètre et règles de confidentialité",
+                "Comptes rendus confidentiels et recommandations d'étape"
+              ],
+              "audience": "Dirigeants, groupes privés et institutions engagés dans des dossiers internationaux ou politiquement sensibles."
+            }
           },
           {
             "n": "03",
             "title": "Partenariats PTF",
-            "desc": "Mise en relation et facilitation avec les Partenaires Techniques et Financiers : bailleurs, agences de développement, ambassades."
+            "desc": "Mise en relation et facilitation avec les Partenaires Techniques et Financiers : bailleurs, agences de développement, ambassades.",
+            "details": {
+              "intro": "Les Partenaires Techniques et Financiers ont leurs formats, leurs calendriers et leurs critères. Nous vous mettons en relation avec les bons guichets et nous alignons votre dossier sur leurs exigences.",
+              "includes": [
+                "Identification des bailleurs et des guichets adaptés à votre projet",
+                "Mise en relation avec agences de développement, ambassades et fonds",
+                "Structuration du dossier de financement et du montage",
+                "Accompagnement aux comités et aux due diligences",
+                "Suivi de la relation partenaire après le décaissement"
+              ],
+              "deliverables": [
+                "Cartographie des financements accessibles et calendrier des appels",
+                "Dossier de financement structuré aux normes du bailleur",
+                "Plan de suivi de la relation et du reporting"
+              ],
+              "audience": "Porteurs de projets publics et privés, ONG et collectivités en recherche de financements internationaux."
+            }
           },
           {
             "n": "04",
             "title": "Stratégie d'influence",
-            "desc": "Construction de positionnements d'influence, défense d'intérêts, cartographie des acteurs-clés et gestion des relations de pouvoir."
+            "desc": "Construction de positionnements d'influence, défense d'intérêts, cartographie des acteurs-clés et gestion des relations de pouvoir.",
+            "details": {
+              "intro": "L'influence se construit avant d'avoir un dossier à défendre. Nous identifions les acteurs qui pèsent sur vos sujets, définissons vos positions et installons votre voix là où les décisions se préparent.",
+              "includes": [
+                "Cartographie des acteurs-clés et des lieux de décision",
+                "Définition du positionnement et des messages de fond",
+                "Plan de présence : instances, forums, publications, réseaux",
+                "Défense d'intérêts et accompagnement des consultations publiques",
+                "Veille et mesure de l'évolution des rapports de force"
+              ],
+              "deliverables": [
+                "Cartographie d'influence et analyse des rapports de force",
+                "Plateforme de positions et argumentaires par sujet",
+                "Plan d'action d'influence, avec jalons et indicateurs"
+              ],
+              "audience": "Organisations professionnelles, groupes privés et institutions dont l'activité dépend de décisions publiques ou de normes sectorielles."
+            }
           }
         ]
       }
@@ -724,6 +916,14 @@
       "heading2": "votre projet.",
       "desc": "Que vous soyez en phase de réflexion ou prêt à lancer une mission, nous sommes disponibles pour un premier échange sans engagement.",
       "address": "Abidjan, Côte d'Ivoire"
+    },
+    "offeringMore": "En savoir plus",
+    "modal": {
+      "eyebrow": "Le service en détail",
+      "includes": "Ce que nous faisons",
+      "deliverables": "Livrables",
+      "audience": "Pour qui",
+      "close": "Fermer"
     }
   },
   "blogPage": {

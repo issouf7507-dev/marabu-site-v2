@@ -615,22 +615,86 @@
           {
             "n": "01",
             "title": "Business strategy",
-            "desc": "Setting direction, competitive positioning, medium and long-term development plans. We help organisations clarify their vision and build realistic trajectories."
+            "desc": "Setting direction, competitive positioning, medium and long-term development plans. We help organisations clarify their vision and build realistic trajectories.",
+            "details": {
+              "intro": "We help leaders make the call: which market to enter, with which resources, on what timeline. The work starts from your actual data — figures, competition, regulatory constraints — and ends with a direction you can defend before a board or an investor.",
+              "includes": [
+                "Strategic diagnosis: market, competition, internal strengths and weaknesses",
+                "Positioning and growth priorities",
+                "Business plan and 3–5 year financial modelling",
+                "Portfolio arbitration and investment scenarios",
+                "Translation of the strategy into annual targets and tracking indicators"
+              ],
+              "deliverables": [
+                "Strategic framing note and board-ready summary",
+                "Costed 3–5 year development plan",
+                "Operational roadmap and indicator dashboard"
+              ],
+              "audience": "Executive teams, shareholders and boards of companies that are growing or repositioning."
+            }
           },
           {
             "n": "02",
             "title": "Organisational transformation",
-            "desc": "Change management, optimisation of structures and processes. Marabu accompanies deep transformations with method and care for teams."
+            "desc": "Change management, optimisation of structures and processes. Marabu accompanies deep transformations with method and care for teams.",
+            "details": {
+              "intro": "An organisation that has grown fast eventually collides with its own processes. We rebuild the structure, the roles and the decision paths, then support the rollout until the new rules hold without us.",
+              "includes": [
+                "Organisational audit: structure, roles, decision paths",
+                "Mapping and optimisation of key processes",
+                "Structural redesign and team sizing",
+                "Governance bodies and management routines",
+                "Support for managers throughout the transition"
+              ],
+              "deliverables": [
+                "Organisational audit report with prioritised recommendations",
+                "Target organisation chart, role descriptions and responsibility matrix",
+                "Sequenced transformation plan with milestones and indicators"
+              ],
+              "audience": "Fast-growing companies and institutions, groups merging operations, or organisations losing operational efficiency."
+            }
           },
           {
             "n": "03",
             "title": "Governance & compliance",
-            "desc": "Design of governance frameworks adapted to regulatory requirements and institutional challenges of the sub-region."
+            "desc": "Design of governance frameworks adapted to regulatory requirements and institutional challenges of the sub-region.",
+            "details": {
+              "intro": "Regulators, donors and investors are raising their requirements across the sub-region. We build governance frameworks that meet those expectations without paralysing day-to-day decisions.",
+              "includes": [
+                "Governance diagnosis and review of existing bodies",
+                "Charters, internal rules and delegations of authority",
+                "Compliance frameworks: internal control, risk management, anti-money laundering",
+                "Preparation for regulator, donor and investor audits",
+                "Training for directors and specialised committees"
+              ],
+              "deliverables": [
+                "Risk map and remediation plan",
+                "Governance documentation: charters, procedures, delegations",
+                "Compliance calendar and reporting framework"
+              ],
+              "audience": "Financial institutions, state-owned enterprises, private groups and organisations answering to a regulator or to donors."
+            }
           },
           {
             "n": "04",
             "title": "Change management",
-            "desc": "Human and cultural change leadership. Training of executive teams, managing resistance, lasting accompaniment through transformation."
+            "desc": "Human and cultural change leadership. Training of executive teams, managing resistance, lasting accompaniment through transformation.",
+            "details": {
+              "intro": "A reorganisation rarely fails on paper — it fails in the corridors. We work on what actually blocks it: team buy-in, internal politics, and managers' ability to carry the message.",
+              "includes": [
+                "Stakeholder analysis and mapping of resistance",
+                "Internal communication plan and listening mechanisms",
+                "Training and coaching for leadership teams and internal champions",
+                "Adoption workshops and on-the-ground support",
+                "Buy-in measurement and adjustment of the approach"
+              ],
+              "deliverables": [
+                "Stakeholder map and support plan",
+                "Internal communication kit and manager talking points",
+                "Adoption review and consolidation recommendations"
+              ],
+              "audience": "Organisations going through a merger, a restructuring, a new system or a shift in management culture."
+            }
           }
         ]
       },
@@ -643,22 +707,86 @@
           {
             "n": "01",
             "title": "Professional training",
-            "desc": "Tailored modules: e-reputation, crisis communication, leadership, project management. Delivered by experts, in person or online."
+            "desc": "Tailored modules: e-reputation, crisis communication, leadership, project management. Delivered by experts, in person or online.",
+            "details": {
+              "intro": "Our training starts from your real situations, not textbook cases. Every module is built to measure, led by practitioners, and ends with tools your teams use the next day.",
+              "includes": [
+                "Tailor-made modules built from a needs assessment",
+                "Online reputation, crisis communication, leadership, project management",
+                "Delivery on site, remotely or in blended format",
+                "Role-plays and case studies drawn from your sector",
+                "Assessment of learning and post-training follow-up"
+              ],
+              "deliverables": [
+                "Tailored curriculum and training materials",
+                "Toolkit and practical sheets for participants",
+                "Evaluation report and follow-up recommendations"
+              ],
+              "audience": "Leadership teams, middle managers, communication and human resources departments."
+            }
           },
           {
             "n": "02",
             "title": "Institutional communication",
-            "desc": "Editorial strategy, brand image management, press relations. We build coherent and lasting narratives for your institutions."
+            "desc": "Editorial strategy, brand image management, press relations. We build coherent and lasting narratives for your institutions.",
+            "details": {
+              "intro": "An institution that does not tell its own story leaves others to tell it. We build a coherent narrative that holds over time, and the means to carry it to your audiences.",
+              "includes": [
+                "Image audit and analysis of how your audiences perceive you",
+                "Brand platform and editorial line",
+                "Annual communication plan and speaking calendar",
+                "Press relations: targeting, media kits, spokesperson support",
+                "Handling of sensitive situations and crisis communication"
+              ],
+              "deliverables": [
+                "Image diagnosis and brand platform",
+                "Communication plan and editorial calendar",
+                "Press kit, talking points and crisis procedure"
+              ],
+              "audience": "Public institutions, companies, NGOs and international organisations exposed to media scrutiny."
+            }
           },
           {
             "n": "03",
             "title": "Strategic events",
-            "desc": "Design, organisation and coordination of high-impact events: inaugurations, summits, institutional ceremonies, forums."
+            "desc": "Design, organisation and coordination of high-impact events: inaugurations, summits, institutional ceremonies, forums.",
+            "details": {
+              "intro": "A summit, an inauguration or an official ceremony is judged on details: protocol, logistics, media coverage. We take on the whole chain, from concept to debrief.",
+              "includes": [
+                "Format, storyline and protocol design",
+                "Logistics coordination: venues, suppliers, security, accreditation",
+                "Management of invitations and official delegations",
+                "Media coverage and on-site content production",
+                "Budget control and post-event review"
+              ],
+              "deliverables": [
+                "Concept note and detailed staging plan",
+                "Reverse schedule, budget and logistics plan",
+                "Press kit and costed post-event review"
+              ],
+              "audience": "Ministries, institutions, companies and international organisations running high-visibility events."
+            }
           },
           {
             "n": "04",
             "title": "Content creation",
-            "desc": "Production of high added-value content: reports, advocacy pieces, institutional publications, training materials."
+            "desc": "Production of high added-value content: reports, advocacy pieces, institutional publications, training materials.",
+            "details": {
+              "intro": "An annual report, an advocacy paper or a position note only matters if it gets read. We produce content that is rigorous in substance and readable in form, fit for donors and general audiences alike.",
+              "includes": [
+                "Annual reports, activity reports and institutional publications",
+                "Position papers, advocacy documents and argument briefs",
+                "Training materials and methodological guides",
+                "Desk research, interviews and data verification",
+                "Art direction, layout and digital versions"
+              ],
+              "deliverables": [
+                "Written, sourced and validated content",
+                "Laid-out documents, ready to print and to publish online",
+                "Short versions for social media and press relations"
+              ],
+              "audience": "Institutions, NGOs, donors and companies that need to produce reference documents."
+            }
           }
         ]
       },
@@ -671,22 +799,86 @@
           {
             "n": "01",
             "title": "Government relations",
-            "desc": "Strategic interface with public decision-makers, ministries and regulatory institutions. Facilitation of high-sensitivity dialogues."
+            "desc": "Strategic interface with public decision-makers, ministries and regulatory institutions. Facilitation of high-sensitivity dialogues.",
+            "details": {
+              "intro": "Reaching the right public counterpart, at the right moment, with the right file — that is where most blockages are decided. We prepare those conversations and support them, within the rules and in full transparency.",
+              "includes": [
+                "Mapping of public decision-makers and decision paths",
+                "Preparation of files and technical arguments",
+                "Setting up and attending institutional meetings",
+                "Follow-up on administrative and regulatory procedures",
+                "Monitoring of reforms and draft legislation"
+              ],
+              "deliverables": [
+                "Stakeholder map and institutional context note",
+                "Presentation file and talking points",
+                "Meeting reports and follow-up plan"
+              ],
+              "audience": "Companies, investors and organisations whose projects depend on permits, concessions or public arbitration."
+            }
           },
           {
             "n": "02",
             "title": "Private diplomacy",
-            "desc": "Support in bilateral negotiations, influence missions and mandates with an international dimension."
+            "desc": "Support in bilateral negotiations, influence missions and mandates with an international dimension.",
+            "details": {
+              "intro": "Some conversations cannot happen in the open. Marabu acts as a trusted third party: we prepare the ground, carry the messages and secure the framework through to agreement.",
+              "includes": [
+                "Analysis of the political context and balance of power",
+                "Preparation and facilitation of bilateral negotiations",
+                "Influence missions and representation under mandate",
+                "Mediation and handling of sensitive disagreements",
+                "Strict confidentiality and secure communications"
+              ],
+              "deliverables": [
+                "Context note and negotiation strategy",
+                "Written mandate, with scope and confidentiality rules",
+                "Confidential reports and stage-by-stage recommendations"
+              ],
+              "audience": "Executives, private groups and institutions engaged in international or politically sensitive matters."
+            }
           },
           {
             "n": "03",
             "title": "PTF partnerships",
-            "desc": "Networking and facilitation with Technical and Financial Partners: donors, development agencies, embassies."
+            "desc": "Networking and facilitation with Technical and Financial Partners: donors, development agencies, embassies.",
+            "details": {
+              "intro": "Technical and financial partners have their own formats, calendars and criteria. We connect you to the right windows and align your file with their requirements.",
+              "includes": [
+                "Identification of donors and funding windows suited to your project",
+                "Introductions to development agencies, embassies and funds",
+                "Structuring of the funding file and financial arrangement",
+                "Support through committees and due diligence",
+                "Management of the partner relationship after disbursement"
+              ],
+              "deliverables": [
+                "Map of accessible funding and calendar of calls",
+                "Funding file structured to the donor's standards",
+                "Relationship and reporting follow-up plan"
+              ],
+              "audience": "Public and private project owners, NGOs and local authorities seeking international funding."
+            }
           },
           {
             "n": "04",
             "title": "Influence strategy",
-            "desc": "Building influence positioning, interest advocacy, mapping of key actors and management of power relations."
+            "desc": "Building influence positioning, interest advocacy, mapping of key actors and management of power relations.",
+            "details": {
+              "intro": "Influence is built before you have a case to defend. We identify the players who weigh on your issues, define your positions, and establish your voice where decisions are shaped.",
+              "includes": [
+                "Mapping of key players and decision venues",
+                "Positioning and substantive messaging",
+                "Presence plan: bodies, forums, publications, networks",
+                "Interest representation and support in public consultations",
+                "Monitoring and measurement of shifts in the balance of power"
+              ],
+              "deliverables": [
+                "Influence map and analysis of the balance of power",
+                "Position platform and arguments by topic",
+                "Influence action plan, with milestones and indicators"
+              ],
+              "audience": "Trade bodies, private groups and institutions whose activity depends on public decisions or sector standards."
+            }
           }
         ]
       }
@@ -724,6 +916,14 @@
       "heading2": "your project.",
       "desc": "Whether you are in the reflection phase or ready to launch a mission, we are available for a first no-commitment conversation.",
       "address": "Abidjan, Côte d'Ivoire"
+    },
+    "offeringMore": "Learn more",
+    "modal": {
+      "eyebrow": "The service in detail",
+      "includes": "What we do",
+      "deliverables": "Deliverables",
+      "audience": "Who it is for",
+      "close": "Close"
     }
   },
   "blogPage": {

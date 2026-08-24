@@ -39,7 +39,7 @@ L'ordre d'affichage est celui du tableau `TEAM`.
 ## Générer les fichiers depuis les originaux
 
 Les photos brutes sont déposées dans `src/assets/persons/` (le shooting fait du
-6000×4000, ~6 Mo pièce). Ce dossier est hors dépôt (`.gitignore`) et n'est
+6000×4000, ~6 Mo pièce ; `.jpg`, `.jpeg` et `.png` sont acceptés). Ce dossier est hors dépôt (`.gitignore`) et n'est
 **pas** servi tel quel : seuls les WebP générés sont committés.
 
 ```sh

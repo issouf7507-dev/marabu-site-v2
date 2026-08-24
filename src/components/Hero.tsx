@@ -13,6 +13,33 @@ import img2 from "../assets/imgs/services/services-marabu.webp";
 import img3 from "../assets/imgs/intermediation/intermediation-marabu.webp";
 // import coris2 from "../assets/coris2.webp";
 
+/*
+  Longueur du rail de scroll du panneau, en écrans (`svh`). Le panneau reste
+  collé pendant `RAIL - 1` écrans : un écran est consommé par son entrée dans
+  le champ, un autre par sa sortie. C'est cette fenêtre collée qui doit
+  contenir les trois visuels.
+
+  Le rail valait 3,5 écrans, soit près de 4,5 écrans de défilement avant le
+  premier contenu de la page — agréable à la découverte, long dès la deuxième
+  visite. À 2,4, chaque visuel dispose encore d'environ un demi-écran de
+  défilement, assez pour être lu sans que la séquence traîne.
+*/
+const RAIL = 2.4;
+
+/*
+  `useScroll` mesure la progression sur `RAIL + 1` écrans (hauteur du rail +
+  hauteur de la fenêtre). Le panneau est plein cadre entre `PIN_START` et
+  `PIN_END` ; les trois visuels se partagent cette fenêtre à parts égales, le
+  fondu débordant de part et d'autre de chaque frontière. Tout est dérivé de
+  `RAIL` : changer le rail suffit, les fondus suivent.
+*/
+const PIN_START = 1 / (RAIL + 1);
+const PIN_END = RAIL / (RAIL + 1);
+const SLIDE = (PIN_END - PIN_START) / 3;
+const FADE = SLIDE * 0.55;
+const CUT_1 = PIN_START + SLIDE;
+const CUT_2 = PIN_START + SLIDE * 2;
+
 export default function Hero() {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,19 +57,28 @@ export default function Hero() {
   */
   const gapProgress = useTransform(scrollYProgress, [0.1, 0.9], [1, 0]);
   const edgeGap = useMotionTemplate`calc(var(--hero-gap) * ${gapProgress})`;
+  // Les coins sont carrés au moment où le panneau devient plein cadre.
   const borderRadius = useTransform(
     scrollYProgress,
-    [0.1, 0.35],
+    [PIN_START * 0.4, PIN_START],
     ["1rem", "0rem"],
   );
 
-  const opacity1 = useTransform(scrollYProgress, [0.25, 0.38], [1, 0]);
+  const opacity1 = useTransform(
+    scrollYProgress,
+    [CUT_1 - FADE / 2, CUT_1 + FADE / 2],
+    [1, 0],
+  );
   const opacity2 = useTransform(
     scrollYProgress,
-    [0.25, 0.38, 0.62, 0.72],
+    [CUT_1 - FADE / 2, CUT_1 + FADE / 2, CUT_2 - FADE / 2, CUT_2 + FADE / 2],
     [0, 1, 1, 0],
   );
-  const opacity3 = useTransform(scrollYProgress, [0.62, 0.72], [0, 1]);
+  const opacity3 = useTransform(
+    scrollYProgress,
+    [CUT_2 - FADE / 2, CUT_2 + FADE / 2],
+    [0, 1],
+  );
 
   const images = t("hero.images", { returnObjects: true }) as {
     subtitle: string;
@@ -93,7 +129,11 @@ export default function Hero() {
         </div>
       </div>
 
-      <div ref={containerRef} className="mt-10 h-[350svh]">
+      <div
+        ref={containerRef}
+        className="mt-10"
+        style={{ height: `${RAIL * 100}svh` }}
+      >
         {/*
           `100svh` plutôt que `100vh` : sur mobile, 100vh vaut la hauteur écran
           barre d'URL rétractée, ce qui poussait le bas du panneau (le texte)
