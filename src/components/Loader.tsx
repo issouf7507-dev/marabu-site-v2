@@ -94,7 +94,7 @@ export default function Loader({ onComplete }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <img src={logo} alt="Marabu Services" className="w-80" />
+              <img src={logo} alt="Marabu" className="w-80" />
             </motion.div>
 
             <motion.div

@@ -31,10 +31,14 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
-  const isDarkHero = darkHeroPrefixes.some((p) => location.pathname.startsWith(p));
+  const isDarkHero = darkHeroPrefixes.some((p) =>
+    location.pathname.startsWith(p),
+  );
   const isLight = !scrolled && isDarkHero;
 
   const textColor = isLight ? "#ecede3" : "#1d454c";
@@ -62,7 +66,11 @@ export default function Navbar() {
       <motion.header
         className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300"
         style={{
-          backgroundColor: mobileOpen ? "#ecede3" : scrolled ? "#ecede3" : "transparent",
+          backgroundColor: mobileOpen
+            ? "#ecede3"
+            : scrolled
+              ? "#ecede3"
+              : "transparent",
           borderBottom: scrolled ? `1px solid ${borderColor}` : "none",
           backdropFilter: scrolled ? "blur(8px)" : "none",
         }}
@@ -75,12 +83,15 @@ export default function Navbar() {
           style={{ padding: scrolled ? "12px 24px" : "16px 24px" }}
         >
           {/* Logo */}
-          <Link to="/" aria-label={`${t("navbar.home")} — Marabu Services`}>
+          <Link to="/" aria-label={`${t("navbar.home")} — Marabu`}>
             <img
               src={logo}
-              alt="Marabu Services"
+              alt="Marabu"
               className="w-32 md:w-36 transition-all duration-300"
-              style={{ filter: isLight && !mobileOpen ? "brightness(0) invert(1)" : "none" }}
+              style={{
+                filter:
+                  isLight && !mobileOpen ? "brightness(0) invert(1)" : "none",
+              }}
             />
           </Link>
 
@@ -92,7 +103,9 @@ export default function Navbar() {
                   <li key={to}>
                     <Link
                       to={to}
-                      aria-current={location.pathname === to ? "page" : undefined}
+                      aria-current={
+                        location.pathname === to ? "page" : undefined
+                      }
                       className="text-sm transition-opacity duration-200 hover:opacity-100"
                       style={{
                         color: textColor,
@@ -116,8 +129,12 @@ export default function Navbar() {
                       aria-pressed={i18n.language === l.code}
                       className="text-xs cursor-pointer transition-all duration-200 px-2 py-0.5"
                       style={{
-                        background: i18n.language === l.code ? langActiveBg : "transparent",
-                        color: i18n.language === l.code ? langActiveText : textColor,
+                        background:
+                          i18n.language === l.code
+                            ? langActiveBg
+                            : "transparent",
+                        color:
+                          i18n.language === l.code ? langActiveText : textColor,
                         border: `1px solid ${langBorder}`,
                         opacity: i18n.language === l.code ? 1 : 0.7,
                       }}
@@ -151,7 +168,9 @@ export default function Navbar() {
           <button
             className="md:hidden flex flex-col justify-center gap-1.5 w-10 h-10 cursor-pointer"
             onClick={() => setMobileOpen((o) => !o)}
-            aria-label={mobileOpen ? t("navbar.closeMenu") : t("navbar.openMenu")}
+            aria-label={
+              mobileOpen ? t("navbar.closeMenu") : t("navbar.openMenu")
+            }
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
           >
@@ -164,13 +183,19 @@ export default function Navbar() {
             <motion.span
               className="block w-6 h-0.5 rounded-full"
               style={{ backgroundColor: mobileOpen ? "#1d454c" : textColor }}
-              animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              animate={
+                mobileOpen
+                  ? { opacity: 0, scaleX: 0 }
+                  : { opacity: 1, scaleX: 1 }
+              }
               transition={{ duration: 0.2 }}
             />
             <motion.span
               className="block w-6 h-0.5 rounded-full"
               style={{ backgroundColor: mobileOpen ? "#1d454c" : textColor }}
-              animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              animate={
+                mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
+              }
               transition={{ duration: 0.25 }}
             />
           </button>
@@ -193,7 +218,10 @@ export default function Navbar() {
               <nav className="flex-1 pt-4">
                 <ul className="flex flex-col">
                   {navItems.map(({ label, to }, i) => (
-                    <li key={to} className="overflow-hidden border-b border-[#1d454c]/10">
+                    <li
+                      key={to}
+                      className="overflow-hidden border-b border-[#1d454c]/10"
+                    >
                       <motion.div
                         initial={{ y: "110%" }}
                         animate={{ y: 0 }}
@@ -266,7 +294,11 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 12 }}
-                transition={{ delay: 0.6, duration: 0.4, ease: [0.25, 0, 0, 1] }}
+                transition={{
+                  delay: 0.6,
+                  duration: 0.4,
+                  ease: [0.25, 0, 0, 1],
+                }}
               >
                 {languages.map((l) => (
                   <button
@@ -275,7 +307,8 @@ export default function Navbar() {
                     aria-pressed={i18n.language === l.code}
                     className="flex-1 py-2.5 text-xs cursor-pointer transition-all duration-200"
                     style={{
-                      background: i18n.language === l.code ? "#1d454c" : "transparent",
+                      background:
+                        i18n.language === l.code ? "#1d454c" : "transparent",
                       color: i18n.language === l.code ? "#ecede3" : "#1d454c",
                       border: "1px solid #1d454c",
                       opacity: i18n.language === l.code ? 1 : 0.5,
