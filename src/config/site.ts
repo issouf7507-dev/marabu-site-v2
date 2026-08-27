@@ -4,7 +4,7 @@
  */
 
 export const SITE_URL = "https://v2.marabu.services";
-export const SITE_NAME = "Marabu Services";
+export const SITE_NAME = "Marabu";
 export const CONTACT_EMAIL = "contact@marabu.services";
 export const CONTACT_PHONE = "+225 07 20 77 70 00";
 /**

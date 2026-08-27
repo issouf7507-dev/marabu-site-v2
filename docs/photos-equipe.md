@@ -64,12 +64,12 @@ Le script redresse l'orientation EXIF, recadre en carré et réencode en WebP
 
 Rien ne casse, par construction :
 
-| Donnée absente | Rendu |
-|---|---|
-| Photo introuvable (404) | Initiales du membre sur fond vert clair |
-| `photo` non renseigné | Idem |
-| `linkedin` vide | Icône affichée, pointant vers le compte **Marabu** (mesure d'attente, voir ci-dessous) |
-| `TEAM` vide | La section entière disparaît |
+| Donnée absente          | Rendu                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------- |
+| Photo introuvable (404) | Initiales du membre sur fond vert clair                                                |
+| `photo` non renseigné   | Idem                                                                                   |
+| `linkedin` vide         | Icône affichée, pointant vers le compte **Marabu** (mesure d'attente, voir ci-dessous) |
+| `TEAM` vide             | La section entière disparaît                                                           |
 
 C'est ce qui permet de mettre le code en ligne avant d'avoir réuni toutes les
 photos et toutes les URL LinkedIn.
@@ -78,7 +78,7 @@ photos et toutes les URL LinkedIn.
 
 Décidé le 6 août 2026 : tant qu'un membre n'a pas d'URL personnelle, son icône
 pointe vers le compte LinkedIn de Marabu plutôt que de disparaître. Son libellé
-accessible devient alors « LinkedIn de Marabu Services » — annoncer « Profil
+accessible devient alors « LinkedIn de Marabu » — annoncer « Profil
 LinkedIn de X » pour un lien qui ouvre le compte de l'entreprise ferait dire au
 lecteur d'écran autre chose que ce qui s'ouvre réellement.
 

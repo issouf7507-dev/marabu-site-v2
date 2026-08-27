@@ -57,7 +57,7 @@ export default function Footer() {
         <FadeIn className="col-span-2 md:col-span-1 flex flex-col gap-6">
           <img
             src={logo}
-            alt="Marabu Services"
+            alt="Marabu"
             className="h-10 w-auto object-contain brightness-0 invert"
           />
           <p className="text-sm text-white/70 leading-relaxed max-w-xs">

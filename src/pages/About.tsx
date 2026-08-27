@@ -167,7 +167,7 @@ export default function About() {
                     <FadeIn delay={0.05}>
                       <img
                         src={marahead}
-                        alt="Marabu Services"
+                        alt="Marabu"
                         className="w-full  object-cover"
                         style={{ height: 380 }}
                       />

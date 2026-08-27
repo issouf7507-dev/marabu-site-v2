@@ -223,7 +223,7 @@ export default function Services() {
                 {s.name}
               </span>
               {/* <span className="text-xs uppercase tracking-[0.25em] opacity-40">
-                Marabu Services
+                Marabu
               </span> */}
             </div>
 

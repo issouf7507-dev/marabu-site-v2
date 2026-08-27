@@ -80,6 +80,15 @@ export default function Hero() {
     [0, 1],
   );
 
+  /*
+    Les trois volets sont superposés : celui qui est encore transparent
+    resterait au-dessus et capterait le clic destiné au volet visible. On
+    n'ouvre les événements de pointeur qu'au volet réellement lisible.
+  */
+  const clickable1 = useTransform(opacity1, (o) => (o > 0.5 ? "auto" : "none"));
+  const clickable2 = useTransform(opacity2, (o) => (o > 0.5 ? "auto" : "none"));
+  const clickable3 = useTransform(opacity3, (o) => (o > 0.5 ? "auto" : "none"));
+
   const images = t("hero.images", { returnObjects: true }) as {
     subtitle: string;
     title: string;
@@ -87,9 +96,24 @@ export default function Hero() {
   }[];
 
   const slides = [
-    { src: img1, opacity: opacity1 },
-    { src: img2, opacity: opacity2 },
-    { src: img3, opacity: opacity3 },
+    {
+      src: img1,
+      opacity: opacity1,
+      pointerEvents: clickable1,
+      to: "/services#conseil",
+    },
+    {
+      src: img2,
+      opacity: opacity2,
+      pointerEvents: clickable2,
+      to: "/services#services",
+    },
+    {
+      src: img3,
+      opacity: opacity3,
+      pointerEvents: clickable3,
+      to: "/services#intermediation",
+    },
   ];
 
   return (
@@ -143,7 +167,7 @@ export default function Hero() {
           className="sticky top-0 h-svh overflow-hidden [--hero-gap:0px] wide:[--hero-gap:2.5rem]"
           style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}
         >
-          {slides.map(({ src, opacity }, i) => (
+          {slides.map(({ src, opacity, pointerEvents, to }, i) => (
             <motion.div
               key={src}
               /*
@@ -160,6 +184,7 @@ export default function Hero() {
                 left: edgeGap,
                 borderRadius,
                 opacity,
+                pointerEvents,
               }}
             >
               {/*
@@ -180,15 +205,37 @@ export default function Hero() {
               <div className="absolute inset-0 hidden bg-linear-to-t from-black/65 via-black/15 to-transparent wide:block" />
 
               <div className="mt-6 wide:absolute wide:bottom-12 wide:left-12 wide:mt-0">
-                <p className="text-[#1d454c]/60 text-xs uppercase tracking-[0.2em] mb-3 wide:text-white/55">
-                  {images[i]?.subtitle}
-                </p>
-                <h2 className="text-[#1d454c] text-2xl font-light leading-snug wide:text-white wide:text-3xl">
-                  {images[i]?.title}
-                </h2>
-                <p className="mt-3 text-gray-600 text-sm max-w-sm wide:text-white/70">
-                  {images[i]?.desc}
-                </p>
+                {/*
+                  Chaque volet mène à la section correspondante de la page
+                  Services (`/services#conseil`, etc.). Le lien porte le bloc
+                  de texte plutôt que le panneau entier : un panneau plein
+                  cadre cliquable transformerait le moindre clic pendant le
+                  défilement en changement de page.
+
+                  Le libellé est celui de la section Services (`services.cta`)
+                  : les deux blocs mènent au même endroit, une clé propre au
+                  hero n'aurait fait que dupliquer le texte à traduire.
+                */}
+                <Link to={to} className="group block no-underline">
+                  <p className="text-[#1d454c]/60 text-xs uppercase tracking-[0.2em] mb-3 wide:text-white/55">
+                    {images[i]?.subtitle}
+                  </p>
+                  <h2 className="text-[#1d454c] text-2xl font-light leading-snug underline-offset-4 decoration-1 group-hover:underline wide:text-white wide:text-3xl">
+                    {images[i]?.title}
+                  </h2>
+                  <p className="mt-3 text-gray-600 text-sm max-w-sm wide:text-white/70">
+                    {images[i]?.desc}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#538253] wide:text-white/80">
+                    {t("services.cta")}
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
+                </Link>
               </div>
             </motion.div>
           ))}
