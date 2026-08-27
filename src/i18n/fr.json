@@ -89,7 +89,7 @@
     "items": [
       {
         "index": "01",
-        "name": "Conseil",
+        "name": "Conseils",
         "tagline": "On vous aide à prendre les bonnes décisions.",
         "description": "Stratégie, transformation, gouvernance — aux côtés des dirigeants qui veulent avancer avec méthode et exigence.",
         "tags": [
@@ -108,7 +108,7 @@
       },
       {
         "index": "03",
-        "name": "Intermédiation",
+        "name": "Intermédiations",
         "tagline": "On vous ouvre les portes qui comptent.",
         "description": "Relations gouvernementales, diplomatie privée, partenariats internationaux — Marabu agit en coulisses avec discrétion et méthode.",
         "tags": [

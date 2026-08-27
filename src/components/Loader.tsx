@@ -104,7 +104,7 @@ export default function Loader({ onComplete }: Props) {
                 fontSize: "clamp(0.6rem, 1.5vw, 0.8rem)",
               }}
             >
-              {["CONSEIL", "·", "SERVICES", "·", "INTERMEDIATION"].map(
+              {["CONSEILS", "·", "SERVICES", "·", "INTERMÉDIATIONS"].map(
                 (word, i) => (
                   <motion.span
                     key={i}
