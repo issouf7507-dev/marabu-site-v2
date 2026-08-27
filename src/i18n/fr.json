@@ -2,23 +2,23 @@
   "seo": {
     "home": {
       "title": "Conseil, Services & Intermédiation",
-      "description": "Marabu Services accompagne les organisations en Afrique de l'Ouest : conseil stratégique, services opérationnels et intermédiation d'affaires."
+      "description": "Marabu accompagne les organisations en Afrique de l'Ouest : conseil stratégique, services opérationnels et intermédiation d'affaires."
     },
     "about": {
       "title": "À propos",
-      "description": "Découvrez Marabu Services : notre histoire, nos valeurs et l'équipe qui accompagne les organisations en Afrique de l'Ouest."
+      "description": "Découvrez Marabu : notre histoire, nos valeurs et l'équipe qui accompagne les organisations en Afrique de l'Ouest."
     },
     "services": {
-      "title": "Nos services",
-      "description": "Conseil stratégique, services opérationnels, intermédiation, formation et diplomatie privée : découvrez l'ensemble des expertises Marabu Services."
+      "title": "Nos Solutions",
+      "description": "Conseil stratégique, services opérationnels, intermédiation, formation et diplomatie privée : découvrez l'ensemble des expertises Marabu."
     },
     "blog": {
       "title": "Actualités",
-      "description": "Analyses, actualités et regards de Marabu Services sur la stratégie, la communication et le développement des affaires en Afrique de l'Ouest."
+      "description": "Analyses, actualités et regards de Marabu sur la stratégie, la communication et le développement des affaires en Afrique de l'Ouest."
     },
     "contact": {
       "title": "Contact",
-      "description": "Une question, un projet ? Contactez les équipes de Marabu Services à Abidjan. Nous répondons sous 24 heures."
+      "description": "Une question, un projet ? Contactez les équipes de Marabu à Abidjan. Nous répondons sous 24 heures."
     },
     "notFound": {
       "title": "Page introuvable",
@@ -44,8 +44,8 @@
   "navbar": {
     "home": "Accueil",
     "about": "À propos",
-    "services": "Services",
-    "blog": "Blog",
+    "services": "Nos solutions",
+    "blog": "News",
     "contact": "Contact",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
@@ -54,8 +54,9 @@
   "hero": {
     "tagline1": "L'expertise qui transforme",
     "tagline2": "vos ambitions en impact durable.",
-    "description": "Du conseil stratégique à l'intermédiation internationale, Marabu Services accompagne les entreprises et les institutions dans leur transformation, leur rayonnement et le renforcement de leur influence.",
+    "description": "Du conseil stratégique à l'intermédiation internationale, Marabu accompagne les entreprises et les institutions dans leur transformation, leur rayonnement et le renforcement de leur influence.",
     "cta": "Nous contacter",
+    "discover": "Découvrir cette solution",
     "images": [
       {
         "subtitle": "Stratégie · Transformation · Gouvernance",
@@ -77,15 +78,15 @@
   "intro": {
     "label": "Introduction",
     "heading": "Des stratégies innovantes pour une croissance durable et performante.",
-    "p1": "Marabu Services accompagne les entreprises, institutions et organisations dans leurs défis stratégiques, opérationnels et relationnels. Notre approche allie la sagesse africaine à l'action stratégique moderne pour des solutions sur mesure, durables et à fort impact.",
+    "p1": "Marabu accompagne les entreprises, institutions et organisations dans leurs défis stratégiques, opérationnels et relationnels. Notre approche allie la sagesse africaine à l'action stratégique moderne pour des solutions sur mesure, durables et à fort impact.",
     "p2": "Spécialisés en conseil stratégique, en services opérationnels et en intermédiation institutionnelle, nous intervenons là où les décisions se prennent — auprès des gouvernements, des partenaires techniques et financiers, et des acteurs privés qui façonnent le continent.",
     "p3": "Fondée en 2023 et basée à Abidjan, Marabu est le partenaire de ceux qui veulent bâtir avec méthode, influencer avec intégrité et croître avec vision."
   },
   "services": {
-    "label": "Nos services",
+    "label": "Nos Solutions",
     "heading1": "Trois expertises,",
     "heading2": "un seul engagement.",
-    "cta": "Découvrir ce service",
+    "cta": "Découvrir cette solution",
     "items": [
       {
         "index": "01",
@@ -104,12 +105,7 @@
         "name": "Services",
         "tagline": "On fait le travail avec vous.",
         "description": "Formation, communication, événements — des dispositifs opérationnels pour renforcer vos équipes et amplifier votre impact.",
-        "tags": [
-          "Formation",
-          "Communication",
-          "Événements",
-          "Contenus"
-        ]
+        "tags": ["Formation", "Communication", "Événements", "Contenus"]
       },
       {
         "index": "03",
@@ -234,10 +230,7 @@
   },
   "manifesto": {
     "eyebrow": "Notre raison d'être",
-    "lines": [
-      "Conseillers, médiateurs",
-      "et gardiens de la connaissance."
-    ],
+    "lines": ["Conseillers, médiateurs", "et gardiens de la connaissance."],
     "desc": "Allier la sagesse africaine à l'action stratégique moderne, pour des solutions qui durent et des impacts qui comptent.",
     "cta": "Travailler avec nous"
   },
@@ -284,7 +277,7 @@
     "expertisesTitle": "Expertises",
     "contactTitle": "Contact",
     "address": "Cocody Danga, Abidjan — Côte d'Ivoire",
-    "copyright": "© 2026 Marabu Services. Tous droits réservés.",
+    "copyright": "© 2026 Marabu. Tous droits réservés.",
     "founded": "Fondée en 2023 — Abidjan, Côte d'Ivoire",
     "nav": [
       {
@@ -420,7 +413,7 @@
       "label": "Notre équipe",
       "heading": "Les femmes et les hommes qui portent Marabu.",
       "linkedinAria": "Profil LinkedIn de {{name}} (nouvel onglet)",
-      "linkedinCompanyAria": "LinkedIn de Marabu Services (nouvel onglet)",
+      "linkedinCompanyAria": "LinkedIn de Marabu (nouvel onglet)",
       "viewCv": "Voir le CV de {{name}}",
       "viewCvShort": "Voir le CV",
       "roles": {
@@ -535,7 +528,7 @@
       ]
     },
     "servicesSection": {
-      "label": "Nos services",
+      "label": "Nos Solutions",
       "items": [
         {
           "label": "Conseil"
@@ -559,7 +552,7 @@
     "certifications": "Certificats",
     "references": "Références pertinentes",
     "languages": "Langues",
-    "seoDescription": "{{name}}, {{role}} chez Marabu Services : parcours, domaines d'expertise et références de missions.",
+    "seoDescription": "{{name}}, {{role}} chez Marabu : parcours, domaines d'expertise et références de missions.",
     "notFoundTitle": "Profil introuvable",
     "notFoundDesc": "Ce membre de l'équipe n'a pas de CV publié, ou l'adresse saisie est incorrecte.",
     "ctaHeading": "Une mission en tête ? Parlons-en.",
@@ -927,7 +920,7 @@
     }
   },
   "blogPage": {
-    "eyebrow": "Marabu Services",
+    "eyebrow": "Marabu",
     "title1": "Perspectives &",
     "title2": "Analyses.",
     "subtitle": "Perspectives stratégiques sur l'Afrique, la gouvernance, la diplomatie privée et la transformation des organisations.",
