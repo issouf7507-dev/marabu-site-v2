@@ -211,6 +211,10 @@ export default function Hero() {
                   de texte plutôt que le panneau entier : un panneau plein
                   cadre cliquable transformerait le moindre clic pendant le
                   défilement en changement de page.
+
+                  Le libellé est celui de la section Services (`services.cta`)
+                  : les deux blocs mènent au même endroit, une clé propre au
+                  hero n'aurait fait que dupliquer le texte à traduire.
                 */}
                 <Link to={to} className="group block no-underline">
                   <p className="text-[#1d454c]/60 text-xs uppercase tracking-[0.2em] mb-3 wide:text-white/55">
@@ -223,7 +227,7 @@ export default function Hero() {
                     {images[i]?.desc}
                   </p>
                   <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#538253] wide:text-white/80">
-                    {t("hero.discover")}
+                    {t("services.cta")}
                     <span
                       aria-hidden="true"
                       className="transition-transform duration-300 group-hover:translate-x-1"
