@@ -82,7 +82,7 @@
     "p3": "Founded in 2023 and based in Abidjan, Marabu is the partner of those who want to build with method, influence with integrity and grow with vision."
   },
   "services": {
-    "label": "Our services",
+    "label": "Our Solutions",
     "heading1": "Three areas of",
     "heading2": "expertise, one commitment.",
     "cta": "Explore this solution",
@@ -522,7 +522,7 @@
       ]
     },
     "servicesSection": {
-      "label": "Our services",
+      "label": "Our Solutions",
       "items": [
         {
           "label": "Consulting"
