@@ -38,21 +38,21 @@ const row1: Partner[] = [
   { src: visa, name: 'Visa', url: 'https://www.visa.com/' },
   { src: yango, name: 'Yango', url: 'https://yango.com/' },
   { src: amcham, name: 'AmCham', url: 'https://amcham-ci.org/' },
-  { src: gudePme, name: 'Guichet Unique de Développement des PME' },
+  { src: gudePme, name: 'Guichet Unique de Développement des PME', url: 'https://gudepme.ci/' },
 ];
 
 const row2: Partner[] = [
   { src: guci, name: 'Guichet Unique du Commerce Extérieur', url: 'https://guce.gouv.ci/' },
-  { src: gdcci, name: 'GDCCI' },
+  { src: gdcci, name: 'G.D. Couverture', url: 'https://gdcouverture.ci/' },
   { src: vitib, name: 'VITIB', url: 'https://www.vitib.ci/' },
-  { src: cpcs, name: 'CPCS' },
-  { src: caderac, name: 'CADERAC' },
-  { src: amtTransit, name: 'AMT Transit' },
-  { src: oceanTransport, name: 'Ocean Transport' },
-  { src: meps, name: 'MEPS' },
+  { src: cpcs, name: 'CPCS', url: 'https://cpcs.ca/fr/' },
+  { src: caderac, name: 'CADERAC', url: 'https://www.caderac.com/' },
+  { src: amtTransit, name: 'AMT Transit', url: 'https://amt-transit.com/' },
+  { src: oceanTransport, name: 'Ocean Transport', url: 'https://www.oceancotedivoire.com/' },
+  { src: meps, name: 'MEPS', url: 'https://www.emploi.gouv.ci/accueil' },
   { src: manju, name: 'Manju' },
-  { src: aoc, name: 'AOC' },
-  { src: mouchoirBlanc, name: 'Mouchoir Blanc' },
+  { src: aoc, name: 'AOC', url: 'https://africaospreycapital.com/' },
+  { src: mouchoirBlanc, name: 'Mouchoir Blanc', url: 'https://mouchoirblanc.org/en/mouchoir-en/' },
 ];
 
 const FRAME =
