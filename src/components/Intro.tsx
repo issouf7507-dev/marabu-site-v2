@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "./ui/fade-in";
 import coris2 from "../assets/coris2.webp";
@@ -84,6 +85,27 @@ export default function Intro() {
               <p>{t("intro.p3")}</p>
             </FadeIn>
           </div>
+
+          {/*
+            L'introduction raconte qui est Marabu sans aller au bout : le
+            bouton prolonge la lecture vers la page À propos, qui reprend
+            l'histoire, les valeurs et l'équipe. Même style que le CTA du
+            hero — les deux vivent sur le même fond crème.
+          */}
+          <FadeIn delay={0.34}>
+            <Link
+              to="/a-propos"
+              className="mt-10 inline-flex items-center gap-3 border border-[#1d454c] text-gray-700 text-xs uppercase tracking-[0.2em] px-8 py-3 hover:bg-[#1d454c] hover:text-[#ecede3] transition-all duration-300 w-fit whitespace-nowrap group"
+            >
+              {t("intro.cta")}
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </Link>
+          </FadeIn>
         </div>
       </div>
     </section>
