@@ -115,7 +115,7 @@ export default function BlogPreview() {
   const locale = i18n.language;
   const headingLines = t("blogPreview.heading").split("\n");
 
-  const preview = data?.articles.slice(0, 6) ?? [];
+  const preview = data?.articles.slice(0, 7) ?? [];
   const [featured, ...rest] = preview;
 
   return (
