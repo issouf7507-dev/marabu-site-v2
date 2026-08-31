@@ -1,7 +1,7 @@
 {
   "seo": {
     "home": {
-      "title": "Conseil, Services & Intermédiation",
+      "title": "Conseils, Services & Intermédiations",
       "description": "Marabu accompagne les organisations en Afrique de l'Ouest : conseil stratégique, services opérationnels et intermédiation d'affaires."
     },
     "about": {
@@ -59,7 +59,7 @@
     "images": [
       {
         "subtitle": "Stratégie · Transformation · Gouvernance",
-        "title": "Conseil",
+        "title": "Conseils",
         "desc": "Des solutions sur mesure pour accompagner les entreprises et institutions dans leur croissance durable."
       },
       {
@@ -69,7 +69,7 @@
       },
       {
         "subtitle": "Institutions · Diplomatie · Partenariats",
-        "title": "Intermédiation",
+        "title": "Intermédiations",
         "desc": "Relations gouvernementales, diplomatie privée et alliances internationales pour accroître votre influence."
       }
     ]
@@ -147,7 +147,7 @@
       },
       {
         "id": "03",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "client": "GUCE CI",
         "project": "Tournée stratégique auprès des Partenaires Techniques et Financiers",
         "description": "Accompagnement du GUCE CI dans une tournée stratégique auprès des Partenaires Techniques et Financiers internationaux, dont l'ambassade de Turquie, pour promouvoir la dématérialisation du commerce extérieur en Côte d'Ivoire.",
@@ -249,7 +249,7 @@
       {
         "id": "02",
         "date": "Avril 2026",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "title": "Soft power et diplomatie privée : comment les entreprises influencent les politiques publiques",
         "excerpt": "Les acteurs privés jouent un rôle croissant dans la fabrique des décisions publiques. Décryptage des pratiques et des limites éthiques.",
         "featured": false
@@ -339,14 +339,14 @@
       "messagePlaceholder": "Décrivez votre projet, vos objectifs ou vos défis…"
     },
     "services": [
-      "Conseil — Stratégie d'entreprise",
-      "Conseil — Transformation organisationnelle",
-      "Conseil — Gouvernance & conformité",
+      "Conseils — Stratégie d'entreprise",
+      "Conseils — Transformation organisationnelle",
+      "Conseils — Gouvernance & conformité",
       "Services — Formation professionnelle",
       "Services — Communication institutionnelle",
       "Services — Événementiel stratégique",
-      "Intermédiation — Relations gouvernementales",
-      "Intermédiation — Partenariats PTF",
+      "Intermédiations — Relations gouvernementales",
+      "Intermédiations — Partenariats PTF",
       "Autre / Je ne sais pas encore"
     ],
     "submit": "Envoyer le message →",
@@ -510,7 +510,7 @@
         },
         {
           "label": "Secteurs",
-          "value": "Conseil · Formation · Intermédiation"
+          "value": "Conseils · Formation · Intermédiations"
         },
         {
           "label": "Zone d'intervention",
@@ -530,13 +530,13 @@
       "label": "Nos Solutions",
       "items": [
         {
-          "label": "Conseil"
+          "label": "Conseils"
         },
         {
           "label": "Services"
         },
         {
-          "label": "Intermédiation"
+          "label": "Intermédiations"
         }
       ]
     }
@@ -581,7 +581,7 @@
     "links": [
       {
         "id": "conseil",
-        "label": "Conseil"
+        "label": "Conseils"
       },
       {
         "id": "services",
@@ -589,7 +589,7 @@
       },
       {
         "id": "intermediation",
-        "label": "Intermédiation"
+        "label": "Intermédiations"
       },
       {
         "id": "methode",
@@ -601,7 +601,7 @@
       {
         "id": "conseil",
         "index": "01",
-        "name": "Conseil",
+        "name": "Conseils",
         "intro": "Nous accompagnons les dirigeants et les institutions dans leurs décisions stratégiques les plus complexes. Notre approche conjugue rigueur analytique et connaissance du terrain africain.",
         "offerings": [
           {
@@ -785,7 +785,7 @@
       {
         "id": "intermediation",
         "index": "03",
-        "name": "Intermédiation",
+        "name": "Intermédiations",
         "intro": "Marabu agit en coulisses avec discrétion et méthode. Nous ouvrons les portes qui comptent — dans les cercles gouvernementaux, diplomatiques et financiers.",
         "offerings": [
           {
@@ -926,7 +926,7 @@
     "categories": [
       "Tous",
       "Stratégie",
-      "Intermédiation",
+      "Intermédiations",
       "Services",
       "Formation"
     ],
@@ -953,7 +953,7 @@
       {
         "id": "02",
         "date": "Avril 2026",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "title": "Soft power et diplomatie privée : comment les entreprises influencent les politiques publiques",
         "excerpt": "Les acteurs privés jouent un rôle croissant dans la fabrique des décisions publiques. Décryptage des pratiques et des limites éthiques.",
         "readTime": "6 min",
@@ -980,7 +980,7 @@
       {
         "id": "05",
         "date": "Janvier 2026",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "title": "Relations PTF : maximiser l'impact des partenariats techniques et financiers",
         "excerpt": "Comment construire des relations durables avec les bailleurs, agences de développement et ambassades ? Méthodes et retours d'expérience issus de notre pratique.",
         "readTime": "6 min",
