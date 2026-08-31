@@ -1,7 +1,7 @@
 {
   "seo": {
     "home": {
-      "title": "Conseil, Services & Intermédiation",
+      "title": "Conseils, Services & Intermédiations",
       "description": "Marabu accompagne les organisations en Afrique de l'Ouest : conseil stratégique, services opérationnels et intermédiation d'affaires."
     },
     "about": {
@@ -59,7 +59,7 @@
     "images": [
       {
         "subtitle": "Stratégie · Transformation · Gouvernance",
-        "title": "Conseil",
+        "title": "Conseils",
         "desc": "Des solutions sur mesure pour accompagner les entreprises et institutions dans leur croissance durable."
       },
       {
@@ -69,7 +69,7 @@
       },
       {
         "subtitle": "Institutions · Diplomatie · Partenariats",
-        "title": "Intermédiation",
+        "title": "Intermédiations",
         "desc": "Relations gouvernementales, diplomatie privée et alliances internationales pour accroître votre influence."
       }
     ]
@@ -79,7 +79,29 @@
     "heading": "Des stratégies innovantes pour une croissance durable et performante.",
     "p1": "Marabu accompagne les entreprises, institutions et organisations dans leurs défis stratégiques, opérationnels et relationnels. Notre approche allie la sagesse africaine à l'action stratégique moderne pour des solutions sur mesure, durables et à fort impact.",
     "p2": "Spécialisés en conseil stratégique, en services opérationnels et en intermédiation institutionnelle, nous intervenons là où les décisions se prennent — auprès des gouvernements, des partenaires techniques et financiers, et des acteurs privés qui façonnent le continent.",
-    "p3": "Fondée en 2023 et basée à Abidjan, Marabu est le partenaire de ceux qui veulent bâtir avec méthode, influencer avec intégrité et croître avec vision."
+    "p3": "Fondée en 2023 et basée à Abidjan, Marabu est le partenaire de ceux qui veulent bâtir avec méthode, influencer avec intégrité et croître avec vision.",
+    "cta": "Découvrir Marabu"
+  },
+  "kpis": {
+    "label": "Marabu en chiffres",
+    "stats": [
+      {
+        "value": "+30",
+        "label": "Missions accomplies"
+      },
+      {
+        "value": "+15",
+        "label": "Clients accompagnés"
+      },
+      {
+        "value": "8",
+        "label": "Pays d'intervention"
+      },
+      {
+        "value": "+20",
+        "label": "Expertises clés"
+      }
+    ]
   },
   "services": {
     "label": "Nos Solutions",
@@ -147,7 +169,7 @@
       },
       {
         "id": "03",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "client": "GUCE CI",
         "project": "Tournée stratégique auprès des Partenaires Techniques et Financiers",
         "description": "Accompagnement du GUCE CI dans une tournée stratégique auprès des Partenaires Techniques et Financiers internationaux, dont l'ambassade de Turquie, pour promouvoir la dématérialisation du commerce extérieur en Côte d'Ivoire.",
@@ -234,7 +256,7 @@
     "cta": "Travailler avec nous"
   },
   "blogPreview": {
-    "label": "Le blog",
+    "label": "News",
     "heading": "Perspectives &\nanalyses.",
     "cta": "Tous les articles",
     "posts": [
@@ -249,7 +271,7 @@
       {
         "id": "02",
         "date": "Avril 2026",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "title": "Soft power et diplomatie privée : comment les entreprises influencent les politiques publiques",
         "excerpt": "Les acteurs privés jouent un rôle croissant dans la fabrique des décisions publiques. Décryptage des pratiques et des limites éthiques.",
         "featured": false
@@ -285,7 +307,7 @@
       },
       {
         "label": "À propos",
-        "href": "/about"
+        "href": "/a-propos"
       },
       {
         "label": "Services",
@@ -301,12 +323,30 @@
       }
     ],
     "expertises": [
-      "Conseil",
-      "Services",
-      "Intermédiation",
-      "Stratégie",
-      "Formation",
-      "Diplomatie privée"
+      {
+        "label": "Conseils",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Services",
+        "href": "/services#services"
+      },
+      {
+        "label": "Intermédiations",
+        "href": "/services#intermediation"
+      },
+      {
+        "label": "Stratégie",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Formation",
+        "href": "/services#services"
+      },
+      {
+        "label": "Diplomatie privée",
+        "href": "/services#intermediation"
+      }
     ]
   },
   "contact": {
@@ -339,14 +379,14 @@
       "messagePlaceholder": "Décrivez votre projet, vos objectifs ou vos défis…"
     },
     "services": [
-      "Conseil — Stratégie d'entreprise",
-      "Conseil — Transformation organisationnelle",
-      "Conseil — Gouvernance & conformité",
+      "Conseils — Stratégie d'entreprise",
+      "Conseils — Transformation organisationnelle",
+      "Conseils — Gouvernance & conformité",
       "Services — Formation professionnelle",
       "Services — Communication institutionnelle",
       "Services — Événementiel stratégique",
-      "Intermédiation — Relations gouvernementales",
-      "Intermédiation — Partenariats PTF",
+      "Intermédiations — Relations gouvernementales",
+      "Intermédiations — Partenariats PTF",
       "Autre / Je ne sais pas encore"
     ],
     "submit": "Envoyer le message →",
@@ -416,10 +456,11 @@
       "viewCv": "Voir le CV de {{name}}",
       "viewCvShort": "Voir le CV",
       "roles": {
-        "houssene-ben-souda": "Fondateur",
+        "houssene-ben-souda": "Dirigeant Associé",
         "thomas-dabadie": "Associé",
         "aida-ouattara": "Associé",
-        "brice-brou": "Directeur marketing",
+        "yapo-marius-bessekon": "Associé",
+        "brice-brou": "Directeur Associé",
         "kimana-misago": "Chargé de l'innovation",
         "bossoh-aka": "Consultant senior",
         "gilles-dogbo": "Consultant senior",
@@ -510,7 +551,7 @@
         },
         {
           "label": "Secteurs",
-          "value": "Conseil · Formation · Intermédiation"
+          "value": "Conseils · Formation · Intermédiations"
         },
         {
           "label": "Zone d'intervention",
@@ -530,13 +571,13 @@
       "label": "Nos Solutions",
       "items": [
         {
-          "label": "Conseil"
+          "label": "Conseils"
         },
         {
           "label": "Services"
         },
         {
-          "label": "Intermédiation"
+          "label": "Intermédiations"
         }
       ]
     }
@@ -581,7 +622,7 @@
     "links": [
       {
         "id": "conseil",
-        "label": "Conseil"
+        "label": "Conseils"
       },
       {
         "id": "services",
@@ -589,7 +630,7 @@
       },
       {
         "id": "intermediation",
-        "label": "Intermédiation"
+        "label": "Intermédiations"
       },
       {
         "id": "methode",
@@ -601,7 +642,7 @@
       {
         "id": "conseil",
         "index": "01",
-        "name": "Conseil",
+        "name": "Conseils",
         "intro": "Nous accompagnons les dirigeants et les institutions dans leurs décisions stratégiques les plus complexes. Notre approche conjugue rigueur analytique et connaissance du terrain africain.",
         "offerings": [
           {
@@ -785,7 +826,7 @@
       {
         "id": "intermediation",
         "index": "03",
-        "name": "Intermédiation",
+        "name": "Intermédiations",
         "intro": "Marabu agit en coulisses avec discrétion et méthode. Nous ouvrons les portes qui comptent — dans les cercles gouvernementaux, diplomatiques et financiers.",
         "offerings": [
           {
@@ -926,7 +967,7 @@
     "categories": [
       "Tous",
       "Stratégie",
-      "Intermédiation",
+      "Intermédiations",
       "Services",
       "Formation"
     ],
@@ -953,7 +994,7 @@
       {
         "id": "02",
         "date": "Avril 2026",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "title": "Soft power et diplomatie privée : comment les entreprises influencent les politiques publiques",
         "excerpt": "Les acteurs privés jouent un rôle croissant dans la fabrique des décisions publiques. Décryptage des pratiques et des limites éthiques.",
         "readTime": "6 min",
@@ -980,7 +1021,7 @@
       {
         "id": "05",
         "date": "Janvier 2026",
-        "category": "Intermédiation",
+        "category": "Intermédiations",
         "title": "Relations PTF : maximiser l'impact des partenariats techniques et financiers",
         "excerpt": "Comment construire des relations durables avec les bailleurs, agences de développement et ambassades ? Méthodes et retours d'expérience issus de notre pratique.",
         "readTime": "6 min",

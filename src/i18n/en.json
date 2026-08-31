@@ -79,7 +79,29 @@
     "heading": "Innovative strategies for sustainable and high-performance growth.",
     "p1": "Marabu supports businesses, institutions and organisations in their strategic, operational and relational challenges. Our approach combines African wisdom with modern strategic action, delivering tailor-made, lasting, high-impact solutions.",
     "p2": "Specialised in strategic consulting, operational services and institutional intermediation, we operate where decisions are made — with governments, technical and financial partners, and the private actors shaping the continent.",
-    "p3": "Founded in 2023 and based in Abidjan, Marabu is the partner of those who want to build with method, influence with integrity and grow with vision."
+    "p3": "Founded in 2023 and based in Abidjan, Marabu is the partner of those who want to build with method, influence with integrity and grow with vision.",
+    "cta": "Discover Marabu"
+  },
+  "kpis": {
+    "label": "Marabu in numbers",
+    "stats": [
+      {
+        "value": "+30",
+        "label": "Assignments delivered"
+      },
+      {
+        "value": "+15",
+        "label": "Clients supported"
+      },
+      {
+        "value": "8",
+        "label": "Countries of operation"
+      },
+      {
+        "value": "+20",
+        "label": "Key areas of expertise"
+      }
+    ]
   },
   "services": {
     "label": "Our Solutions",
@@ -229,7 +251,7 @@
     "cta": "Work with us"
   },
   "blogPreview": {
-    "label": "Insights",
+    "label": "News",
     "heading": "Perspectives &\nanalyses.",
     "cta": "All articles",
     "posts": [
@@ -280,7 +302,7 @@
       },
       {
         "label": "About",
-        "href": "/about"
+        "href": "/a-propos"
       },
       {
         "label": "Services",
@@ -296,12 +318,30 @@
       }
     ],
     "expertises": [
-      "Consulting",
-      "Services",
-      "Intermediation",
-      "Strategy",
-      "Training",
-      "Private Diplomacy"
+      {
+        "label": "Consulting",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Services",
+        "href": "/services#services"
+      },
+      {
+        "label": "Intermediation",
+        "href": "/services#intermediation"
+      },
+      {
+        "label": "Strategy",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Training",
+        "href": "/services#services"
+      },
+      {
+        "label": "Private Diplomacy",
+        "href": "/services#intermediation"
+      }
     ]
   },
   "contact": {
@@ -411,10 +451,11 @@
       "viewCv": "View {{name}}'s CV",
       "viewCvShort": "View CV",
       "roles": {
-        "houssene-ben-souda": "Founder",
+        "houssene-ben-souda": "Managing Partner",
         "thomas-dabadie": "Partner",
         "aida-ouattara": "Partner",
-        "brice-brou": "Marketing Director",
+        "yapo-marius-bessekon": "Partner",
+        "brice-brou": "Associate Director",
         "kimana-misago": "Innovation Lead",
         "bossoh-aka": "Senior Consultant",
         "gilles-dogbo": "Senior Consultant",

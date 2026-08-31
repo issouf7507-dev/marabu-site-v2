@@ -44,6 +44,14 @@ export const TEAM: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/a%C3%AFda-ouattara-b4ab0682/",
   },
   {
+    id: "yapo-marius-bessekon",
+    name: "Yapo Marius Bessekon",
+    photo: "/persons/Yapo_Marius_Bessekon_marabu.webp",
+    // Paramètres `utm_*` de partage mobile retirés : ils n'attribuent rien de
+    // notre côté (même nettoyage que LINKEDIN dans site.ts).
+    linkedin: "https://www.linkedin.com/in/yapomariusbessekon",
+  },
+  {
     id: "brice-brou",
     name: "Brice Brou",
     photo: "/persons/Brice_Brou_marabu.webp",
@@ -71,7 +79,8 @@ export const TEAM: TeamMember[] = [
     id: "issouf-ouattara",
     name: "Issouf Ouattara",
     photo: "/persons/Issouf_Ouattara_marabu.webp",
-    linkedin: "https://www.linkedin.com/in/bitcheresse-issouf-ouattara-a350aa341/",
+    linkedin:
+      "https://www.linkedin.com/in/bitcheresse-issouf-ouattara-a350aa341/",
   },
   {
     id: "herve-toure",

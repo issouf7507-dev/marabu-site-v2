@@ -56,6 +56,9 @@ MAP = {
     "Thomas-Dabadie":              ("Thomas_Dabadie_marabu",       0.50, 0.05, 1.0),
     "Ouattara-Aida":               ("Aida_Ouattara_marabu",        0.55, 0.50, 1.0),
     "Brice-Brou":                  ("Brice_Brou_marabu",           0.50, 0.22, 1.0),
+    # Portrait studio déjà serré (810x1080) : le plus grand carré part du haut
+    # du cadre, sans quoi le crâne est coupé.
+    "Yapo-Marius-Bessekon":        ("Yapo_Marius_Bessekon_marabu", 0.50, 0.00, 1.0),
     "Bossoh-Aka":                  ("Bossoh_Aka_marabu",           0.50, 0.05, 1.0),
     "Gilles-Dogbo":                ("Gilles_Dogbo_marabu",         0.50, 0.05, 1.0),
     "Ouattara-Bitcheresse-Issouf": ("Issouf_Ouattara_marabu",      0.50, 0.05, 1.0),

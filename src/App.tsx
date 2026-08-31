@@ -9,6 +9,8 @@ import Hero from "./components/Hero";
 import LogoMarquee from "./components/LogoMarquee";
 import Manifesto from "./components/Manifesto";
 import Intro from "./components/Intro";
+import TeamPreview from "./components/TeamPreview";
+import Kpis from "./components/Kpis";
 import Services from "./components/Services";
 import CaseStudies from "./components/CaseStudies";
 import BlogPreview from "./components/BlogPreview";
@@ -57,6 +59,8 @@ export default function App() {
           <Hero />
           <LogoMarquee />
           <Intro />
+          <TeamPreview />
+          <Kpis />
           <Services />
           <CaseStudies />
           <Manifesto />

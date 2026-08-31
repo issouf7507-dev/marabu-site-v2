@@ -24,14 +24,14 @@ const categoryTag: Record<
   string,
   { bg: string; text: string; placeholder: string }
 > = {
-  Conseil: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
-  Consulting: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
+  Conseils: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
+  Consultings: { bg: "#f5ede4", text: "#b07d5a", placeholder: "#e8d5c0" },
   Services: { bg: "#e8e8e8", text: "#1a1a1a", placeholder: "#d0d0d0" },
-  Intermédiation: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
-  Intermediation: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
+  Intermédiations: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
+  Intermediations: { bg: "#e8dbd6", text: "#5a3728", placeholder: "#d4c0b8" },
   Événementiel: { bg: "#dde8d5", text: "#3f6b3f", placeholder: "#c4d9b8" },
   Events: { bg: "#dde8d5", text: "#3f6b3f", placeholder: "#c4d9b8" },
-  Formation: { bg: "#e8f0d8", text: "#3f6b3f", placeholder: "#c4d9b8" },
+  Formations: { bg: "#e8f0d8", text: "#3f6b3f", placeholder: "#c4d9b8" },
   Training: { bg: "#e8f0d8", text: "#3f6b3f", placeholder: "#c4d9b8" },
 };
 

@@ -27,22 +27,22 @@ function Avatar({ item }: { item: Testimonial }) {
 
   return (
     <div
-      className="w-12 h-12 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0 overflow-hidden"
+      className="w-16 h-16 rounded-full bg-[#538253]/10 flex items-center justify-center shrink-0 overflow-hidden"
       aria-hidden="true"
     >
       {showImage ? (
         <img
           src={item.image}
           alt=""
-          width={48}
-          height={48}
+          width={64}
+          height={64}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover"
           onError={() => setFailed(true)}
         />
       ) : (
-        <span className="text-[#3f6b3f] font-semibold text-sm">
+        <span className="text-[#3f6b3f] font-semibold text-lg">
           {item.name.charAt(0)}
         </span>
       )}
@@ -107,7 +107,7 @@ export default function Testimonials() {
           </FadeIn>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((t_, i) => (
             <FadeIn key={t_.name} delay={i * 0.08}>
               <figure className="bg-white rounded-2xl p-8 flex flex-col gap-6 h-full">
@@ -123,10 +123,10 @@ export default function Testimonials() {
                 <figcaption className="flex items-center gap-4 pt-2 border-t border-gray-100">
                   <Avatar item={t_} />
                   <div>
-                    <p className="font-semibold text-gray-900 text-sm">
+                    <p className="font-semibold text-gray-900 text-base">
                       {t_.name}
                     </p>
-                    <p className="text-gray-600 text-xs">
+                    <p className="text-gray-600 text-sm leading-snug">
                       {t_.role} · {t_.company}
                     </p>
                   </div>
