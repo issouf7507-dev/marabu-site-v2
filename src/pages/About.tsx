@@ -85,7 +85,7 @@ export default function About() {
       <Seo
         title={t("seo.about.title")}
         description={t("seo.about.description")}
-        path="/about"
+        path="/a-propos"
       />
       <div className="min-h-screen bg-[#ecede3]">
         <Navbar />

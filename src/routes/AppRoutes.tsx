@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import App from "../App";
 import FloatingContact from "../components/FloatingContact";
@@ -30,7 +30,18 @@ export default function AppRoutes() {
         <Suspense fallback={<RouteFallback />}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<App />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/a-propos" element={<About />} />
+            {/*
+              L'ancienne adresse anglaise reste desservie : liens partagés,
+              favoris et résultats de recherche déjà indexés ne doivent pas
+              tomber sur une 404. Une vraie redirection 301 côté serveur
+              (Nginx, Netlify, Vercel) reste préférable pour le référencement —
+              celle-ci n'agit qu'une fois le JS chargé.
+            */}
+            <Route
+              path="/about"
+              element={<Navigate to="/a-propos" replace />}
+            />
             <Route path="/equipe/:id" element={<TeamMemberPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/actualites" element={<BlogPage />} />

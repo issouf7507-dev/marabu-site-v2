@@ -60,7 +60,7 @@ async function cvRoutes() {
 /** Doit rester aligné sur public/sitemap.xml et src/routes/AppRoutes.tsx. */
 const ROUTES = [
   "/",
-  "/about",
+  "/a-propos",
   "/services",
   "/actualites",
   "/contact",

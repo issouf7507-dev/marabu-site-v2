@@ -9,7 +9,7 @@ const languages = [
   { code: "en", label: "ENGLISH" },
 ];
 
-const darkHeroPrefixes = ["/about", "/services", "/actualites", "/contact"];
+const darkHeroPrefixes = ["/a-propos", "/services", "/actualites", "/contact"];
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -49,7 +49,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: t("navbar.home"), to: "/" },
-    { label: t("navbar.about"), to: "/about" },
+    { label: t("navbar.about"), to: "/a-propos" },
     { label: t("navbar.services"), to: "/services" },
     { label: t("navbar.blog"), to: "/actualites" },
   ];

@@ -236,7 +236,7 @@ export default function TeamMemberPage() {
         <Seo
           title={t("teamMember.notFoundTitle")}
           description={t("teamMember.notFoundDesc")}
-          path="/about#team"
+          path="/a-propos#team"
         />
         <div className="min-h-screen bg-[#ecede3] flex flex-col">
           <Navbar />
@@ -252,7 +252,7 @@ export default function TeamMemberPage() {
                 {t("teamMember.notFoundDesc")}
               </p>
               <Link
-                to="/about#team"
+                to="/a-propos#team"
                 className="inline-block text-xs uppercase tracking-[0.2em] px-8 py-3.5 text-[#ecede3] transition-opacity duration-200 hover:opacity-85"
                 style={{ backgroundColor: "#1d454c" }}
               >
@@ -291,7 +291,7 @@ export default function TeamMemberPage() {
             style={{ borderBottom: "1px solid #e5e7eb" }}
           >
             <Link
-              to="/about#team"
+              to="/a-propos#team"
               className="text-xs uppercase tracking-[0.2em] text-black/60 inline-flex items-center gap-2 mb-10 hover:gap-4 hover:text-[#1d454c] transition-all duration-300"
             >
               ← {t("teamMember.back")}
@@ -403,7 +403,7 @@ export default function TeamMemberPage() {
                   {t("teamMember.ctaButton")}
                 </Link>
                 <Link
-                  to="/about#team"
+                  to="/a-propos#team"
                   className="inline-block text-xs uppercase tracking-[0.2em] px-8 py-4 text-[#ecede3] transition-colors duration-300 hover:bg-white/10"
                   style={{ border: "1px solid #ffffff40" }}
                 >
