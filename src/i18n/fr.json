@@ -323,12 +323,30 @@
       }
     ],
     "expertises": [
-      "Conseil",
-      "Services",
-      "Intermédiation",
-      "Stratégie",
-      "Formation",
-      "Diplomatie privée"
+      {
+        "label": "Conseils",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Services",
+        "href": "/services#services"
+      },
+      {
+        "label": "Intermédiations",
+        "href": "/services#intermediation"
+      },
+      {
+        "label": "Stratégie",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Formation",
+        "href": "/services#services"
+      },
+      {
+        "label": "Diplomatie privée",
+        "href": "/services#intermediation"
+      }
     ]
   },
   "contact": {

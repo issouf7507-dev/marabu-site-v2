@@ -318,12 +318,30 @@
       }
     ],
     "expertises": [
-      "Consulting",
-      "Services",
-      "Intermediation",
-      "Strategy",
-      "Training",
-      "Private Diplomacy"
+      {
+        "label": "Consulting",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Services",
+        "href": "/services#services"
+      },
+      {
+        "label": "Intermediation",
+        "href": "/services#intermediation"
+      },
+      {
+        "label": "Strategy",
+        "href": "/services#conseil"
+      },
+      {
+        "label": "Training",
+        "href": "/services#services"
+      },
+      {
+        "label": "Private Diplomacy",
+        "href": "/services#intermediation"
+      }
     ]
   },
   "contact": {

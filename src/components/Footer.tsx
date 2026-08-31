@@ -15,9 +15,15 @@ type NavLink = { label: string; href: string };
 export default function Footer() {
   const { t } = useTranslation();
   const nav = t("footer.nav", { returnObjects: true }) as NavLink[];
+  /*
+    Chaque expertise mène à sa section de la page Solutions : les trois pôles
+    à la leur, les trois expertises transverses au pôle qui les porte. La
+    destination vit dans les fichiers i18n, à côté du libellé, comme pour
+    `footer.nav` — sinon un ajout éditorial arriverait sans lien.
+  */
   const expertises = t("footer.expertises", {
     returnObjects: true,
-  }) as string[];
+  }) as NavLink[];
   const ctaLines = t("footer.cta").split("\n");
 
   return (
@@ -92,9 +98,14 @@ export default function Footer() {
             {t("footer.expertisesTitle")}
           </p>
           <ul className="space-y-3">
-            {expertises.map((s) => (
-              <li key={s} className="text-sm text-white/70">
-                {s}
+            {expertises.map((link) => (
+              <li key={link.label}>
+                <Link
+                  to={link.href}
+                  className="text-sm text-white/70 hover:text-white transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
