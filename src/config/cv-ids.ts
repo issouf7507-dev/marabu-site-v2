@@ -13,6 +13,7 @@ export const CV_IDS = [
   "houssene-ben-souda",
   "thomas-dabadie",
   "aida-ouattara",
+  "yapo-marius-bessekon",
   "brice-brou",
   "kimana-misago",
   "gilles-dogbo",

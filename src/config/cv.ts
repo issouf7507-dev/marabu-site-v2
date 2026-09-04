@@ -46,6 +46,13 @@ export type Cv = {
   experience: CvExperience[];
   education: string[];
   references: CvReference[];
+  /**
+   * Intitulé de la rubrique `references`. Par défaut « Références
+   * pertinentes » : des missions clientes nommées. Certains CV n'en portent
+   * aucune — on y liste alors les qualifications qui fondent l'expertise, et
+   * le titre doit le dire, d'où cette bascule vers `teamMember.qualifications`.
+   */
+  referencesLabel?: "qualifications";
   certifications?: string[];
 };
 
@@ -432,6 +439,125 @@ export const CVS: Record<CvId, Cv> = {
       {
         title: "Développement commercial et partenariats stratégiques",
         text: "Gestion de grands comptes, animation du réseau commercial et déploiement d'initiatives partenariales contribuant à la croissance de l'activité.",
+      },
+    ],
+  },
+
+  "yapo-marius-bessekon": {
+    tagline:
+      "ESG • Immobilier durable • Green Building • Efficacité énergétique",
+    /*
+     * Le CV source ne porte pas d'adresse professionnelle MARABU : rien n'est
+     * affiché plutôt qu'une adresse devinée. À renseigner dès qu'une adresse
+     * @marabu.services existe (même situation que souleymane-coulibaly).
+     */
+    languages: ["Français", "Anglais"],
+    expertise: [
+      "Stratégie ESG & développement durable",
+      "Politique environnementale",
+      "Green Building & immobilier durable",
+      "Efficacité énergétique & performance des bâtiments",
+      "BREEAM – certification & accompagnement",
+      "LEED & standards internationaux de durabilité",
+      "Sustainability & Climate Change",
+      "Conseil stratégique et transformation",
+      "Finance & ingénierie d'affaires",
+      "Management de missions de conseil complexes",
+    ],
+    figures: [
+      "20+ années d'expérience",
+      "15 ans chez PwC Luxembourg",
+      "Managing Director depuis 2022",
+      "7+ ans au niveau Senior Manager",
+      "5 qualifications BREEAM & LEED",
+      "Double culture technique, environnementale et financière",
+    ],
+    profile: [
+      "Fort de plus de 20 années d'expérience, Yapo Marius BESSEKON est un dirigeant et expert du conseil spécialisé dans le développement durable, la performance environnementale, l'efficacité énergétique et l'immobilier durable.",
+      "Son parcours combine une solide expertise technique en énergie et environnement, une maîtrise reconnue des principaux référentiels internationaux de bâtiments durables — notamment BREEAM et LEED — et une expérience de haut niveau dans le conseil acquise au sein de PwC Luxembourg, où il évolue depuis 2011 et occupe aujourd'hui les fonctions de Managing Director.",
+      "Il dispose d'une connaissance approfondie des problématiques de Sustainability & Climate Change, de certification environnementale des bâtiments, d'amélioration de la performance énergétique et d'intégration des enjeux environnementaux dans les projets immobiliers. Son parcours académique complète cette expertise technique par une dimension financière et business, avec un Master 2 Finance – Banque, Finance, Assurance / Ingénieur d'affaires.",
+      "Au sein de MARABU, son expertise est mobilisée sur les problématiques de transition durable, d'ESG, d'infrastructures et d'immobilier durable, d'efficacité énergétique, de finance verte et d'accompagnement stratégique des organisations publiques et privées.",
+    ],
+    experience: [
+      {
+        period: "Juil. 2022 – Présent",
+        role: "Managing Director – Advisory",
+        org: "PwC Luxembourg – Luxembourg",
+      },
+      {
+        period: "Oct. 2018 – Juil. 2022",
+        role: "Director",
+        org: "PwC Luxembourg – Luxembourg",
+      },
+      {
+        period: "Avr. 2011 – Oct. 2018",
+        role: "Senior Manager",
+        org: "PwC Luxembourg – Luxembourg",
+      },
+      {
+        period: "Fév. 2005 – Avr. 2011",
+        role: "BREEAM International Assessor – Ingénieur énergéticien & environnement",
+        org: "PROgena",
+      },
+    ],
+    education: [
+      "2020 : Executive Education – Luxembourg School of Business, Luxembourg",
+      "2014 – 2016 : Master 2 Finance, parcours Banque, Finance, Assurance – Ingénieur d'affaires – Université Paris Ouest Nanterre La Défense",
+      "2003 – 2005 : DESS interuniversitaire Sciences de l'Environnement, surveillance de l'environnement – Université de Liège",
+    ],
+    certifications: [
+      "BREEAM Accredited Professional – Sustainability & Climate Change, Building Research Establishment (2013)",
+      "BREEAM Communities Assessor – Sustainability & Climate Change, Building Research Establishment (2013)",
+      "BREEAM International Assessor",
+      "BREEAM In-Use Auditor",
+      "LEED Green Associate",
+    ],
+    /*
+     * Le CV source ne liste aucune mission cliente nominative : la rubrique
+     * porte ici les qualifications qui fondent l'expertise, et son intitulé
+     * bascule en conséquence — cf. `referencesLabel`.
+     */
+    referencesLabel: "qualifications",
+    references: [
+      {
+        title: "Leadership Advisory – PwC Luxembourg",
+        text: "Plus de quinze années d'évolution au sein de PwC Luxembourg, de Senior Manager à Director puis Managing Director, sur des activités de conseil en développement durable et performance environnementale.",
+      },
+      {
+        title: "Green Building",
+        text: "Expertise de long terme dans l'intégration des enjeux environnementaux et de durabilité appliqués aux bâtiments et aux actifs immobiliers.",
+      },
+      {
+        title: "BREEAM Accredited Professional",
+        text: "Qualification permettant d'intégrer les exigences BREEAM dans la conception et le pilotage de projets immobiliers durables.",
+      },
+      {
+        title: "BREEAM International Assessor",
+        text: "Expertise dans l'évaluation de projets au regard du référentiel international de performance environnementale BREEAM.",
+      },
+      {
+        title: "BREEAM In-Use Auditor",
+        text: "Compétence spécialisée dans l'évaluation environnementale et la performance durable des bâtiments existants.",
+      },
+      {
+        title: "BREEAM Communities Assessor",
+        text: "Expertise couvrant les enjeux de durabilité à l'échelle des communautés et des projets d'aménagement.",
+      },
+      {
+        title: "LEED Green Associate",
+        text: "Connaissance des principes et pratiques associés au référentiel international LEED.",
+      },
+      {
+        title: "Efficacité énergétique",
+        text: "Parcours initial d'ingénieur énergéticien et environnement, apportant une profondeur technique aux missions de conseil.",
+      },
+      {
+        title: "Sustainability & Climate Change",
+        text: "Expertise combinant environnement, immobilier durable, énergie et accompagnement des organisations dans leur transition.",
+      },
+      {
+        title: "Finance & Business Advisory",
+        text: "Master 2 Finance – Banque, Finance, Assurance / Ingénieur d'affaires, renforçant la capacité à articuler les problématiques techniques avec leurs dimensions économiques et financières.",
       },
     ],
   },

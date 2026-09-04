@@ -185,7 +185,13 @@ function CvBody({ cv }: { cv: Cv }) {
 
         <section className="pt-16">
           <FadeIn>
-            <SectionTitle>{t("teamMember.references")}</SectionTitle>
+            <SectionTitle>
+              {t(
+                cv.referencesLabel
+                  ? "teamMember.qualifications"
+                  : "teamMember.references",
+              )}
+            </SectionTitle>
           </FadeIn>
           <div className="space-y-4">
             {cv.references.map((ref, i) => (
