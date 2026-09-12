@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { TEAM, type TeamMember } from "../../config/team";
 import conseil1 from "../../assets/imgs/conseils/conseil-1.webp";
 import conseil2 from "../../assets/imgs/conseils/conseil-2.webp";
 import conseil4 from "../../assets/imgs/conseils/conseil-4.webp";
@@ -34,6 +35,16 @@ export type OfferingItem = {
   details: OfferingDetails;
 };
 
+/** Prestation enrichie de ses médias : visuel de bandeau et référent. */
+export type OfferingWithMedia = OfferingItem & {
+  img: string;
+  /**
+   * Absent si l'id ne correspond plus à personne dans `TEAM` (membre retiré) :
+   * la modale masque alors le bloc, plutôt que d'afficher un nom fantôme.
+   */
+  expert?: TeamMember;
+};
+
 export type Service = {
   id: string;
   index: string;
@@ -47,7 +58,7 @@ export type Step = { n: string; title: string; desc: string };
 /** Prestation ouverte dans la modale, avec le service dont elle relève. */
 export type OpenOffering = {
   svc: { name: string; color: string };
-  item: OfferingItem & { img: string };
+  item: OfferingWithMedia;
 };
 
 /*
@@ -68,11 +79,51 @@ const serviceOfferingImages = [
 ];
 const stepImages = [conseil9, services7, inter7, services8];
 
+/*
+  Référent métier de chaque prestation, affiché dans la modale : on ne vend pas
+  une ligne de catalogue, on met un visage sur la compétence.
+
+  Les quatre associés couvrent les douze prestations, chacun sur son domaine
+  (cf. `expertise` dans src/config/cv.ts). La liste restreinte est typée : un id
+  hors des quatre, ou mal orthographié, casse la compilation.
+
+  Même disposition que `serviceOfferingImages` — un tableau par service, dans
+  l'ordre des prestations du JSON.
+*/
+type ExpertId =
+  | "houssene-ben-souda"
+  | "thomas-dabadie"
+  | "aida-ouattara"
+  | "brice-brou";
+
+const serviceOfferingExperts: ExpertId[][] = [
+  [
+    "thomas-dabadie", // Stratégie d'entreprise
+    "houssene-ben-souda", // Transformation organisationnelle
+    "aida-ouattara", // Gouvernance & conformité
+    "thomas-dabadie", // Gestion du changement
+  ],
+  [
+    "houssene-ben-souda", // Formation professionnelle
+    "brice-brou", // Communication institutionnelle
+    "brice-brou", // Événementiel stratégique
+    "brice-brou", // Création de contenus
+  ],
+  [
+    "houssene-ben-souda", // Relations gouvernementales
+    "houssene-ben-souda", // Diplomatie privée
+    "aida-ouattara", // Partenariats PTF
+    "brice-brou", // Stratégie d'influence
+  ],
+];
+
+const membersById = new Map(TEAM.map((m) => [m.id, m]));
+
 export type ServiceWithMedia = Service & {
   color: string;
   bg: string;
   heroImage: string;
-  offerings: (OfferingItem & { img: string })[];
+  offerings: OfferingWithMedia[];
 };
 
 /**
@@ -92,6 +143,7 @@ export function useServiceData() {
     offerings: svc.offerings.map((o, oi) => ({
       ...o,
       img: serviceOfferingImages[si][oi],
+      expert: membersById.get(serviceOfferingExperts[si][oi]),
     })),
   }));
 
