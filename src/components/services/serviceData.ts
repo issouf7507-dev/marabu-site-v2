@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { TEAM, type TeamMember } from "../../config/team";
+import { OFFERING_SLUGS } from "../../config/offering-slugs";
 import conseil1 from "../../assets/imgs/conseils/conseil-1.webp";
 import conseil2 from "../../assets/imgs/conseils/conseil-2.webp";
 import conseil4 from "../../assets/imgs/conseils/conseil-4.webp";
@@ -20,7 +21,7 @@ import inter6 from "../../assets/imgs/intermediation/intermediation-6.webp";
 import inter7 from "../../assets/imgs/intermediation/intermediation-7.webp";
 import ereputation from "../../assets/imgs/formation-e-reputation.webp";
 
-/** Contenu long d'une prestation, affiché dans la modale (`OfferingModal`). */
+/** Contenu long d'une prestation, affiché sur sa page (`OfferingPage`). */
 export type OfferingDetails = {
   intro: string;
   includes: string[];
@@ -35,12 +36,14 @@ export type OfferingItem = {
   details: OfferingDetails;
 };
 
-/** Prestation enrichie de ses médias : visuel de bandeau et référent. */
+/** Prestation enrichie de son adresse et de ses médias : visuel et référent. */
 export type OfferingWithMedia = OfferingItem & {
+  /** Dernier segment de `/services/<slug>`, cf. `OFFERING_SLUGS`. */
+  slug: string;
   img: string;
   /**
    * Absent si l'id ne correspond plus à personne dans `TEAM` (membre retiré) :
-   * la modale masque alors le bloc, plutôt que d'afficher un nom fantôme.
+   * la page masque alors le bloc, plutôt que d'afficher un nom fantôme.
    */
   expert?: TeamMember;
 };
@@ -54,12 +57,6 @@ export type Service = {
 };
 
 export type Step = { n: string; title: string; desc: string };
-
-/** Prestation ouverte dans la modale, avec le service dont elle relève. */
-export type OpenOffering = {
-  svc: { name: string; color: string };
-  item: OfferingWithMedia;
-};
 
 /*
   Visuels et couleurs, dans l'ordre des services déclarés sous
@@ -80,7 +77,7 @@ const serviceOfferingImages = [
 const stepImages = [conseil9, services7, inter7, services8];
 
 /*
-  Référent métier de chaque prestation, affiché dans la modale : on ne vend pas
+  Référent métier de chaque prestation, affiché sur sa page : on ne vend pas
   une ligne de catalogue, on met un visage sur la compétence.
 
   Les quatre associés couvrent les douze prestations, chacun sur son domaine
@@ -119,7 +116,7 @@ const serviceOfferingExperts: ExpertId[][] = [
 
 const membersById = new Map(TEAM.map((m) => [m.id, m]));
 
-export type ServiceWithMedia = Service & {
+export type ServiceWithMedia = Omit<Service, "offerings"> & {
   color: string;
   bg: string;
   heroImage: string;
@@ -142,6 +139,7 @@ export function useServiceData() {
     heroImage: serviceHeroImages[si],
     offerings: svc.offerings.map((o, oi) => ({
       ...o,
+      slug: OFFERING_SLUGS[si][oi],
       img: serviceOfferingImages[si][oi],
       expert: membersById.get(serviceOfferingExperts[si][oi]),
     })),
@@ -152,6 +150,15 @@ export function useServiceData() {
   ).map((step, i) => ({ ...step, img: stepImages[i] }));
 
   return { services, steps };
+}
+
+/** Retrouve une prestation et son service par le slug de l'URL. */
+export function findOffering(services: ServiceWithMedia[], slug: string) {
+  for (const svc of services) {
+    const item = svc.offerings.find((o) => o.slug === slug);
+    if (item) return { svc, item };
+  }
+  return undefined;
 }
 
 export type StepWithMedia = ReturnType<typeof useServiceData>["steps"][number];

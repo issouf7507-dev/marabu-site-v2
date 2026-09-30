@@ -11,6 +11,7 @@ import FloatingContact from "../components/FloatingContact";
 const About = lazy(() => import("../pages/About"));
 const TeamMemberPage = lazy(() => import("../pages/TeamMemberPage"));
 const ServicesPage = lazy(() => import("../pages/ServicesPage"));
+const OfferingPage = lazy(() => import("../pages/OfferingPage"));
 const BlogPage = lazy(() => import("../pages/BlogPage"));
 const ArticlePage = lazy(() => import("../pages/ArticlePage"));
 const ContactPage = lazy(() => import("../pages/ContactPage"));
@@ -44,6 +45,7 @@ export default function AppRoutes() {
             />
             <Route path="/equipe/:id" element={<TeamMemberPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:slug" element={<OfferingPage />} />
             <Route path="/actualites" element={<BlogPage />} />
             <Route path="/actualites/:id" element={<ArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />

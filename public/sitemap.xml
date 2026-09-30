@@ -16,6 +16,66 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://v2.marabu.services/services/strategie-d-entreprise</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/transformation-organisationnelle</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/gouvernance-et-conformite</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/gestion-du-changement</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/formation-professionnelle</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/communication-institutionnelle</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/evenementiel-strategique</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/creation-de-contenus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/relations-gouvernementales</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/diplomatie-privee</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/partenariats-ptf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://v2.marabu.services/services/strategie-d-influence</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://v2.marabu.services/actualites</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

@@ -947,13 +947,17 @@
       "address": "Abidjan, Côte d'Ivoire"
     },
     "offeringMore": "Learn more",
-    "modal": {
+    "offering": {
       "eyebrow": "The service in detail",
       "includes": "What we do",
       "deliverables": "Deliverables",
       "audience": "Who it is for",
       "expert": "Your lead expert",
-      "close": "Close"
+      "back": "All our solutions",
+      "breadcrumb": "Breadcrumb",
+      "related": "Other services — {{service}}",
+      "notFoundTitle": "Service not found",
+      "notFoundDesc": "This service does not exist or has moved. You will find all our solutions on the dedicated page."
     }
   },
   "blogPage": {

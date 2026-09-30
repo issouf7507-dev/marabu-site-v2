@@ -952,13 +952,17 @@
       "address": "Abidjan, Côte d'Ivoire"
     },
     "offeringMore": "En savoir plus",
-    "modal": {
+    "offering": {
       "eyebrow": "Le service en détail",
       "includes": "Ce que nous faisons",
       "deliverables": "Livrables",
       "audience": "Pour qui",
       "expert": "Votre référent",
-      "close": "Fermer"
+      "back": "Toutes nos solutions",
+      "breadcrumb": "Fil d'Ariane",
+      "related": "Autres prestations — {{service}}",
+      "notFoundTitle": "Prestation introuvable",
+      "notFoundDesc": "Cette prestation n'existe pas ou a changé d'adresse. Retrouvez l'ensemble de nos solutions sur la page dédiée."
     }
   },
   "blogPage": {
