@@ -180,6 +180,17 @@ const context = await browser.newContext({
   viewport: { width: 1280, height: 900 },
 });
 
+/*
+  Google Analytics bloqué pendant le prérendu : chaque build enverrait sinon
+  une fausse visite par route, et gtag.js pourrait injecter ses propres balises
+  dans le HTML figé. Le snippet inline d'index.html reste, lui, dans les pages :
+  c'est chez le visiteur qu'il doit charger gtag.js.
+*/
+await context.route(
+  /googletagmanager\.com|google-analytics\.com/,
+  (route) => route.abort(),
+);
+
 let failures = 0;
 
 for (const route of ROUTES) {
