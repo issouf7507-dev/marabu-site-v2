@@ -144,7 +144,7 @@
     "cases": [
       {
         "id": "01",
-        "category": "Events",
+        "category": "Services",
         "client": "Yango",
         "project": "Marabu, architect of the inauguration of Yango Côte d'Ivoire's national headquarters",
         "description": "Global design, organisation and coordination of the inauguration of Yango's national headquarters in Abidjan — scenography, logistics, event communication and protocol coordination.",
@@ -154,7 +154,7 @@
       },
       {
         "id": "02",
-        "category": "Training",
+        "category": "Services",
         "client": "GUCE CI",
         "project": "E-Reputation & Crisis Communication Training",
         "description": "Delivery of a strategic training session on e-reputation and crisis communication for managers at Côte d'Ivoire's Single Window for Foreign Trade, across 5 expert-led modules.",
@@ -947,12 +947,17 @@
       "address": "Abidjan, Côte d'Ivoire"
     },
     "offeringMore": "Learn more",
-    "modal": {
+    "offering": {
       "eyebrow": "The service in detail",
       "includes": "What we do",
       "deliverables": "Deliverables",
       "audience": "Who it is for",
-      "close": "Close"
+      "expert": "Your lead expert",
+      "back": "All our solutions",
+      "breadcrumb": "Breadcrumb",
+      "related": "Other services — {{service}}",
+      "notFoundTitle": "Service not found",
+      "notFoundDesc": "This service does not exist or has moved. You will find all our solutions on the dedicated page."
     }
   },
   "blogPage": {

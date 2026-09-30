@@ -57,11 +57,33 @@ async function cvRoutes() {
   return ids.map((id) => `/equipe/${id}`);
 }
 
+/**
+ * Pages de prestation, extraites de `src/config/offering-slugs.ts` pour la
+ * même raison que les CV : un slug ajouté ou renommé doit être prérendu sans
+ * penser à venir le recopier ici.
+ */
+async function offeringRoutes() {
+  const source = await readFile(
+    join(ROOT, "src/config/offering-slugs.ts"),
+    "utf8",
+  );
+  const list = source.slice(source.indexOf("export const OFFERING_SLUGS"));
+  const slugs = [...list.matchAll(/^ {4}"([a-z0-9-]+)",$/gm)].map((m) => m[1]);
+
+  if (slugs.length === 0) {
+    throw new Error(
+      "Aucune prestation détectée dans src/config/offering-slugs.ts : la forme du fichier a changé.",
+    );
+  }
+  return slugs.map((slug) => `/services/${slug}`);
+}
+
 /** Doit rester aligné sur public/sitemap.xml et src/routes/AppRoutes.tsx. */
 const ROUTES = [
   "/",
   "/a-propos",
   "/services",
+  ...(await offeringRoutes()),
   "/actualites",
   "/contact",
   ...(await cvRoutes()),
@@ -157,6 +179,17 @@ const context = await browser.newContext({
   reducedMotion: "reduce",
   viewport: { width: 1280, height: 900 },
 });
+
+/*
+  Google Analytics bloqué pendant le prérendu : chaque build enverrait sinon
+  une fausse visite par route, et gtag.js pourrait injecter ses propres balises
+  dans le HTML figé. Le snippet inline d'index.html reste, lui, dans les pages :
+  c'est chez le visiteur qu'il doit charger gtag.js.
+*/
+await context.route(
+  /googletagmanager\.com|google-analytics\.com/,
+  (route) => route.abort(),
+);
 
 let failures = 0;
 

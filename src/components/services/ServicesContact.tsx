@@ -7,8 +7,15 @@ import coris2 from "../../assets/coris2.webp";
  * Section de contact de la page Services : décor, coordonnées, et le
  * formulaire commun au site (`ContactForm`). Porte l'ancre `#contact` visée
  * par les CTA de la page.
+ *
+ * @param source origine reportée dans l'objet de l'e-mail : une page de
+ * prestation y ajoute son titre, pour que la demande arrive déjà qualifiée.
  */
-export default function ServicesContact() {
+export default function ServicesContact({
+  source = "Services",
+}: {
+  source?: string;
+}) {
   const { t } = useTranslation();
   return (
     /*
@@ -133,7 +140,7 @@ export default function ServicesContact() {
 
           {/* ── Formulaire ── */}
           <FadeIn delay={0.1}>
-            <ContactForm idPrefix="services-contact" source="Services" />
+            <ContactForm idPrefix="services-contact" source={source} />
           </FadeIn>
         </div>
       </div>

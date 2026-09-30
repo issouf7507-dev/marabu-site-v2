@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import { TEAM, type TeamMember } from "../../config/team";
+import { OFFERING_SLUGS } from "../../config/offering-slugs";
 import conseil1 from "../../assets/imgs/conseils/conseil-1.webp";
 import conseil2 from "../../assets/imgs/conseils/conseil-2.webp";
 import conseil4 from "../../assets/imgs/conseils/conseil-4.webp";
@@ -19,7 +21,7 @@ import inter6 from "../../assets/imgs/intermediation/intermediation-6.webp";
 import inter7 from "../../assets/imgs/intermediation/intermediation-7.webp";
 import ereputation from "../../assets/imgs/formation-e-reputation.webp";
 
-/** Contenu long d'une prestation, affiché dans la modale (`OfferingModal`). */
+/** Contenu long d'une prestation, affiché sur sa page (`OfferingPage`). */
 export type OfferingDetails = {
   intro: string;
   includes: string[];
@@ -34,6 +36,18 @@ export type OfferingItem = {
   details: OfferingDetails;
 };
 
+/** Prestation enrichie de son adresse et de ses médias : visuel et référent. */
+export type OfferingWithMedia = OfferingItem & {
+  /** Dernier segment de `/services/<slug>`, cf. `OFFERING_SLUGS`. */
+  slug: string;
+  img: string;
+  /**
+   * Absent si l'id ne correspond plus à personne dans `TEAM` (membre retiré) :
+   * la page masque alors le bloc, plutôt que d'afficher un nom fantôme.
+   */
+  expert?: TeamMember;
+};
+
 export type Service = {
   id: string;
   index: string;
@@ -43,12 +57,6 @@ export type Service = {
 };
 
 export type Step = { n: string; title: string; desc: string };
-
-/** Prestation ouverte dans la modale, avec le service dont elle relève. */
-export type OpenOffering = {
-  svc: { name: string; color: string };
-  item: OfferingItem & { img: string };
-};
 
 /*
   Visuels et couleurs, dans l'ordre des services déclarés sous
@@ -68,11 +76,51 @@ const serviceOfferingImages = [
 ];
 const stepImages = [conseil9, services7, inter7, services8];
 
-export type ServiceWithMedia = Service & {
+/*
+  Référent métier de chaque prestation, affiché sur sa page : on ne vend pas
+  une ligne de catalogue, on met un visage sur la compétence.
+
+  Les quatre associés couvrent les douze prestations, chacun sur son domaine
+  (cf. `expertise` dans src/config/cv.ts). La liste restreinte est typée : un id
+  hors des quatre, ou mal orthographié, casse la compilation.
+
+  Même disposition que `serviceOfferingImages` — un tableau par service, dans
+  l'ordre des prestations du JSON.
+*/
+type ExpertId =
+  | "houssene-ben-souda"
+  | "thomas-dabadie"
+  | "aida-ouattara"
+  | "brice-brou";
+
+const serviceOfferingExperts: ExpertId[][] = [
+  [
+    "thomas-dabadie", // Stratégie d'entreprise
+    "houssene-ben-souda", // Transformation organisationnelle
+    "aida-ouattara", // Gouvernance & conformité
+    "thomas-dabadie", // Gestion du changement
+  ],
+  [
+    "houssene-ben-souda", // Formation professionnelle
+    "brice-brou", // Communication institutionnelle
+    "brice-brou", // Événementiel stratégique
+    "brice-brou", // Création de contenus
+  ],
+  [
+    "houssene-ben-souda", // Relations gouvernementales
+    "houssene-ben-souda", // Diplomatie privée
+    "aida-ouattara", // Partenariats PTF
+    "brice-brou", // Stratégie d'influence
+  ],
+];
+
+const membersById = new Map(TEAM.map((m) => [m.id, m]));
+
+export type ServiceWithMedia = Omit<Service, "offerings"> & {
   color: string;
   bg: string;
   heroImage: string;
-  offerings: (OfferingItem & { img: string })[];
+  offerings: OfferingWithMedia[];
 };
 
 /**
@@ -91,7 +139,9 @@ export function useServiceData() {
     heroImage: serviceHeroImages[si],
     offerings: svc.offerings.map((o, oi) => ({
       ...o,
+      slug: OFFERING_SLUGS[si][oi],
       img: serviceOfferingImages[si][oi],
+      expert: membersById.get(serviceOfferingExperts[si][oi]),
     })),
   }));
 
@@ -100,6 +150,15 @@ export function useServiceData() {
   ).map((step, i) => ({ ...step, img: stepImages[i] }));
 
   return { services, steps };
+}
+
+/** Retrouve une prestation et son service par le slug de l'URL. */
+export function findOffering(services: ServiceWithMedia[], slug: string) {
+  for (const svc of services) {
+    const item = svc.offerings.find((o) => o.slug === slug);
+    if (item) return { svc, item };
+  }
+  return undefined;
 }
 
 export type StepWithMedia = ReturnType<typeof useServiceData>["steps"][number];

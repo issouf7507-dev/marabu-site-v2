@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FadeIn } from "../components/ui/fade-in";
@@ -11,9 +11,7 @@ import { ParallaxHero, ParallaxImage } from "../components/services/Parallax";
 import MethodSection from "../components/services/MethodSection";
 import ServicesSidebar from "../components/services/ServicesSidebar";
 import ServicesContact from "../components/services/ServicesContact";
-import OfferingModal from "../components/services/OfferingModal";
 import { useServiceData } from "../components/services/serviceData";
-import type { OpenOffering } from "../components/services/serviceData";
 import coris2 from "../assets/coris2.webp";
 
 export default function ServicesPage() {
@@ -29,19 +27,6 @@ export default function ServicesPage() {
   }[];
 
   const active = useActiveSection(sidebarLinks.map((l) => l.id));
-
-  /*
-    Prestation ouverte dans la modale. On mémorise aussi le bouton d'origine
-    pour lui rendre le focus à la fermeture (WCAG 2.4.3), sans quoi le clavier
-    repart du haut de la page.
-  */
-  const [openOffering, setOpenOffering] = useState<OpenOffering | null>(null);
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-
-  function closeOffering() {
-    setOpenOffering(null);
-    triggerRef.current?.focus();
-  }
 
   function scrollTo(id: string) {
     document
@@ -270,18 +255,12 @@ export default function ServicesPage() {
                           }}
                         >
                           {/*
-                            Bouton et non `div` cliquable : la prestation ouvre
-                            une modale, elle doit donc être atteignable au
-                            clavier et annoncée comme telle.
+                            Lien et non modale : chaque prestation a sa propre
+                            page, donc sa propre URL indexable et partageable.
                           */}
-                          <button
-                            type="button"
-                            aria-haspopup="dialog"
-                            onClick={(e) => {
-                              triggerRef.current = e.currentTarget;
-                              setOpenOffering({ svc, item });
-                            }}
-                            className="group grid w-full md:grid-cols-[1fr_auto] gap-8 items-start py-8 text-left cursor-pointer"
+                          <Link
+                            to={`/services/${item.slug}`}
+                            className="group grid w-full md:grid-cols-[1fr_auto] gap-8 items-start py-8 text-left"
                           >
                             <div className="flex gap-6">
                               <span
@@ -327,11 +306,11 @@ export default function ServicesPage() {
                             >
                               <img
                                 src={item.img}
-                                alt={item.title}
+                                alt=""
                                 className="w-full h-full object-cover"
                               />
                             </motion.div>
-                          </button>
+                          </Link>
                         </motion.div>
                       ))}
                     </div>
@@ -422,19 +401,6 @@ export default function ServicesPage() {
           {/* ══ CONTACT ══ */}
           <ServicesContact />
         </main>
-
-        <OfferingModal
-          offering={openOffering}
-          onClose={closeOffering}
-          onContact={() => {
-            closeOffering();
-            /*
-              Le défilement attend le démontage : tant que la modale est là,
-              le scroll du body est verrouillé et l'appel resterait sans effet.
-            */
-            requestAnimationFrame(() => scrollTo("contact"));
-          }}
-        />
 
         <Footer />
       </div>

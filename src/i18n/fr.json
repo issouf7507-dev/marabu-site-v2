@@ -149,7 +149,7 @@
     "cases": [
       {
         "id": "01",
-        "category": "Événementiel",
+        "category": "Services",
         "client": "Yango",
         "project": "Marabu, architecte de l'inauguration du siège national de Yango Côte d'Ivoire",
         "description": "Conception, organisation et coordination globale de l'inauguration du siège national de Yango à Abidjan — scénographie, logistique, communication événementielle et coordination protocolaire.",
@@ -159,7 +159,7 @@
       },
       {
         "id": "02",
-        "category": "Formation",
+        "category": "Services",
         "client": "GUCE CI",
         "project": "Formation E-réputation & Communication de Crise",
         "description": "Animation d'une session de formation stratégique dédiée à l'e-réputation et la communication de crise pour les responsables du Guichet Unique du Commerce Extérieur de Côte d'Ivoire, en 5 modules animés par des experts.",
@@ -952,12 +952,17 @@
       "address": "Abidjan, Côte d'Ivoire"
     },
     "offeringMore": "En savoir plus",
-    "modal": {
+    "offering": {
       "eyebrow": "Le service en détail",
       "includes": "Ce que nous faisons",
       "deliverables": "Livrables",
       "audience": "Pour qui",
-      "close": "Fermer"
+      "expert": "Votre référent",
+      "back": "Toutes nos solutions",
+      "breadcrumb": "Fil d'Ariane",
+      "related": "Autres prestations — {{service}}",
+      "notFoundTitle": "Prestation introuvable",
+      "notFoundDesc": "Cette prestation n'existe pas ou a changé d'adresse. Retrouvez l'ensemble de nos solutions sur la page dédiée."
     }
   },
   "blogPage": {
